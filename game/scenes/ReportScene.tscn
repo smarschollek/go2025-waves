@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbg3meq701q30"]
+
+[ext_resource type="PackedScene" uid="uid://dlruptxsqk4vy" path="res://game/ui/DailyReport.tscn" id="1_fw1f0"]
+[ext_resource type="Script" uid="uid://bfm4oouamesl7" path="res://game/scenes/ReportScene.gd" id="1_un6l5"]
+
+[node name="ReportScene" type="Node2D"]
+script = ExtResource("1_un6l5")
+
+[node name="DailyReport" parent="." instance=ExtResource("1_fw1f0")]
+position = Vector2(466.6198, 170.85626)
+scale = Vector2(1.5, 1.5)

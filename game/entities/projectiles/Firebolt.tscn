@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://demhnvaw1a56i"]
+
+[ext_resource type="Texture2D" uid="uid://dfs26oht3pisi" path="res://assets/entites/Wizard/Magic(projectile)/Wizard-Attack02_Effect.png" id="1_8ohvp"]
+[ext_resource type="Script" uid="uid://8osileeldfpd" path="res://game/systems/ProjectileBehavior.gd" id="2_7yhbo"]
+[ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="3_lk1nm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ohvp"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bapg4"]
+radius = 5.0
+
+[node name="Firebolt" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8ohvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8ohvp")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(45, 45, 17, 13)
+
+[node name="ProjectileBehavior" type="Node" parent="." node_paths=PackedStringArray("animated_body")]
+script = ExtResource("2_7yhbo")
+animated_body = NodePath("..")
+flight_time = 10.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_lk1nm")
+damage = 10
+metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3, 0)
+shape = SubResource("CircleShape2D_bapg4")
+debug_color = Color(1, 0, 0, 0.41960785)

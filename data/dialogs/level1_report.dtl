@@ -1,0 +1,42 @@
+if {operationTime} > 60.0:
+	Doug... you actually did it. A whole minute! No panic attacks, no explosions, and almost no collateral damage.\
+	I have to say, I'm impressed. Really.
+	Maybe... just maybe... you have more potential than we're used to here at W.A.V.E.S.\
+	Keep it up after all, I want to be able to say that I discovered you.
+	So, Doug... officially, today was just a little survival exercise. \
+	And you passed. Congratulations, your work for today is actually done.
+	BUT... if you want, I have a little extra task in my drawer. Nothing big. Just a little real chaos.\
+	Your choice. You can clock out for today like a good boy...\
+	...or stay and show me that this wasn't just a fluke.
+	- Lets go!
+		Oh... wait a minute, Doug.\
+		This is a little embarrassing... but the extra task can't be started right now.\
+		The system is frozen, resources are blocked, someone must have pressed the big red button again — you know how it is.\
+		For us, that means we're postponing the whole thing until tomorrow.
+		Yes, you heard right [wave]tomorrow[/wave].\
+		But you know what?\
+		I really appreciate your commitment.
+		You were ready to get started right away, and that's rare enough at W.A.V.E.S. to be considered a minor miracle.\
+		Call it a day, Doug.\
+		Come back tomorrow — hopefully the system won't crash again.
+		[signal arg="quit"]
+	- No thanks
+		Well then see you tomorrow.
+		[signal arg="quit"]
+else:
+	Uh... Doug? I don't want to say anything, but... that wasn't 60 seconds.\
+	Not even close. It was more like... let's call it a learning opportunity. A pretty loud, burning learning opportunity.
+	But hey no stress. If you still want to prove your qualifications here at W.A.V.E.S. then we'll just have to try again. This time with a little less falling down, okay?
+	Get up, take a deep breath... and get back to training.\
+	I believe in you. Somewhere deep down. Very, very, very deep down.
+	- Okay lets try again.
+		That's the spirit!
+		[signal arg="restart"]
+	- I can't take it any more.
+		It's okay, Doug... if it's not working anymore, then it's not working anymore.\
+		Take a break, catch your breath.\
+		W.A.V.E.S. will keep going without you — just a little more chaotically.
+		And hey... when you've gathered enough strength or madness again, I'll be here.
+		[wait time="1.0" hide_text="false"]
+		Always...
+		[signal arg="quit"]

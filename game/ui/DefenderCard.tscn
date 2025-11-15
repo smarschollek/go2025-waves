@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyb4ljev8d4v3"]
+
+[ext_resource type="Script" uid="uid://0b24p84xu6du" path="res://game/ui/DefenderCard.gd" id="1_tv4ni"]
+[ext_resource type="Texture2D" uid="uid://dcbcsucr885sq" path="res://assets/sprites/Card.png" id="2_t6pvl"]
+[ext_resource type="Texture2D" uid="uid://bsdc6uhqtv2pw" path="res://assets/sprites/defender-01.png" id="3_vll6s"]
+[ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="4_my02u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vll6s"]
+size = Vector2(30.20847, 40.042606)
+
+[node name="DefenderCard" type="Node2D"]
+script = ExtResource("1_tv4ni")
+
+[node name="CardSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_t6pvl")
+
+[node name="PreviewSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("3_vll6s")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.046972275, 0.005581856)
+shape = SubResource("RectangleShape2D_vll6s")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5.261957
+offset_top = 7.6041145
+offset_right = 13.037453
+offset_bottom = 18.604115
+text = "999"
+label_settings = ExtResource("4_my02u")
+horizontal_alignment = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

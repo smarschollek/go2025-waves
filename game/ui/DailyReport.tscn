@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlruptxsqk4vy"]
+
+[ext_resource type="Script" uid="uid://c4jbdxe5cpooi" path="res://game/ui/DailyReport.gd" id="1_frds7"]
+[ext_resource type="Texture2D" uid="uid://ckl5oas2wr5t8" path="res://assets/sprites/report.png" id="2_0cio7"]
+[ext_resource type="LabelSettings" uid="uid://vwyeawl2lcvp" path="res://assets/fonts/DailyReportLabel.tres" id="3_0hvjk"]
+[ext_resource type="LabelSettings" uid="uid://comr6an6csw4b" path="res://assets/fonts/DailyReportText.tres" id="3_2re0o"]
+[ext_resource type="FontFile" uid="uid://r7lmqbnugoso" path="res://assets/fonts/editundo.ttf" id="5_ntfv2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wgy4"]
+font = ExtResource("5_ntfv2")
+font_color = Color(0.56078434, 0.47058824, 0.32941177, 1)
+
+[node name="DailyReport" type="Node2D"]
+script = ExtResource("1_frds7")
+
+[node name="ReportSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0cio7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -60.0
+offset_top = -32.0
+offset_right = 60.0
+offset_bottom = 23.0
+
+[node name="Label" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="OperatorLabel" type="Label" parent="HBoxContainer/Label"]
+layout_mode = 2
+text = "Operator:"
+label_settings = ExtResource("3_0hvjk")
+
+[node name="OperationTimeLabel" type="Label" parent="HBoxContainer/Label"]
+layout_mode = 2
+text = "Operation Time:"
+label_settings = ExtResource("3_0hvjk")
+
+[node name="KilledUnitsLabel" type="Label" parent="HBoxContainer/Label"]
+layout_mode = 2
+text = "U.A. Units:"
+label_settings = ExtResource("3_0hvjk")
+
+[node name="GradeLabel" type="Label" parent="HBoxContainer/Label"]
+layout_mode = 2
+text = "Grade"
+label_settings = ExtResource("3_0hvjk")
+
+[node name="Texts" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Operator" type="Label" parent="HBoxContainer/Texts"]
+layout_mode = 2
+text = "Doug #1234"
+label_settings = ExtResource("3_2re0o")
+
+[node name="OperationTime" type="Label" parent="HBoxContainer/Texts"]
+layout_mode = 2
+text = "99:99"
+label_settings = ExtResource("3_2re0o")
+
+[node name="KilledUnits" type="Label" parent="HBoxContainer/Texts"]
+layout_mode = 2
+text = "999999999"
+label_settings = ExtResource("3_2re0o")
+
+[node name="Grade" type="Label" parent="HBoxContainer/Texts"]
+layout_mode = 2
+text = "Training"
+label_settings = ExtResource("3_2re0o")
+
+[node name="Day" type="Label" parent="."]
+offset_left = -28.01358
+offset_top = -61.726185
+offset_right = 28.98642
+offset_bottom = -38.726185
+text = "Day 999"
+label_settings = SubResource("LabelSettings_2wgy4")

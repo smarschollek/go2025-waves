@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ygjkxbx1utwf"]
+
+[ext_resource type="Texture2D" uid="uid://dbpkxy8ahnaw6" path="res://assets/sprites/FastForwardButton.png" id="1_n7qcc"]
+[ext_resource type="Script" uid="uid://bs5cyt8plfvfb" path="res://game/ui/FastForwardButton.gd" id="1_rv55m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv55m"]
+atlas = ExtResource("1_n7qcc")
+region = Rect2(33, 1, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7qcc"]
+atlas = ExtResource("1_n7qcc")
+region = Rect2(65, 1, 30, 30)
+
+[node name="FastForwardButton" type="Node2D"]
+script = ExtResource("1_rv55m")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_right = 30.07405
+offset_bottom = 30.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_rv55m")
+texture_pressed = SubResource("AtlasTexture_n7qcc")
+
+[connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]

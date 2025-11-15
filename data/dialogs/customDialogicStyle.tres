@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=8 format=3 uid="uid://ch26gawhj01bk"]
+
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_uh1tb"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_1ebqq"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="3_wrtdf"]
+[ext_resource type="PackedScene" uid="uid://by6waso0mjpjp" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn" id="4_74afi"]
+
+[sub_resource type="Resource" id="Resource_l5f2l"]
+script = ExtResource("1_uh1tb")
+
+[sub_resource type="Resource" id="Resource_xom6g"]
+script = ExtResource("1_uh1tb")
+scene = ExtResource("4_74afi")
+overrides = {
+"box_size": "Vector2(900, 160)",
+"name_label_hide_when_no_character": "true"
+}
+
+[sub_resource type="Resource" id="Resource_810u8"]
+script = ExtResource("1_uh1tb")
+scene = ExtResource("3_wrtdf")
+
+[resource]
+script = ExtResource("2_1ebqq")
+name = "customDialogicStyle"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_l5f2l"),
+"10": SubResource("Resource_xom6g"),
+"11": SubResource("Resource_810u8")
+}
+metadata/_latest_layer = "10"

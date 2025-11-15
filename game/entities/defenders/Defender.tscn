@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkh841lsawgmx"]
+
+[ext_resource type="Texture2D" uid="uid://osx8rm843jr2" path="res://assets/entites/defender.png" id="1_db55o"]
+[ext_resource type="Script" uid="uid://pq8hdjdxjmtd" path="res://game/entities/defenders/Defender.gd" id="1_j5ykx"]
+[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="1_mtdm0"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="2_o8ruj"]
+[ext_resource type="AudioStream" uid="uid://p3vnstprxmd5" path="res://assets/audio/hitHurt.wav" id="4_56br2"]
+[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="4_aaxnc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaxnc"]
+shader = ExtResource("1_mtdm0")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_db55o"]
+radius = 5.333334
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56br2"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56br2"]
+shader = ExtResource("1_mtdm0")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
+
+[node name="Defender" type="StaticBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_j5ykx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_aaxnc")
+texture = ExtResource("1_db55o")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(6, 6, 19, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_db55o")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("2_o8ruj")
+health = 150
+metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3.6666667, 1)
+shape = SubResource("CapsuleShape2D_56br2")
+debug_color = Color(1, 0, 1, 0.41960785)
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Hurtbox"]
+stream = ExtResource("4_56br2")
+
+[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_aaxnc")
+sprite = NodePath("../Sprite2D")
+shader = SubResource("ShaderMaterial_56br2")
+metadata/_custom_type_script = "uid://hr6x6pyal7iv"
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

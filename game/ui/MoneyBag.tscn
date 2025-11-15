@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn52k5q2q6blr"]
+
+[ext_resource type="Texture2D" uid="uid://d0q4ibv6moikd" path="res://assets/sprites/MoneyBag.png" id="1_cs0o8"]
+[ext_resource type="Script" uid="uid://dvxx3eljmqisn" path="res://game/ui/MoneyBag.gd" id="1_wodgw"]
+[ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="2_nu8bg"]
+
+[node name="MoneyBag" type="Node2D"]
+script = ExtResource("1_wodgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cs0o8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.27536
+offset_top = 5.826828
+offset_right = 10.746948
+offset_bottom = 16.826828
+text = "999"
+label_settings = ExtResource("2_nu8bg")

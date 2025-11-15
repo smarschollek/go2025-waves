@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhiepdv1hhc4x"]
+
+[ext_resource type="Script" uid="uid://dg3jppb7vlfwu" path="res://game/scenes/Level1IntroScene.gd" id="1_crfo6"]
+[ext_resource type="Texture2D" uid="uid://d0q4ibv6moikd" path="res://assets/sprites/MoneyBag.png" id="2_u8xsh"]
+[ext_resource type="Texture2D" uid="uid://bsdc6uhqtv2pw" path="res://assets/sprites/defender-01.png" id="3_0rvlr"]
+[ext_resource type="Texture2D" uid="uid://y0exkhgchqyj" path="res://assets/tiles/Wizard.png" id="4_ryf0q"]
+
+[node name="LevelIntroScene" type="Node2D"]
+script = ExtResource("1_crfo6")
+
+[node name="MoneyBag" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(378.40002, 231.44)
+scale = Vector2(2, 2)
+texture = ExtResource("2_u8xsh")
+
+[node name="Defender" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(488.2505, 235.0463)
+scale = Vector2(3, 3)
+texture = ExtResource("3_0rvlr")
+
+[node name="Wizard" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(593.25574, 231.44)
+scale = Vector2(3, 3)
+texture = ExtResource("4_ryf0q")
