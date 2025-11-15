@@ -41,7 +41,7 @@ func startSpawning() -> void:
         GameManager.lastWaveSpawned = true
         return
 
-    var spawn_point = spawn_points[GameManager.getRandomInt(0, spawn_points.size() - 1)]
+    var spawn_point = spawn_points[SeededRNG.getRandomInt(0, spawn_points.size() - 1)]
 
     if enemy_info["amount"] <= 0:
         enemy_info = internalWaveData.enemies.pop_front()    
@@ -57,7 +57,7 @@ func spawnEnemies(pos) -> void:
     var startPosition = pos.global_position
     
     if int(scaleInfo) == 1:
-        startPosition.y += GameManager.getRandomInt(-6, 3) * 4
+        startPosition.y += SeededRNG.getRandomInt(-6, 3) * 4
 
     startPosition.y -= scaleInfo * 4
 

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SeededRNG="*res://core/utilities/RandomGenerator.gd"
 GameManager="*res://core/autoloads/GameManager.gd"
 EnemyManager="*res://core/autoloads/EnemyManager.gd"
 TimeManager="*res://core/autoloads/TimeManager.gd"
