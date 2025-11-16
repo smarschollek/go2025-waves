@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhiepdv1hhc4x"]
+[gd_scene load_steps=7 format=3 uid="uid://dhiepdv1hhc4x"]
 
 [ext_resource type="Script" uid="uid://dg3jppb7vlfwu" path="res://game/scenes/Level1IntroScene.gd" id="1_crfo6"]
 [ext_resource type="Texture2D" uid="uid://d0q4ibv6moikd" path="res://assets/sprites/MoneyBag.png" id="2_u8xsh"]
-[ext_resource type="Texture2D" uid="uid://bsdc6uhqtv2pw" path="res://assets/sprites/defender-01.png" id="3_0rvlr"]
-[ext_resource type="Texture2D" uid="uid://y0exkhgchqyj" path="res://assets/tiles/Wizard.png" id="4_ryf0q"]
+[ext_resource type="Texture2D" uid="uid://bsts7a7ofj0gb" path="res://assets/entites/_Defenders/Knight Templar-Idle.png" id="3_80wu8"]
+[ext_resource type="Texture2D" uid="uid://r4ty6rds3qbr" path="res://assets/entites/_Defenders/fire-wizard-idle.png" id="4_80wu8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnls6"]
+atlas = ExtResource("3_80wu8")
+region = Rect2(43, 40, 14, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhkwa"]
+atlas = ExtResource("4_80wu8")
+region = Rect2(43, 39, 17, 19)
 
 [node name="LevelIntroScene" type="Node2D"]
 script = ExtResource("1_crfo6")
@@ -18,10 +26,12 @@ texture = ExtResource("2_u8xsh")
 visible = false
 position = Vector2(488.2505, 235.0463)
 scale = Vector2(3, 3)
-texture = ExtResource("3_0rvlr")
+texture = SubResource("AtlasTexture_rnls6")
+flip_h = true
 
-[node name="Wizard" type="Sprite2D" parent="."]
+[node name="FireWizard" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(593.25574, 231.44)
+position = Vector2(600.2505, 235.04631)
 scale = Vector2(3, 3)
-texture = ExtResource("4_ryf0q")
+texture = SubResource("AtlasTexture_dhkwa")
+flip_h = true

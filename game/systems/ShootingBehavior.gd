@@ -18,16 +18,13 @@ func _on_game_tick(totalTicks: int) -> void:
             shoot()
         elif rayCast.is_colliding():
             shoot()
-            
+
 func shoot() -> void:
-    animated_sprite.play("shoot")
+    
     
     var projectile = projectileScene.instantiate()
     projectile.position = shootPosition.global_position
     projectile.scale = get_parent().scale
     
     add_child(projectile)
-
-    await animated_sprite.animation_finished
-    animated_sprite.play("idle")
     

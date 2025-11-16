@@ -40,7 +40,8 @@ func startSpawning() -> void:
 
 func spawnEnemies(pos) -> void:
     var enemy_scene = ResourceLoader.load("res://game/entities/enemies/%s.tscn" % enemy_info["type"]) as PackedScene
-    var enemy = enemy_scene.instantiate()
+    
+    var enemy = enemy_scene.duplicate().instantiate()
     var scaleInfo = enemy_info["scale"]
 
     var startPosition = pos.global_position

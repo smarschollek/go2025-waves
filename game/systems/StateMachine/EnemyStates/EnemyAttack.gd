@@ -1,15 +1,15 @@
 extends State
 class_name EnemyAttack
 
-@export var enemy: AnimatableBody2D
-
-@export var animationTree: AnimationTree
-@export var animtationTreeParam: String = "parameters/conditions/is_attacking"
+@export var animationPlayer: AnimationPlayer
+@export var animation: String = "Attack"
 
 func enter() -> void:
-    animationTree[animtationTreeParam] = true
+    if animationPlayer:
+        animationPlayer.play(animation)
     
 func exit() -> void:
-    animationTree[animtationTreeParam] = false
+    if animationPlayer:
+        animationPlayer.stop()
 
 

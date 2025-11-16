@@ -1,0 +1,189 @@
+[gd_scene load_steps=28 format=3 uid="uid://veglv7ir7jeb"]
+
+[ext_resource type="Script" uid="uid://kpkcu7q8v8l7" path="res://game/entities/defenders/Knight.gd" id="1_7icam"]
+[ext_resource type="Texture2D" uid="uid://y6fhtnjk7c1p" path="res://assets/entites/_Defenders/Knight Templar-Block.png" id="1_ttn2b"]
+[ext_resource type="Texture2D" uid="uid://60u0amp4tbas" path="res://assets/entites/_Defenders/Knight Templar-Death.png" id="2_2djg7"]
+[ext_resource type="Texture2D" uid="uid://bsts7a7ofj0gb" path="res://assets/entites/_Defenders/Knight Templar-Idle.png" id="2_yuoxc"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="4_a40yj"]
+[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="5_7icam"]
+[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="6_x64n0"]
+[ext_resource type="Script" uid="uid://bm62wlxj6rcv3" path="res://game/systems/DetectionBox.gd" id="8_x64n0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x64n0"]
+size = Vector2(12, 18.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x64n0"]
+atlas = ExtResource("1_ttn2b")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xodcx"]
+atlas = ExtResource("1_ttn2b")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wssg7"]
+atlas = ExtResource("1_ttn2b")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jhly"]
+atlas = ExtResource("1_ttn2b")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50i7"]
+atlas = ExtResource("2_2djg7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84lq4"]
+atlas = ExtResource("2_2djg7")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kk6m"]
+atlas = ExtResource("2_2djg7")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb6ni"]
+atlas = ExtResource("2_2djg7")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuoxc"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2djg7"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5qoh"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o0mj"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a40yj"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7icam"]
+atlas = ExtResource("2_yuoxc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a40yj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x64n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xodcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wssg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jhly")
+}],
+"loop": false,
+"name": &"Block",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84lq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kk6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb6ni")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuoxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2djg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5qoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o0mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a40yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7icam")
+}],
+"loop": true,
+"name": &"Idel",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7icam"]
+size = Vector2(14, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xodcx"]
+resource_local_to_scene = true
+shader = ExtResource("6_x64n0")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xodcx"]
+size = Vector2(2.25, 18)
+
+[node name="Knight" type="StaticBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_7icam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.3333335, -2.0833335)
+shape = SubResource("RectangleShape2D_x64n0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a40yj")
+animation = &"Idel"
+autoplay = "Idel"
+frame_progress = 0.15026501
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("4_a40yj")
+health = 180
+metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
+
+[node name="HurtboxCollisionShape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_7icam")
+debug_color = Color(1, 0, 1, 0.41960785)
+
+[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_7icam")
+sprite = NodePath("../AnimatedSprite2D")
+shader = SubResource("ShaderMaterial_xodcx")
+metadata/_custom_type_script = "uid://hr6x6pyal7iv"
+
+[node name="DetectionBox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("8_x64n0")
+metadata/_custom_type_script = "uid://bm62wlxj6rcv3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+position = Vector2(-5.875, -2)
+shape = SubResource("RectangleShape2D_xodcx")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]
+[connection signal="collisionDetected" from="DetectionBox" to="." method="_on_detection_box_collision_detected"]

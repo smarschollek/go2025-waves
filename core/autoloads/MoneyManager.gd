@@ -1,10 +1,10 @@
 extends Node
 
-var startMoney := 225
+var startMoney := 100
 var totalMoney := 0
 
-var passiveMoneyPerSecond: int = 1
-var passiveMoneyIncreaseInterval: int = 4
+var passiveMoneyPerSecond: int = 25
+var passiveMoneyIncreaseInterval: int = 20
 
 func reset() -> void:
     totalMoney = startMoney

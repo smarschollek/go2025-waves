@@ -1,49 +1,63 @@
-[gd_scene load_steps=17 format=3 uid="uid://1rue0s6pjc76"]
+[gd_scene load_steps=24 format=3 uid="uid://1rue0s6pjc76"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_m6mp1"]
-[ext_resource type="Texture2D" uid="uid://csv5bl45v0o5g" path="res://assets/entites/Wizard/Wizard/Wizard-Idle.png" id="2_q0k26"]
 [ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="3_8jyn5"]
 [ext_resource type="Script" uid="uid://cf6b24bxhn06k" path="res://game/systems/ShootingBehavior.gd" id="3_q0k26"]
 [ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="4_pxs0p"]
+[ext_resource type="Texture2D" uid="uid://dpkdhgem73xf6" path="res://assets/entites/_Defenders/Wizard-DEATH.png" id="4_vlamk"]
+[ext_resource type="Texture2D" uid="uid://r4ty6rds3qbr" path="res://assets/entites/_Defenders/fire-wizard-idle.png" id="4_xp4w6"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_8vnt2"]
 [ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="5_m6mp1"]
+[ext_resource type="Script" uid="uid://bm62wlxj6rcv3" path="res://game/systems/DetectionBox.gd" id="7_w6rmf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_py4bn"]
-atlas = ExtResource("2_q0k26")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w6rmf"]
-atlas = ExtResource("2_q0k26")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vlamk"]
-atlas = ExtResource("2_q0k26")
-region = Rect2(200, 0, 100, 100)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
+shader = ExtResource("5_m6mp1")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7yra"]
-atlas = ExtResource("2_q0k26")
-region = Rect2(300, 0, 100, 100)
+atlas = ExtResource("4_vlamk")
+region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhnm7"]
-atlas = ExtResource("2_q0k26")
-region = Rect2(400, 0, 100, 100)
+atlas = ExtResource("4_vlamk")
+region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihu5j"]
-atlas = ExtResource("2_q0k26")
+atlas = ExtResource("4_vlamk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5ysw"]
+atlas = ExtResource("4_vlamk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrcq"]
+atlas = ExtResource("4_xp4w6")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yktoe"]
+atlas = ExtResource("4_xp4w6")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkcmh"]
+atlas = ExtResource("4_xp4w6")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuo6j"]
+atlas = ExtResource("4_xp4w6")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iootq"]
+atlas = ExtResource("4_xp4w6")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naywl"]
+atlas = ExtResource("4_xp4w6")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpc2t"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_py4bn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w6rmf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vlamk")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v7yra")
 }, {
@@ -52,30 +66,60 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ihu5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5ysw")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yktoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkcmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuo6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iootq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naywl")
 }],
 "loop": true,
 "name": &"shoot",
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlamk"]
+size = Vector2(2.25, 18)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ru5rw"]
 radius = 7.0
 height = 18.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
-shader = ExtResource("5_m6mp1")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
 
 [node name="Wizard" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_m6mp1")
 
+[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_pxs0p")
+sprite = NodePath("../AnimatedSprite2D")
+shader = SubResource("ShaderMaterial_j004l")
+metadata/_custom_type_script = "uid://hr6x6pyal7iv"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.0003452418
 sprite_frames = SubResource("SpriteFrames_kpc2t")
-animation = &"shoot"
+animation = &"dead"
 autoplay = "shoot"
-frame_progress = 0.47531825
 flip_h = true
 
 [node name="ShootPosition" type="Marker2D" parent="."]
@@ -88,22 +132,29 @@ projectileScene = ExtResource("3_8jyn5")
 shootInterval = 5.0
 rayCast = NodePath("../RayCast2D")
 
+[node name="DetectionBox" type="Area2D" parent="."]
+position = Vector2(-2.8, 0)
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("7_w6rmf")
+metadata/_custom_type_script = "uid://bm62wlxj6rcv3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+position = Vector2(-5, -2)
+shape = SubResource("RectangleShape2D_vlamk")
+debug_color = Color(0, 1, 0, 0.41960785)
+
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 8
 script = ExtResource("5_8vnt2")
-health = 20
+health = 30
 metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0.33333334, -2)
+position = Vector2(-1, -2)
 shape = SubResource("CapsuleShape2D_ru5rw")
 debug_color = Color(1, 0, 1, 0.41960785)
-
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("4_pxs0p")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_j004l")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-50, 0)

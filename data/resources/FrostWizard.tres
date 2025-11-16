@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DefenderInfo" load_steps=5 format=3 uid="uid://bh80slj1b4jes"]
+
+[ext_resource type="Script" uid="uid://c3b4lor0tpmo5" path="res://data/resources/DefenderInfo.gd" id="1_hv02a"]
+[ext_resource type="PackedScene" uid="uid://dsq0r3mudb1j0" path="res://game/entities/defenders/FrostWizard.tscn" id="1_lnjxi"]
+[ext_resource type="Texture2D" uid="uid://b01slq424qsx3" path="res://assets/entites/_Defenders/frost-wizard-idle.png" id="2_vyuy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o0nm"]
+atlas = ExtResource("2_vyuy5")
+region = Rect2(43, 39, 17, 19)
+
+[resource]
+script = ExtResource("1_hv02a")
+previewSprite = SubResource("AtlasTexture_2o0nm")
+defenderScene = ExtResource("1_lnjxi")
+cost = 125
+metadata/_custom_type_script = "uid://c3b4lor0tpmo5"

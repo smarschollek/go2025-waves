@@ -1,8 +1,5 @@
 class_name Hurtbox
 extends Area2D
-
-@export var effect: AudioStreamPlayer2D
-
 signal received_damage(damage_amount: int)
 signal died()
 
@@ -16,9 +13,6 @@ func _on_body_entered(hitbox: Area2D) -> void:
     if hitbox is Hitbox:
         health -= hitbox.damage
         emit_signal("received_damage", hitbox.damage)
-
-        if effect != null:
-            effect.play()
-
+        
         if health <= 0:
             emit_signal("died")

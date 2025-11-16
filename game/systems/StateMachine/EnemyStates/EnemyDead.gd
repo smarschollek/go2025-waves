@@ -3,17 +3,15 @@ class_name EnemyDead
 
 
 @export var enemy: AnimatableBody2D
-@export var animationTree: AnimationTree
-@export var animtationTreeParam: String = "parameters/conditions/is_dead"
+@export var animationPlayer: AnimationPlayer
+@export var animation: String = "Dead"
 
 @export var coinsDropped := 1
 
 func enter() -> void:
-    if animationTree:
-        animationTree[animtationTreeParam] = true
+    if animationPlayer:
+        animationPlayer.play(animation)
+        await animationPlayer.animation_finished
 
-    await animationTree.animation_finished
-    await get_tree().create_timer(0.5).timeout
     enemy.queue_free()
-
     MoneyManager.addMoney(coinsDropped)

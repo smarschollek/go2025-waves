@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="DefenderInfo" load_steps=4 format=3 uid="uid://bc5iafd2bg4mi"]
+[gd_resource type="Resource" script_class="DefenderInfo" load_steps=5 format=3 uid="uid://bc5iafd2bg4mi"]
 
-[ext_resource type="PackedScene" uid="uid://bkh841lsawgmx" path="res://game/entities/defenders/Defender.tscn" id="1_cnaue"]
+[ext_resource type="PackedScene" uid="uid://veglv7ir7jeb" path="res://game/entities/defenders/Knight.tscn" id="1_32lbt"]
 [ext_resource type="Script" uid="uid://c3b4lor0tpmo5" path="res://data/resources/DefenderInfo.gd" id="1_jl8us"]
-[ext_resource type="Texture2D" uid="uid://bsdc6uhqtv2pw" path="res://assets/sprites/defender-01.png" id="2_ylcff"]
+[ext_resource type="Texture2D" uid="uid://bsts7a7ofj0gb" path="res://assets/entites/_Defenders/Knight Templar-Idle.png" id="2_32lbt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4voic"]
+atlas = ExtResource("2_32lbt")
+region = Rect2(43, 40, 14, 17)
 
 [resource]
 script = ExtResource("1_jl8us")
-previewSprite = ExtResource("2_ylcff")
-defenderScene = ExtResource("1_cnaue")
-cost = 50
+previewSprite = SubResource("AtlasTexture_4voic")
+defenderScene = ExtResource("1_32lbt")
+cost = 75
 metadata/_custom_type_script = "uid://c3b4lor0tpmo5"

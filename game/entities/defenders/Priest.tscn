@@ -1,62 +1,146 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1cflgy4nwcjo"]
+[gd_scene load_steps=22 format=3 uid="uid://c1cflgy4nwcjo"]
 
-[ext_resource type="Texture2D" uid="uid://dbgs2l6ndxfst" path="res://assets/entites/Priest/Priest/Priest-Heal.png" id="1_3dpov"]
+[ext_resource type="Script" uid="uid://p7l5oeofuf4h" path="res://game/entities/defenders/Priest.gd" id="1_iqj3p"]
+[ext_resource type="Texture2D" uid="uid://xmwgj3a4ahfb" path="res://assets/entites/_Defenders/Priest-Death.png" id="1_whnvn"]
+[ext_resource type="Texture2D" uid="uid://b1dguta8ffsmv" path="res://assets/entites/_Defenders/Priest-Heal.png" id="2_pgfgb"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="3_pgfgb"]
+[ext_resource type="Script" uid="uid://bm62wlxj6rcv3" path="res://game/systems/DetectionBox.gd" id="5_chcxc"]
+[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="6_16csw"]
+[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="7_xwiy8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dpov"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqj3p"]
+atlas = ExtResource("1_whnvn")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chcxc"]
+atlas = ExtResource("1_whnvn")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tj2q"]
+atlas = ExtResource("1_whnvn")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16csw"]
+atlas = ExtResource("1_whnvn")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwiy8"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydju0"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yukb"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmvsa"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2xot"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emeg3"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_whqww"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jrmvu"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iysox"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sw8uo"]
-atlas = ExtResource("1_3dpov")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcwsd"]
+atlas = ExtResource("2_pgfgb")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8vq36"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3dpov")
+"texture": SubResource("AtlasTexture_iqj3p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ydju0")
+"texture": SubResource("AtlasTexture_chcxc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pmvsa")
+"texture": SubResource("AtlasTexture_6tj2q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_emeg3")
+"texture": SubResource("AtlasTexture_16csw")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwiy8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jrmvu")
+"texture": SubResource("AtlasTexture_3yukb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sw8uo")
+"texture": SubResource("AtlasTexture_c2xot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whqww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iysox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcwsd")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"Heal",
+"speed": 6.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqj3p"]
+radius = 7.666667
+height = 21.333334
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tj2q"]
+size = Vector2(2.25, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yukb"]
+shader = ExtResource("7_xwiy8")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
 
 [node name="Priest" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_iqj3p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8vq36")
-autoplay = "default"
-frame_progress = 0.14237618
+animation = &"Heal"
+autoplay = "Heal"
+frame_progress = 0.57540196
 flip_h = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_pgfgb")
+health = 20
+metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_iqj3p")
+debug_color = Color(1, 0, 1, 0.41960785)
+
+[node name="DetectionBox" type="Area2D" parent="."]
+position = Vector2(-3.9999998, 0)
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("5_chcxc")
+metadata/_custom_type_script = "uid://bm62wlxj6rcv3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+position = Vector2(-5.875, -2)
+shape = SubResource("RectangleShape2D_6tj2q")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_16csw")
+sprite = NodePath("../AnimatedSprite2D")
+shader = SubResource("ShaderMaterial_3yukb")
+metadata/_custom_type_script = "uid://hr6x6pyal7iv"
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

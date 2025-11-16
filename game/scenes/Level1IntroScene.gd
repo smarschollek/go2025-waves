@@ -20,4 +20,4 @@ func textSignalFromDialogic(text: String) -> void:
         $Defender.visible = true
 
     if text == "showWizard":
-        $Wizard.visible = true
+        $FireWizard.visible = true
