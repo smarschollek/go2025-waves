@@ -484,15 +484,14 @@ script = ExtResource("9_vg845")
 initialState = NodePath("Walking")
 metadata/_custom_type_script = "uid://c84ve05ynuqi2"
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animationPlayer")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("11_kxycp")
-enemy = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://c7ligbs5gp4da"
 
 [node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animationPlayer")]
 script = ExtResource("10_kxycp")
-speed = 20
+speed = 10
 enemy = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://102woa1e7t2n"
@@ -501,7 +500,6 @@ metadata/_custom_type_script = "uid://102woa1e7t2n"
 script = ExtResource("12_o6pn0")
 enemy = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
-coinsDropped = 5
 metadata/_custom_type_script = "uid://b08xuh0cn8fce"
 
 [node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]

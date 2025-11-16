@@ -1,25 +1,22 @@
 extends Node
 
-var startMoney := 100
-var totalMoney := 0
+var startMoney := 200
+var totalMoney := 0:
+    set(value):
+        totalMoney = value
+        moneyChanged.emit(totalMoney)
 
-var passiveMoneyPerSecond: int = 25
-var passiveMoneyIncreaseInterval: int = 20
+signal moneyChanged(newTotalMoney: int)
 
 func reset() -> void:
     totalMoney = startMoney
 
 func _ready() -> void:
     reset()
-    TimeManager.onGameTick.connect(_on_game_tick)
-
-func _on_game_tick(totalTick: int) -> void:
-    if totalTick % passiveMoneyIncreaseInterval == 0:
-        totalMoney += passiveMoneyPerSecond
 
 func addMoney(amount: int) -> void:
     totalMoney += amount
-
+    
 func hasEnoughMoney(amount: int) -> bool:
     return totalMoney >= amount
 

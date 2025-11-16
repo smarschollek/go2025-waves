@@ -39,20 +39,23 @@ func startSpawning() -> void:
         spawnEnemies(spawn_point)
 
 func spawnEnemies(pos) -> void:
-    var enemy_scene = ResourceLoader.load("res://game/entities/enemies/%s.tscn" % enemy_info["type"]) as PackedScene
-    
-    var enemy = enemy_scene.duplicate().instantiate()
-    var scaleInfo = enemy_info["scale"]
 
-    var startPosition = pos.global_position
-    
-    if int(scaleInfo) == 1:
-        startPosition.y += SeededRNG.getRandomInt(-6, 3) * 4
+    var enemyType = enemy_info["type"]
 
-    startPosition.y -= scaleInfo * 4
+    if(enemyType != ""):
+        var enemy_scene = ResourceLoader.load("res://game/entities/enemies/%s.tscn" % enemy_info["type"]) as PackedScene
+        var enemy = enemy_scene.duplicate().instantiate()
+        var scaleInfo = enemy_info["scale"]
+        var startPosition = pos.global_position
+        
+        if int(scaleInfo) == 1:
+            startPosition.y += SeededRNG.getRandomInt(-6, 3) * 4
 
-    enemy.position = startPosition
-
-    enemy.scale = enemy.scale * Vector2(scaleInfo, scaleInfo)
-    add_child(enemy)
+        startPosition.y -= scaleInfo * 4
+        enemy.position = startPosition
+        enemy.scale = enemy.scale * Vector2(scaleInfo, scaleInfo)
+        add_child(enemy)
+        
     enemy_info.amount -= 1
+
+    

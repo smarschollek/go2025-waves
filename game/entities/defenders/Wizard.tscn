@@ -129,7 +129,7 @@ position = Vector2(-9.333334, -2.6666667)
 script = ExtResource("3_q0k26")
 shootPosition = NodePath("../ShootPosition")
 projectileScene = ExtResource("3_8jyn5")
-shootInterval = 5.0
+shootInterval = 7.5
 rayCast = NodePath("../RayCast2D")
 
 [node name="DetectionBox" type="Area2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=18 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
@@ -13,9 +13,14 @@
 [ext_resource type="Resource" uid="uid://dm2ag6on2nnyp" path="res://data/resources/Level1_WaveData.tres" id="11_sy7q6"]
 [ext_resource type="PackedScene" uid="uid://ygjkxbx1utwf" path="res://game/ui/FastForwardButton.tscn" id="12_pyqq3"]
 [ext_resource type="PackedScene" uid="uid://dn52k5q2q6blr" path="res://game/ui/MoneyBag.tscn" id="13_3eq1r"]
+[ext_resource type="Script" uid="uid://dovq1ki4vv8el" path="res://game/systems/MoneySpawner.gd" id="14_lpue5"]
+[ext_resource type="PackedScene" uid="uid://d0c3fbcmoal1h" path="res://game/entities/Coin.tscn" id="15_phuu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1edn8"]
 size = Vector2(15.086487, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phuu0"]
+size = Vector2(900, 300)
 
 [node name="LevelTemplate" type="Node2D"]
 rotation = 0.009374617
@@ -39,7 +44,8 @@ script = ExtResource("5_h15h6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 position = Vector2(1020.67163, 280.28925)
 shape = SubResource("RectangleShape2D_1edn8")
-debug_color = Color(0.65882355, 0.85882354, 0, 0.41960785)
+disabled = true
+debug_color = Color(0.5882353, 0, 0.92941177, 0.41960785)
 
 [node name="DropPlatfroms" type="Node" parent="."]
 
@@ -154,17 +160,17 @@ scale = Vector2(1.25, 1.25)
 [node name="Defenders" type="Node" parent="."]
 
 [node name="Defender" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(448, 490)
+position = Vector2(1125, 519)
 scale = Vector2(2, 2)
 info = ExtResource("9_o61qh")
 
 [node name="Wizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(512, 490)
+position = Vector2(455, 490)
 scale = Vector2(2, 2)
 info = ExtResource("8_v8tso")
 
 [node name="FrostWizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(576, 490)
+position = Vector2(1055, 519)
 scale = Vector2(2, 2)
 info = ExtResource("9_633oq")
 
@@ -183,6 +189,7 @@ position = Vector2(-32, 276)
 position = Vector2(-32, 348)
 
 [node name="FastForwardButton" parent="." instance=ExtResource("12_pyqq3")]
+visible = false
 position = Vector2(16, 450)
 scale = Vector2(2, 2)
 
@@ -191,5 +198,18 @@ scale = Vector2(2, 2)
 [node name="MoneyBag" parent="." instance=ExtResource("13_3eq1r")]
 position = Vector2(379.38513, 490)
 scale = Vector2(2, 2)
+
+[node name="MoneySpawner" type="Node" parent="." node_paths=PackedStringArray("area")]
+script = ExtResource("14_lpue5")
+coin = ExtResource("15_phuu0")
+area = NodePath("Area2D")
+metadata/_custom_type_script = "uid://dovq1ki4vv8el"
+
+[node name="Area2D" type="Area2D" parent="MoneySpawner"]
+position = Vector2(480, 274)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoneySpawner/Area2D"]
+shape = SubResource("RectangleShape2D_phuu0")
+debug_color = Color(1, 0.91764706, 0, 0.42745098)
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]

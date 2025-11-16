@@ -1,6 +1,11 @@
+@tool
 extends Node2D
 
-@export var info: DefenderInfo
+@export var info: DefenderInfo:
+    set(value):
+        info = value
+        $PreviewSprite.texture = info.previewSprite
+        $Label.text = str(info.cost)
 
 var draggable: bool = false
 var insideDropzone: bool = false
@@ -12,12 +17,10 @@ var drag_preview: Area2D
 var isDragging = false
 
 func _ready() -> void:
+    MoneyManager.moneyChanged.connect(toggleCardEnabled)
     $PreviewSprite.texture = info.previewSprite
     $Label.text = str(info.cost)
     pass
-
-func _process(_delta: float) -> void:
-    toggleCardEnabled()
 
 func _input(event: InputEvent):
     if MoneyManager.hasEnoughMoney(info.cost) == false:
@@ -50,13 +53,33 @@ func start_drag(mouse_pos: Vector2):
 func end_drag(_mouse_pos: Vector2):
     if current_dropzone != null:
         if MoneyManager.spendMoney(info.cost):
+            startCooldown()
             GameManager.occupyDropzone(current_dropzone)
             var defender_instance = info.defenderScene.instantiate()
             defender_instance.position = current_dropzone.position
             get_tree().current_scene.add_child(defender_instance)
             
+    
     setDragging(false)
     drag_preview.queue_free()
+
+var cooldownCounter = 0
+
+func startCooldown():
+    cooldownCounter = 0
+    $CooldownOverlay.visible = true
+    $CooldownOverlay/Label.text = str(int(info.cooldownTime - cooldownCounter))
+    $CooldownTimer.start()
+
+func _on_cooldown_finished():
+    if cooldownCounter == (info.cooldownTime - 1):
+        $CooldownOverlay.visible = false
+        cooldownCounter = 0
+    else:
+        cooldownCounter += 1.0
+        $CooldownOverlay/Label.text = str(int(info.cooldownTime - cooldownCounter))
+        $CooldownTimer.start()
+        
 
 func setDragging(value: bool):
     GameManager.isDragging = value
@@ -70,15 +93,15 @@ func _on_dropzone_exited(zone):
     if current_dropzone == zone:
         current_dropzone = null
 
-func toggleCardEnabled() -> void:
-    if MoneyManager.totalMoney < info.cost:
-        $PreviewSprite.modulate = Color(1, 1, 1, 0.5)
-        $CardSprite.modulate = Color(1, 1, 1, 0.5)
-        $Label.modulate = Color(1, 0, 0, 0.5)
-        $Area2D/CollisionShape2D.disabled = true
-    else:
+func toggleCardEnabled(newTotalMoney: int) -> void:
+    if newTotalMoney >= info.cost:
         $PreviewSprite.modulate = Color(1, 1, 1, 1)
         $CardSprite.modulate = Color(1, 1, 1, 1)
         $Label.modulate = Color(1, 1, 1, 1)
         $Area2D/CollisionShape2D.disabled = false
+    else:
+        $PreviewSprite.modulate = Color(1, 1, 1, 0.5)
+        $CardSprite.modulate = Color(1, 1, 1, 0.5)
+        $Label.modulate = Color(1, 0, 0, 0.5)
+        $Area2D/CollisionShape2D.disabled = true
     pass

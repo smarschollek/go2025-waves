@@ -33,7 +33,27 @@ text = "999"
 label_settings = ExtResource("4_my02u")
 horizontal_alignment = 2
 
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="CooldownOverlay" type="ColorRect" parent="."]
+visible = false
+offset_left = -15.0
+offset_top = -20.0
+offset_right = 15.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 0.8235294)
+
+[node name="Label" type="Label" parent="CooldownOverlay"]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 40.0
+text = "99"
+label_settings = ExtResource("4_my02u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_finished"]

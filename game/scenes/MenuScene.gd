@@ -21,7 +21,7 @@ func _on_play_button_on_click() -> void:
     Dialogic.start("menu")
 
 func switchToLevel() -> void:
-    get_tree().change_scene_to_file("res://game/scenes/Level1IntroScene.tscn")
+    get_tree().change_scene_to_file("res://game/scenes/Level1Scene.tscn")
 
 func _on_exit_button_on_click() -> void:
     get_tree().quit()

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0c3fbcmoal1h"]
+
+[ext_resource type="Script" uid="uid://cnam30qglb6vx" path="res://game/entities/Coin.gd" id="1_iw5bb"]
+[ext_resource type="Texture2D" uid="uid://7kvkaqqxn6tt" path="res://assets/sprites/Coin.png" id="1_ldg23"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ldg23"]
+radius = 7.363574
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw5bb"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_812b1"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8tuu"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcgxm"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bw4b"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54si7"]
+atlas = ExtResource("1_ldg23")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4ddl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw5bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_812b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8tuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcgxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bw4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54si7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Coin" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_iw5bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ldg23")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o4ddl")
+autoplay = "default"
+frame_progress = 0.7345418
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

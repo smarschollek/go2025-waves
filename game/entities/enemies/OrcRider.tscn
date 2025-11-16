@@ -180,8 +180,8 @@ height = 17.695984
 radius = 6.277794
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4sic"]
-radius = 12.742096
-height = 27.189117
+radius = 8.0
+height = 23.588684
 
 [sub_resource type="Animation" id="Animation_cdnqq"]
 resource_name = "Attacking"
@@ -433,7 +433,7 @@ shader_parameter/blinkIntensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70djh"]
 size = Vector2(3, 15)
 
-[node name="OrcRider" type="AnimatableBody2D"]
+[node name="OrcRider" type="AnimatableBody2D" groups=["Enemy"]]
 y_sort_enabled = true
 scale = Vector2(3, 3)
 collision_layer = 0
@@ -445,6 +445,7 @@ position = Vector2(0, -0.6666667)
 sprite_frames = SubResource("SpriteFrames_2iwrd")
 animation = &"attack"
 autoplay = "walking"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.6597862, 5.0431843)
@@ -470,7 +471,7 @@ health = 10000
 metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 
 [node name="HurtboxCollisionShape" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0.12767532, -5.745407)
+position = Vector2(-0.3333333, -1.6666665)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_a4sic")
 debug_color = Color(1, 0, 1, 0.41960785)

@@ -14,12 +14,11 @@ func _process(_delta: float) -> void:
 
 func formatTime(seconds: float) -> String:
     var total_seconds = int(seconds)
-    var hrs = int(total_seconds / 3600.0)
-    var mins = int((total_seconds % 3600) / 6.0)
+    var hrs = total_seconds / 3600
+    var mins = (total_seconds % 3600) / 60
     var secs = total_seconds % 60
 
     return "%02d:%02d:%02d" % [hrs, mins, secs]
-
-
+    
 func calculateGrade() -> String:
     return "Training"
