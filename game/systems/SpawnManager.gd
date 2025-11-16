@@ -9,32 +9,21 @@ var enemy_info: Dictionary = { "type" :"", "amount" : 0 }
 
 func _ready():
     internalWaveData = waveData.duplicate(true)
-    enemy_info = { "type" :"", "amount" : 0 }
-    spawnDelay = 10
+    enemy_info = { "type" :"", "amount" : 0, "scale": 1, "spawnInterval": 1 }
 
     spawn_points = []
     for child in get_children():
         if child is Marker2D:
             spawn_points.append(child)
 
-var spawnDelay = 10
-var spawnDelayIncreaseInterval := 120
-var spawnDelayDecreaseAmount := 1
 
 func startSpawningWave() -> void:
-    if spawn_points.is_empty() == false:
+    if not spawn_points.is_empty():
         TimeManager.onGameTick.connect(_on_game_tick)
 
 func _on_game_tick(totalTicks: int) -> void:
-    if totalTicks % spawnDelay == 0:
+    if totalTicks % (enemy_info["spawnInterval"] * 4) == 0:
         startSpawning()
-
-    if totalTicks % spawnDelayIncreaseInterval == 0:
-        decreaseSpawnDelay()
-    
-func decreaseSpawnDelay() -> void:
-    if(spawnDelay > 5):
-        spawnDelay -= spawnDelayDecreaseAmount
 
 func startSpawning() -> void:
     if internalWaveData.enemies.is_empty() and enemy_info["amount"] <= 0:

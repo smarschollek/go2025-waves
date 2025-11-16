@@ -254,7 +254,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17.333332, -3.666667)]
+"values": [Vector2(12.333333, 0.3333335)]
 }
 
 [sub_resource type="Animation" id="Animation_x5a4k"]
@@ -288,7 +288,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8h43m"]
 resource_name = "attack"
-length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -321,10 +320,10 @@ tracks/2/path = NodePath("Hitbox/HitboxCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false, false]
+"values": [true, false, false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -333,10 +332,10 @@ tracks/3/path = NodePath("Hitbox/HitboxCollisionShape:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.07842742, 0.1222386, 0.17091769, 0.22067854, 0.2698985, 0.3694202, 0.5),
+"times": PackedFloat32Array(0, 0.06708947, 0.16342308, 0.19725451, 0.22219804, 0.2686446, 0.36895612, 0.47016376),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(17.333332, -3.666667), Vector2(14.333333, -11.666667), Vector2(8, -17.666666), Vector2(-4.333335, -17), Vector2(20.333334, -13.333334), Vector2(23, 3.333334), Vector2(21.333332, 3.6666665), Vector2(21.666668, 3)]
+"values": [Vector2(12.333333, 0.3333335), Vector2(12.333334, 0.33333564), Vector2(-6.000001, -4.6666646), Vector2(14.666668, -0.6666651), Vector2(20.666668, 16.000002), Vector2(20.16904, 15.064465), Vector2(20.333334, 16.333336), Vector2(20, 16.000002)]
 }
 
 [sub_resource type="Animation" id="Animation_vqdw2"]
@@ -467,8 +466,8 @@ shader = ExtResource("2_dcrby")
 shader_parameter/blinkColor = Color(0, 0, 0, 1)
 shader_parameter/blinkIntensity = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6pn0"]
-size = Vector2(14.333334, 18.333334)
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5rj4"]
+radius = 6.1685953
 
 [node name="Orc" type="AnimatableBody2D" groups=["Enemy"]]
 scale = Vector2(3, 3)
@@ -477,7 +476,6 @@ collision_mask = 9
 script = ExtResource("1_lpfuy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(5.333334, -4)
 sprite_frames = SubResource("SpriteFrames_yev2i")
 animation = &"walk"
 autoplay = "walk"
@@ -502,6 +500,7 @@ shape = SubResource("CapsuleShape2D_f2lql")
 debug_color = Color(1, 0, 1, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-3.3333337, -8.000002)
 collision_layer = 8
 script = ExtResource("7_lahqu")
 damage = 10
@@ -509,7 +508,7 @@ persist_on_hit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(17.333332, -3.666667)
+position = Vector2(12.333333, 0.3333335)
 shape = SubResource("CapsuleShape2D_x5a4k")
 disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
@@ -539,7 +538,7 @@ metadata/_custom_type_script = "uid://c7ligbs5gp4da"
 
 [node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animationTree")]
 script = ExtResource("10_kxycp")
-speed = 30
+speed = 20
 enemy = NodePath("../..")
 animationTree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://102woa1e7t2n"
@@ -563,8 +562,8 @@ script = ExtResource("14_vqdw2")
 metadata/_custom_type_script = "uid://bm62wlxj6rcv3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
-position = Vector2(9.166667, 1.166667)
-shape = SubResource("RectangleShape2D_o6pn0")
+position = Vector2(9.666667, 1.3333334)
+shape = SubResource("CircleShape2D_x5rj4")
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]

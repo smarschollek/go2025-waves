@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://demhnvaw1a56i"]
+[gd_scene load_steps=11 format=3 uid="uid://demhnvaw1a56i"]
 
 [ext_resource type="Texture2D" uid="uid://dfs26oht3pisi" path="res://assets/entites/Wizard/Magic(projectile)/Wizard-Attack02_Effect.png" id="1_8ohvp"]
 [ext_resource type="Script" uid="uid://8osileeldfpd" path="res://game/systems/ProjectileBehavior.gd" id="2_7yhbo"]
@@ -7,6 +7,42 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ohvp"]
 radius = 7.0
 height = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hhdk"]
+atlas = ExtResource("1_8ohvp")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cscgg"]
+atlas = ExtResource("1_8ohvp")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5ksn"]
+atlas = ExtResource("1_8ohvp")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8nvy"]
+atlas = ExtResource("1_8ohvp")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5cft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hhdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cscgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5ksn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8nvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bapg4"]
 radius = 5.0
@@ -17,11 +53,12 @@ radius = 5.0
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8ohvp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8ohvp")
+[node name="Animat" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -2)
+sprite_frames = SubResource("SpriteFrames_r5cft")
+autoplay = "default"
+frame_progress = 0.56769556
 flip_h = true
-region_enabled = true
-region_rect = Rect2(45, 45, 17, 13)
 
 [node name="ProjectileBehavior" type="Node" parent="." node_paths=PackedStringArray("animated_body")]
 script = ExtResource("2_7yhbo")
