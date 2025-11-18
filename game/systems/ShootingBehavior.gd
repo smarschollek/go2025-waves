@@ -3,14 +3,19 @@ extends Node
 @export var shootPosition: Marker2D
 @export var projectileScene: PackedScene
 @export var shootInterval: float = 1.0 
-@export var rayCast: RayCast2D = null
+@export var rayCasts: Array[RayCast2D]
 
-var animated_sprite: AnimatedSprite2D
 var timeElapsed: float = 0.0
+var rayCastChildren: Array[RayCast2D] = []
+
+var damage: int = 10
+var projectileSpeed: float = 250.0
 
 func _ready() -> void:
-    
-    animated_sprite = get_parent().get_node("AnimatedSprite2D")
+    for child in get_children():
+        if child is RayCast2D:
+            rayCastChildren.append(child)
+
     pass
 
 func _process(delta: float) -> void:
@@ -18,14 +23,24 @@ func _process(delta: float) -> void:
 
     if timeElapsed >= shootInterval:
         timeElapsed = 0.0
-        if rayCast == null:
+        if rayCasts.size() == 0:
             shoot()
-        elif rayCast.is_colliding():
+        elif anyRaycastColliding():
             shoot()
 
+func anyRaycastColliding() -> bool:
+    for rayCast in rayCasts:
+        if rayCast.is_colliding():
+            return true
+    return false
+
 func shoot() -> void:
-    var projectile = projectileScene.instantiate()
-    projectile.position = shootPosition.global_position
+    var projectile = projectileScene.instantiate() as Projectile
+    projectile.position = shootPosition.global_position 
+    
+    projectile.attackDamage = damage
+    projectile.projectileSpeed = projectileSpeed    
+    
     projectile.scale = get_parent().scale
     
     add_child(projectile)

@@ -1,8 +1,12 @@
 extends StaticBody2D
     
 func _process(_delta: float) -> void:
-    if GameManager.isDragging and GameManager.isDropzoneFree(self):
-        visible = true
+    checkIfOccupied()
+
+func checkIfOccupied() -> void:
+    if get_child_count() == 3:
+        $Sprite2D.visible = false
+        $CollisionShape2D.disabled = true
     else:
-        visible = false
-    pass
+        $Sprite2D.visible = true
+        $CollisionShape2D.disabled = false

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Defender" load_steps=5 format=3 uid="uid://dh3dwd5gh8614"]
+
+[ext_resource type="Script" uid="uid://do8uaf47snj1r" path="res://data/units/Defender/Defender.gd" id="1_hgkfe"]
+[ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="1_mla1o"]
+[ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="2_jqjfv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mla1o"]
+atlas = ExtResource("2_jqjfv")
+region = Rect2(43, 39, 17, 19)
+
+[resource]
+script = ExtResource("1_hgkfe")
+cost = 75
+attackInterval = 1.6
+projectileScene = ExtResource("1_mla1o")
+sprite = SubResource("AtlasTexture_mla1o")
+buildCooldown = 5.0
+name = "Wizard"
+health = 60
+metadata/_custom_type_script = "uid://do8uaf47snj1r"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Defender" load_steps=5 format=3 uid="uid://ddob5hb5vexiy"]
+
+[ext_resource type="Script" uid="uid://do8uaf47snj1r" path="res://data/units/Defender/Defender.gd" id="1_m0c7y"]
+[ext_resource type="PackedScene" uid="uid://du6fq62mg1pqf" path="res://game/entities/projectiles/Frostbolt.tscn" id="1_wprr6"]
+[ext_resource type="Texture2D" uid="uid://d0fyx2w5p8kq7" path="res://assets/entites/Defenders/Frostmage/Frostmage-Idle.png" id="3_wprr6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg4ij"]
+atlas = ExtResource("3_wprr6")
+region = Rect2(43, 39, 17, 19)
+
+[resource]
+script = ExtResource("1_m0c7y")
+attackDamage = 5.0
+attackInterval = 1.5
+projectileScene = ExtResource("1_wprr6")
+sprite = SubResource("AtlasTexture_cg4ij")
+health = 50
+metadata/_custom_type_script = "uid://do8uaf47snj1r"

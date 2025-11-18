@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3b4lor0tpmo5" path="res://data/resources/DefenderInfo.gd" id="1_c3raf"]
 [ext_resource type="PackedScene" uid="uid://1rue0s6pjc76" path="res://game/entities/defenders/Wizard.tscn" id="1_owew6"]
-[ext_resource type="Texture2D" uid="uid://r4ty6rds3qbr" path="res://assets/entites/_Defenders/fire-wizard-idle.png" id="2_owew6"]
+[ext_resource type="Texture2D" path="res://assets/entites/_Defenders/fire-wizard-idle.png" id="2_owew6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jdgn"]
 atlas = ExtResource("2_owew6")
@@ -12,5 +12,5 @@ region = Rect2(43, 39, 17, 19)
 script = ExtResource("1_c3raf")
 previewSprite = SubResource("AtlasTexture_3jdgn")
 defenderScene = ExtResource("1_owew6")
-cost = 100
+cost = 75
 metadata/_custom_type_script = "uid://c3b4lor0tpmo5"

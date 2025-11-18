@@ -14,4 +14,3 @@ func _on_area_entered(area: Area2D) -> void:
         hit_registered.emit(area)
         if not persist_on_hit:
             get_parent().queue_free()
-

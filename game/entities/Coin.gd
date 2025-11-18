@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var coinValue: int = 25
+@export var coinValue: int = 50
 
 signal collected
 

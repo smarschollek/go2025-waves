@@ -58,6 +58,8 @@ animations = [{
 
 [node name="Coin" type="Area2D"]
 scale = Vector2(2, 2)
+collision_layer = 8388608
+collision_mask = 0
 script = ExtResource("1_iw5bb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

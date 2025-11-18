@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://veglv7ir7jeb" path="res://game/entities/defenders/Knight.tscn" id="1_32lbt"]
 [ext_resource type="Script" uid="uid://c3b4lor0tpmo5" path="res://data/resources/DefenderInfo.gd" id="1_jl8us"]
-[ext_resource type="Texture2D" uid="uid://bsts7a7ofj0gb" path="res://assets/entites/_Defenders/Knight Templar-Idle.png" id="2_32lbt"]
+[ext_resource type="Texture2D" uid="uid://cwlwsen3rdsp6" path="res://assets/entites/Defenders/Knight Templar/Knight Templar-Idle.png" id="2_32lbt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4voic"]
 atlas = ExtResource("2_32lbt")
@@ -12,5 +12,6 @@ region = Rect2(43, 40, 14, 17)
 script = ExtResource("1_jl8us")
 previewSprite = SubResource("AtlasTexture_4voic")
 defenderScene = ExtResource("1_32lbt")
-cost = 75
+cost = 100
+cooldownTime = 0.0
 metadata/_custom_type_script = "uid://c3b4lor0tpmo5"

@@ -1,19 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://1rue0s6pjc76"]
+[gd_scene load_steps=23 format=3 uid="uid://1rue0s6pjc76"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_m6mp1"]
+[ext_resource type="Resource" uid="uid://dh3dwd5gh8614" path="res://data/units/Defender/Wizard.tres" id="2_v7yra"]
 [ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="3_8jyn5"]
 [ext_resource type="Script" uid="uid://cf6b24bxhn06k" path="res://game/systems/ShootingBehavior.gd" id="3_q0k26"]
 [ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="4_pxs0p"]
-[ext_resource type="Texture2D" uid="uid://dpkdhgem73xf6" path="res://assets/entites/_Defenders/Wizard-DEATH.png" id="4_vlamk"]
-[ext_resource type="Texture2D" uid="uid://r4ty6rds3qbr" path="res://assets/entites/_Defenders/fire-wizard-idle.png" id="4_xp4w6"]
+[ext_resource type="Texture2D" uid="uid://bmoeubrkcwxuy" path="res://assets/entites/Defenders/Wizard/Wizard-Death.png" id="4_vlamk"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_8vnt2"]
 [ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="5_m6mp1"]
-[ext_resource type="Script" uid="uid://bm62wlxj6rcv3" path="res://game/systems/DetectionBox.gd" id="7_w6rmf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
-shader = ExtResource("5_m6mp1")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
+[ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="5_vlamk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7yra"]
 atlas = ExtResource("4_vlamk")
@@ -31,28 +26,28 @@ region = Rect2(200, 0, 100, 100)
 atlas = ExtResource("4_vlamk")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vrcq"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgfdx"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yktoe"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjvxb"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkcmh"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwr48"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kuo6j"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aq3x"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iootq"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_73fs2"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_naywl"]
-atlas = ExtResource("4_xp4w6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pau6k"]
+atlas = ExtResource("5_vlamk")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpc2t"]
@@ -72,42 +67,53 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6vrcq")
+"texture": SubResource("AtlasTexture_lgfdx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yktoe")
+"texture": SubResource("AtlasTexture_vjvxb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lkcmh")
+"texture": SubResource("AtlasTexture_cwr48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kuo6j")
+"texture": SubResource("AtlasTexture_4aq3x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iootq")
+"texture": SubResource("AtlasTexture_73fs2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_naywl")
+"texture": SubResource("AtlasTexture_pau6k")
 }],
 "loop": true,
 "name": &"shoot",
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlamk"]
-size = Vector2(2.25, 18)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
+shader = ExtResource("5_m6mp1")
+shader_parameter/blinkColor = Color(0, 0, 0, 1)
+shader_parameter/blinkIntensity = 0.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ru5rw"]
-radius = 7.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
+size = Vector2(13.800001, 19.2)
 
 [node name="Wizard" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_m6mp1")
+data = ExtResource("2_v7yra")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.00034524183
+scale = Vector2(0.9999999, 0.9999999)
+sprite_frames = SubResource("SpriteFrames_kpc2t")
+animation = &"shoot"
+autoplay = "shoot"
+frame_progress = 0.8673975
+flip_h = true
 
 [node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_pxs0p")
@@ -115,50 +121,51 @@ sprite = NodePath("../AnimatedSprite2D")
 shader = SubResource("ShaderMaterial_j004l")
 metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -0.0003452418
-sprite_frames = SubResource("SpriteFrames_kpc2t")
-animation = &"dead"
-autoplay = "shoot"
-flip_h = true
-
-[node name="ShootPosition" type="Marker2D" parent="."]
-position = Vector2(-9.333334, -2.6666667)
-
-[node name="ShootBehavior" type="Node" parent="." node_paths=PackedStringArray("shootPosition", "rayCast")]
-script = ExtResource("3_q0k26")
-shootPosition = NodePath("../ShootPosition")
-projectileScene = ExtResource("3_8jyn5")
-shootInterval = 7.5
-rayCast = NodePath("../RayCast2D")
-
-[node name="DetectionBox" type="Area2D" parent="."]
-position = Vector2(-2.8, 0)
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 1024
-collision_mask = 512
-script = ExtResource("7_w6rmf")
-metadata/_custom_type_script = "uid://bm62wlxj6rcv3"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
-position = Vector2(-5, -2)
-shape = SubResource("RectangleShape2D_vlamk")
-debug_color = Color(0, 1, 0, 0.41960785)
-
 [node name="Hurtbox" type="Area2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
 collision_mask = 8
 script = ExtResource("5_8vnt2")
 health = 30
 metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1, -2)
-shape = SubResource("CapsuleShape2D_ru5rw")
+position = Vector2(0.30000037, -2.3999994)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_v7yra")
 debug_color = Color(1, 0, 1, 0.41960785)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="ShootBehavior" type="Node" parent="." node_paths=PackedStringArray("shootPosition", "rayCasts")]
+script = ExtResource("3_q0k26")
+shootPosition = NodePath("../ShootPosition")
+projectileScene = ExtResource("3_8jyn5")
+shootInterval = 7.5
+rayCasts = [NodePath("../RayCast1"), NodePath("../RayCast2"), NodePath("../RayCast3")]
+
+[node name="ShootPosition" type="Marker2D" parent="."]
+position = Vector2(-9.333334, -2.6666667)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="RayCast1" type="RayCast2D" parent="."]
+position = Vector2(0, -9.999999)
+scale = Vector2(0.99999976, 0.99999976)
 target_position = Vector2(-50, 0)
-collision_mask = 12
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2" type="RayCast2D" parent="."]
+position = Vector2(0, -2.3999996)
+scale = Vector2(0.9999998, 0.9999998)
+target_position = Vector2(-50, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast3" type="RayCast2D" parent="."]
+position = Vector2(0, 4.799999)
+scale = Vector2(0.9999998, 0.9999998)
+target_position = Vector2(-50, 0)
+collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 

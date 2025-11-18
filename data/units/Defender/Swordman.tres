@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Defender" load_steps=4 format=3 uid="uid://cn7ya1tmu4o6m"]
+
+[ext_resource type="Script" uid="uid://do8uaf47snj1r" path="res://data/units/Defender/Defender.gd" id="1_peaim"]
+[ext_resource type="Texture2D" uid="uid://d3au1w5cx63br" path="res://assets/entites/Defenders/Swordsman/Swordsman-Idle.png" id="2_1f6w2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcicl"]
+atlas = ExtResource("2_1f6w2")
+region = Rect2(42, 39, 24, 21)
+
+[resource]
+script = ExtResource("1_peaim")
+cost = 50
+attackDamage = 15.0
+isMelee = true
+sprite = SubResource("AtlasTexture_bcicl")
+buildCooldown = 3.0
+name = "Fighter"
+health = 100
+metadata/_custom_type_script = "uid://do8uaf47snj1r"

@@ -5,13 +5,18 @@
 [resource]
 script = ExtResource("1_3iklq")
 enemies = Array[Dictionary]([{
-"amount": 1,
+"amount": 3,
 "scale": 1,
-"spawnInterval": 20,
-"type": ""
+"spawnInterval": 2,
+"type": "Slime"
 }, {
-"amount": 10,
+"amount": 2,
 "scale": 1,
-"spawnInterval": 14,
+"spawnInterval": 2.5,
+"type": "Skeleton"
+}, {
+"amount": 4,
+"scale": 1,
+"spawnInterval": 5,
 "type": "Orc"
 }])

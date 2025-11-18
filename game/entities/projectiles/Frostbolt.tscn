@@ -1,27 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://du6fq62mg1pqf"]
+[gd_scene load_steps=12 format=3 uid="uid://du6fq62mg1pqf"]
 
-[ext_resource type="Texture2D" uid="uid://b6bmxxax8tifd" path="res://assets/entites/_Defenders/frostbolt.png" id="1_nbqbo"]
-[ext_resource type="Script" uid="uid://8osileeldfpd" path="res://game/systems/ProjectileBehavior.gd" id="2_ybi10"]
-[ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="3_644m3"]
+[ext_resource type="Script" uid="uid://dmemibh8vvnir" path="res://game/entities/projectiles/Frostbolt.gd" id="1_1745k"]
+[ext_resource type="Texture2D" uid="uid://bc7c2qowfbas8" path="res://assets/entites/Defenders/Frostmage/frostbolt.png" id="1_ys6oi"]
+[ext_resource type="Script" uid="uid://8osileeldfpd" path="res://game/systems/ProjectileBehavior.gd" id="2_1745k"]
+[ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="3_q5u33"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ohvp"]
 radius = 4.0
 height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybi10"]
-atlas = ExtResource("1_nbqbo")
+atlas = ExtResource("1_ys6oi")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_644m3"]
-atlas = ExtResource("1_nbqbo")
+atlas = ExtResource("1_ys6oi")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbl6a"]
-atlas = ExtResource("1_nbqbo")
+atlas = ExtResource("1_ys6oi")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynm4p"]
-atlas = ExtResource("1_nbqbo")
+atlas = ExtResource("1_ys6oi")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5cft"]
@@ -47,7 +48,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bapg4"]
 radius = 4.0
 
-[node name="Firebolt" type="AnimatableBody2D"]
+[node name="Frostbolt" type="AnimatableBody2D"]
+script = ExtResource("1_1745k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -58,18 +60,18 @@ shape = SubResource("CapsuleShape2D_8ohvp")
 position = Vector2(4, -2)
 sprite_frames = SubResource("SpriteFrames_r5cft")
 autoplay = "default"
-frame_progress = 0.9027153
+frame_progress = 0.68120265
 flip_h = true
 
 [node name="ProjectileBehavior" type="Node" parent="." node_paths=PackedStringArray("animated_body")]
-script = ExtResource("2_ybi10")
+script = ExtResource("2_1745k")
 animated_body = NodePath("..")
 flight_time = 10.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("3_644m3")
+script = ExtResource("3_q5u33")
 damage = 10
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 

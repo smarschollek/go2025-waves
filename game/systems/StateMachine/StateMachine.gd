@@ -13,9 +13,7 @@ func _ready() -> void:
     for child in get_children():
         if child is State:
             states[child.name.to_lower()] = child
-            child.changeState.connect(_on_child_changeState)
-            child.previousState.connect(_on_child_previousState)
-
+            
     enterState(initialState)
     
 func _process(delta: float) -> void:
@@ -30,21 +28,8 @@ func enterState(state: State) -> void:
     currentState = state
     currentState.enter()
 
-func _on_child_previousState():
-    if stateStack.size() == 0:
-        return
-
-    var previous_state = stateStack.pop_back()
-    if !previous_state:
-        return
-
-    if currentState:
-        currentState.exit()
-        
-    enterState(previous_state)
-
-func _on_child_changeState(state: State, new_state_name: String) -> void:
-    if state != currentState:
+func changeState(new_state_name: String) -> void:
+    if currentState and currentState.name.to_lower() == new_state_name.to_lower():
         return
 
     var new_state = states.get(new_state_name.to_lower())
@@ -54,5 +39,5 @@ func _on_child_changeState(state: State, new_state_name: String) -> void:
     if currentState:
         stateStack.append(currentState)
         currentState.exit()
-        
+
     enterState(new_state)

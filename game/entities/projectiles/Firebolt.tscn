@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://demhnvaw1a56i"]
+[gd_scene load_steps=12 format=3 uid="uid://demhnvaw1a56i"]
 
-[ext_resource type="Texture2D" uid="uid://cnonsa4qf6lhi" path="res://assets/entites/_Defenders/firebolt.png" id="1_3hhdk"]
+[ext_resource type="Texture2D" uid="uid://dfigtcrl3f5yk" path="res://assets/entites/Defenders/Wizard/firebolt.png" id="1_3hhdk"]
+[ext_resource type="Script" uid="uid://cecjthpmb7lfd" path="res://game/entities/projectiles/Firebolt.gd" id="1_cscgg"]
 [ext_resource type="Script" uid="uid://8osileeldfpd" path="res://game/systems/ProjectileBehavior.gd" id="2_7yhbo"]
 [ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="3_lk1nm"]
 
@@ -48,12 +49,13 @@ animations = [{
 radius = 5.0
 
 [node name="Firebolt" type="AnimatableBody2D"]
+script = ExtResource("1_cscgg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8ohvp")
 
-[node name="Animat" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -2)
 sprite_frames = SubResource("SpriteFrames_r5cft")
 autoplay = "default"
@@ -63,6 +65,7 @@ flip_h = true
 [node name="ProjectileBehavior" type="Node" parent="." node_paths=PackedStringArray("animated_body")]
 script = ExtResource("2_7yhbo")
 animated_body = NodePath("..")
+force = 250.0
 flight_time = 10.0
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -72,7 +75,7 @@ script = ExtResource("3_lk1nm")
 damage = 10
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_bapg4")
 debug_color = Color(1, 0, 0, 0.41960785)

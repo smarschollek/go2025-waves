@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attacker" load_steps=2 format=3 uid="uid://cleph7d0f6igg"]
+
+[ext_resource type="Script" uid="uid://cyl03nig87bn5" path="res://data/units/Attacker/Attacker.gd" id="1_fehcy"]
+
+[resource]
+script = ExtResource("1_fehcy")
+moveSpeed = 15.0
+attackDamage = 5.0
+attackInterval = 1.5
+name = "Slime"
+health = 200
+metadata/_custom_type_script = "uid://cyl03nig87bn5"

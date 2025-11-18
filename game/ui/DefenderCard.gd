@@ -1,10 +1,12 @@
 @tool
 extends Node2D
 
-@export var info: DefenderInfo:
+@export var scene: PackedScene
+
+@export var info: Defender:
     set(value):
         info = value
-        $PreviewSprite.texture = info.previewSprite
+        $PreviewSprite.texture = info.sprite
         $Label.text = str(info.cost)
 
 var draggable: bool = false
@@ -18,10 +20,7 @@ var isDragging = false
 
 func _ready() -> void:
     MoneyManager.moneyChanged.connect(toggleCardEnabled)
-    $PreviewSprite.texture = info.previewSprite
-    $Label.text = str(info.cost)
-    pass
-
+    
 func _input(event: InputEvent):
     if MoneyManager.hasEnoughMoney(info.cost) == false:
         return
@@ -53,11 +52,9 @@ func start_drag(mouse_pos: Vector2):
 func end_drag(_mouse_pos: Vector2):
     if current_dropzone != null:
         if MoneyManager.spendMoney(info.cost):
+            var defender_instance = scene.duplicate().instantiate()            
+            current_dropzone.add_child(defender_instance)
             startCooldown()
-            GameManager.occupyDropzone(current_dropzone)
-            var defender_instance = info.defenderScene.instantiate()
-            defender_instance.position = current_dropzone.position
-            get_tree().current_scene.add_child(defender_instance)
             
     
     setDragging(false)
@@ -68,16 +65,16 @@ var cooldownCounter = 0
 func startCooldown():
     cooldownCounter = 0
     $CooldownOverlay.visible = true
-    $CooldownOverlay/Label.text = str(int(info.cooldownTime - cooldownCounter))
+    $CooldownOverlay/Label.text = str(int(info.buildCooldown - cooldownCounter))
     $CooldownTimer.start()
 
 func _on_cooldown_finished():
-    if cooldownCounter == (info.cooldownTime - 1):
+    if cooldownCounter == (info.buildCooldown - 1):
         $CooldownOverlay.visible = false
         cooldownCounter = 0
     else:
         cooldownCounter += 1.0
-        $CooldownOverlay/Label.text = str(int(info.cooldownTime - cooldownCounter))
+        $CooldownOverlay/Label.text = str(int(info.buildCooldown - cooldownCounter))
         $CooldownTimer.start()
         
 

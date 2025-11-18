@@ -1,114 +1,114 @@
-[gd_scene load_steps=42 format=3 uid="uid://bpfflxis0bkui"]
+[gd_scene load_steps=42 format=3 uid="uid://dxtl6py3k22tk"]
 
-[ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_lpfuy"]
-[ext_resource type="Texture2D" uid="uid://bn6aws7n6p1cm" path="res://assets/entites/Attackers/Orc/Orc-Attack01.png" id="2_6ym6r"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="2_dcrby"]
-[ext_resource type="Resource" uid="uid://nbo1r47648ca" path="res://data/units/Attacker/Orc.tres" id="2_gpyex"]
-[ext_resource type="Texture2D" uid="uid://bub4ojo01sqnt" path="res://assets/entites/Attackers/Orc/Orc-Death.png" id="2_st4sa"]
-[ext_resource type="Texture2D" uid="uid://cva6xyi8bufyo" path="res://assets/entites/Attackers/Orc/Orc-Walk.png" id="4_x5rj4"]
-[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="6_f2lql"]
-[ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="7_lahqu"]
-[ext_resource type="Script" uid="uid://c84ve05ynuqi2" path="res://game/systems/StateMachine/StateMachine.gd" id="9_vg845"]
-[ext_resource type="Script" uid="uid://102woa1e7t2n" path="res://game/systems/StateMachine/States/WalkingState.gd" id="10_kxycp"]
-[ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="11_kxycp"]
-[ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="12_o6pn0"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="13_dnskq"]
+[ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_2wowk"]
+[ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton.tres" id="2_2wowk"]
+[ext_resource type="Texture2D" uid="uid://ckado7mpt7g1i" path="res://assets/entites/Attackers/Skeleton/Skeleton-Attack01.png" id="2_nedxi"]
+[ext_resource type="Texture2D" uid="uid://blke7yt8lirpy" path="res://assets/entites/Attackers/Skeleton/Skeleton-Death.png" id="3_2wowk"]
+[ext_resource type="Texture2D" uid="uid://l7657gebwtcd" path="res://assets/entites/Attackers/Skeleton/Skeleton-Walk.png" id="4_hig7x"]
+[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="6_njfqa"]
+[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="7_m5wia"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="8_4esc0"]
+[ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="9_d8dl1"]
+[ext_resource type="Script" uid="uid://c84ve05ynuqi2" path="res://game/systems/StateMachine/StateMachine.gd" id="10_uf4w1"]
+[ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="11_0ssrc"]
+[ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="12_qsthb"]
+[ext_resource type="Script" uid="uid://102woa1e7t2n" path="res://game/systems/StateMachine/States/WalkingState.gd" id="13_grxoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byctc"]
 size = Vector2(2.666666, 13.666666)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sq2f3"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ne7"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bl00o"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrjxe"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_06pya"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw6r7"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cju6m"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_njfqa"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p6g1p"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5wia"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_of28b"]
-atlas = ExtResource("2_6ym6r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4esc0"]
+atlas = ExtResource("2_nedxi")
 region = Rect2(500, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v8g72"]
-atlas = ExtResource("2_st4sa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8dl1"]
+atlas = ExtResource("3_2wowk")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsyyc"]
-atlas = ExtResource("2_st4sa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4w1"]
+atlas = ExtResource("3_2wowk")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfirg"]
-atlas = ExtResource("2_st4sa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ssrc"]
+atlas = ExtResource("3_2wowk")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtecj"]
-atlas = ExtResource("2_st4sa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsthb"]
+atlas = ExtResource("3_2wowk")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_st4sa"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_grxoi"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ym6r"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s43wn"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5rj4"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbvtc"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpyex"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkypj"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_byctc"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjny2"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_44hk3"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3qsw"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(500, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gq7bw"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jfsa"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(600, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rq1aa"]
-atlas = ExtResource("4_x5rj4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_me83n"]
+atlas = ExtResource("4_hig7x")
 region = Rect2(700, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5pwx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sq2f3")
+"texture": SubResource("AtlasTexture_08ne7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bl00o")
+"texture": SubResource("AtlasTexture_mrjxe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06pya")
+"texture": SubResource("AtlasTexture_fw6r7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cju6m")
+"texture": SubResource("AtlasTexture_njfqa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p6g1p")
+"texture": SubResource("AtlasTexture_m5wia")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_of28b")
+"texture": SubResource("AtlasTexture_4esc0")
 }],
 "loop": true,
 "name": &"Attack",
@@ -116,16 +116,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v8g72")
+"texture": SubResource("AtlasTexture_d8dl1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hsyyc")
+"texture": SubResource("AtlasTexture_uf4w1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfirg")
+"texture": SubResource("AtlasTexture_0ssrc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mtecj")
+"texture": SubResource("AtlasTexture_qsthb")
 }],
 "loop": false,
 "name": &"Dead",
@@ -133,28 +133,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_st4sa")
+"texture": SubResource("AtlasTexture_grxoi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ym6r")
+"texture": SubResource("AtlasTexture_s43wn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x5rj4")
+"texture": SubResource("AtlasTexture_tbvtc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gpyex")
+"texture": SubResource("AtlasTexture_pkypj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_byctc")
+"texture": SubResource("AtlasTexture_cjny2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_44hk3")
+"texture": SubResource("AtlasTexture_j3qsw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gq7bw")
+"texture": SubResource("AtlasTexture_8jfsa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rq1aa")
+"texture": SubResource("AtlasTexture_me83n")
 }],
 "loop": true,
 "name": &"Walk",
@@ -331,7 +331,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnskq"]
-shader = ExtResource("2_dcrby")
+shader = ExtResource("7_m5wia")
 shader_parameter/blinkColor = Color(0, 0, 0, 1)
 shader_parameter/blinkIntensity = 0.0
 
@@ -341,12 +341,12 @@ size = Vector2(13, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44hk3"]
 size = Vector2(11.666666, 14.666667)
 
-[node name="Orc" type="AnimatableBody2D" groups=["Enemy"]]
+[node name="Skeleton" type="AnimatableBody2D" groups=["Enemy"]]
 scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_lpfuy")
-data = ExtResource("2_gpyex")
+script = ExtResource("1_2wowk")
+data = ExtResource("2_2wowk")
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="." groups=["Enemy"]]
 position = Vector2(0.6666666, 6)
@@ -364,7 +364,7 @@ libraries = {
 }
 
 [node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("13_dnskq")
+script = ExtResource("6_njfqa")
 sprite = NodePath("../AnimatedSprite2D")
 shader = SubResource("ShaderMaterial_dnskq")
 metadata/_custom_type_script = "uid://hr6x6pyal7iv"
@@ -372,7 +372,7 @@ metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("6_f2lql")
+script = ExtResource("8_4esc0")
 health = 50
 metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 
@@ -385,7 +385,7 @@ debug_color = Color(1, 0, 1, 0.41960785)
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-3.333, -7)
 collision_layer = 8
-script = ExtResource("7_lahqu")
+script = ExtResource("9_d8dl1")
 damage = 20
 persist_on_hit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
@@ -397,30 +397,30 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
-script = ExtResource("9_vg845")
+script = ExtResource("10_uf4w1")
 initialState = NodePath("Walk")
 metadata/_custom_type_script = "uid://c84ve05ynuqi2"
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("11_kxycp")
+script = ExtResource("11_0ssrc")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://c7ligbs5gp4da"
 
 [node name="Dead" type="Node" parent="StateMachine" node_paths=PackedStringArray("entityToFree", "animationPlayer")]
-script = ExtResource("12_o6pn0")
+script = ExtResource("12_qsthb")
 entityToFree = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://b08xuh0cn8fce"
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity", "animationPlayer")]
-script = ExtResource("10_kxycp")
+script = ExtResource("13_grxoi")
 speed = 10
 entity = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://102woa1e7t2n"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(18, 0.333)
+target_position = Vector2(16.666668, 0)
 collide_with_areas = true
 collide_with_bodies = false
 

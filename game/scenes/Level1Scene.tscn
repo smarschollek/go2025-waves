@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=21 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
@@ -6,11 +6,14 @@
 [ext_resource type="Script" uid="uid://3wd66t4fv7mr" path="res://game/systems/Goal.gd" id="5_h15h6"]
 [ext_resource type="PackedScene" uid="uid://khl1olq0x56s" path="res://game/ui/DropZone.tscn" id="6_usb28"]
 [ext_resource type="PackedScene" uid="uid://cyb4ljev8d4v3" path="res://game/ui/DefenderCard.tscn" id="7_e5fpj"]
-[ext_resource type="Resource" uid="uid://b0owludyt4tcn" path="res://data/resources/Wizard.tres" id="8_v8tso"]
-[ext_resource type="Resource" uid="uid://bh80slj1b4jes" path="res://data/resources/FrostWizard.tres" id="9_633oq"]
-[ext_resource type="Resource" uid="uid://bc5iafd2bg4mi" path="res://data/resources/Knight.tres" id="9_o61qh"]
+[ext_resource type="PackedScene" uid="uid://cd0p4kv4vwsp2" path="res://game/entities/defenders/Swordman.tscn" id="7_lpue5"]
+[ext_resource type="PackedScene" uid="uid://1rue0s6pjc76" path="res://game/entities/defenders/Wizard.tscn" id="7_phuu0"]
+[ext_resource type="Resource" uid="uid://cn7ya1tmu4o6m" path="res://data/units/Defender/Swordman.tres" id="8_kecix"]
+[ext_resource type="Resource" uid="uid://dh3dwd5gh8614" path="res://data/units/Defender/Wizard.tres" id="9_phuu0"]
 [ext_resource type="Script" uid="uid://d0124uw2brey0" path="res://game/systems/SpawnManager.gd" id="10_smboc"]
+[ext_resource type="Resource" uid="uid://ddob5hb5vexiy" path="res://data/units/Defender/Frostmage.tres" id="11_cw63n"]
 [ext_resource type="Resource" uid="uid://dm2ag6on2nnyp" path="res://data/resources/Level1_WaveData.tres" id="11_sy7q6"]
+[ext_resource type="PackedScene" uid="uid://wxevnu42dgm6" path="res://game/entities/defenders/FrostWizard.tscn" id="11_twsxr"]
 [ext_resource type="PackedScene" uid="uid://ygjkxbx1utwf" path="res://game/ui/FastForwardButton.tscn" id="12_pyqq3"]
 [ext_resource type="PackedScene" uid="uid://dn52k5q2q6blr" path="res://game/ui/MoneyBag.tscn" id="13_3eq1r"]
 [ext_resource type="Script" uid="uid://dovq1ki4vv8el" path="res://game/systems/MoneySpawner.gd" id="14_lpue5"]
@@ -30,10 +33,12 @@ script = ExtResource("1_e0kcl")
 
 [node name="Level1" parent="LevelScenes" instance=ExtResource("2_lvmn3")]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Level2" parent="LevelScenes" instance=ExtResource("3_i3cs7")]
 visible = false
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Goal" type="Area2D" parent="."]
 position = Vector2(0, -1)
@@ -44,135 +49,110 @@ script = ExtResource("5_h15h6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 position = Vector2(1020.67163, 280.28925)
 shape = SubResource("RectangleShape2D_1edn8")
-disabled = true
 debug_color = Color(0.5882353, 0, 0.92941177, 0.41960785)
 
 [node name="DropPlatfroms" type="Node" parent="."]
 
 [node name="DropPlatform" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(928, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(928, 204)
 
 [node name="DropPlatform4" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(868, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(859, 204)
 
 [node name="DropPlatform5" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(808, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(790, 204)
 
 [node name="DropPlatform6" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(748, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(721, 204)
 
 [node name="DropPlatform7" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(688, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(652, 204)
 
 [node name="DropPlatform8" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(628, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(583, 204)
 
 [node name="DropPlatform9" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(568.00006, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(514, 204)
 
 [node name="DropPlatform10" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(508.00015, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(445.00015, 204)
 
 [node name="DropPlatform11" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(448.00012, 203)
-scale = Vector2(1.25, 1.25)
+position = Vector2(375.0001, 204)
 
 [node name="DropPlatform2" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(928, 275)
-scale = Vector2(1.25, 1.25)
+position = Vector2(928, 276)
 
 [node name="DropPlatform12" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(868.00006, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(859, 276.00003)
 
 [node name="DropPlatform13" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(808.00006, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(790, 276.00003)
 
 [node name="DropPlatform14" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(748.00006, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(721, 276.00003)
 
 [node name="DropPlatform15" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(688, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(652, 276.00003)
 
 [node name="DropPlatform16" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(628, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(583, 276.00003)
 
 [node name="DropPlatform17" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(568.00006, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(514, 276.00003)
 
 [node name="DropPlatform18" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(508.00003, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(445.00003, 276.00003)
 
 [node name="DropPlatform19" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(448.00003, 275.00003)
-scale = Vector2(1.25, 1.25)
+position = Vector2(375.00003, 276.00003)
 
 [node name="DropPlatform3" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
 position = Vector2(928, 346)
-scale = Vector2(1.25, 1.25)
 
 [node name="DropPlatform20" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(868, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(859, 346)
 
 [node name="DropPlatform21" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(808.00006, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(790, 346)
 
 [node name="DropPlatform22" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(748, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(721, 346)
 
 [node name="DropPlatform23" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(688.00006, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(652, 346)
 
 [node name="DropPlatform24" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(628, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(583, 346)
 
 [node name="DropPlatform25" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(568, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(514, 346)
 
 [node name="DropPlatform26" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(508.00006, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(445.0001, 346)
 
 [node name="DropPlatform27" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(448.0001, 346)
-scale = Vector2(1.25, 1.25)
+position = Vector2(375.0001, 346)
 
 [node name="Defenders" type="Node" parent="."]
 
-[node name="Defender" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(1125, 519)
+[node name="Swordman" parent="Defenders" instance=ExtResource("7_e5fpj")]
+position = Vector2(438, 494)
 scale = Vector2(2, 2)
-info = ExtResource("9_o61qh")
+scene = ExtResource("7_lpue5")
+info = ExtResource("8_kecix")
+
+[node name="Frostwizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
+position = Vector2(567, 494)
+scale = Vector2(2, 2)
+scene = ExtResource("11_twsxr")
+info = ExtResource("11_cw63n")
 
 [node name="Wizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(455, 490)
+position = Vector2(502, 494)
 scale = Vector2(2, 2)
-info = ExtResource("8_v8tso")
-
-[node name="FrostWizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(1055, 519)
-scale = Vector2(2, 2)
-info = ExtResource("9_633oq")
+scene = ExtResource("7_phuu0")
+info = ExtResource("9_phuu0")
 
 [node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource("10_smboc")
@@ -206,7 +186,10 @@ area = NodePath("Area2D")
 metadata/_custom_type_script = "uid://dovq1ki4vv8el"
 
 [node name="Area2D" type="Area2D" parent="MoneySpawner"]
+visible = false
 position = Vector2(480, 274)
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoneySpawner/Area2D"]
 shape = SubResource("RectangleShape2D_phuu0")

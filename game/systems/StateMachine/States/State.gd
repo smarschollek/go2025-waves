@@ -1,9 +1,6 @@
 extends Node
 class_name State
 
-signal changeState
-signal previousState
-
 func enter() -> void:
     pass
 
