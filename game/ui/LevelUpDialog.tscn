@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7dm20jng0sn"]
+
+[ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="1_1mbha"]
+[ext_resource type="Script" uid="uid://bhfts04jh258y" path="res://game/ui/LevelUpDialog.gd" id="1_4854m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4854m"]
+atlas = ExtResource("1_1mbha")
+region = Rect2(43, 39, 17, 19)
+
+[node name="LevelUpDialog" type="AspectRatioContainer"]
+process_mode = 3
+offset_right = 320.0
+offset_bottom = 180.0
+scale = Vector2(3, 3)
+script = ExtResource("1_4854m")
+
+[node name="OuterMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="OuterMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0.7294118, 1)
+
+[node name="InnerMarginContainer" type="MarginContainer" parent="OuterMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterMarginContainer/InnerMarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="OuterMarginContainer/InnerMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "+ Speed"
+icon = SubResource("AtlasTexture_4854m")
+
+[node name="Button2" type="Button" parent="OuterMarginContainer/InnerMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "+ Power"
+icon = SubResource("AtlasTexture_4854m")
+
+[node name="Button3" type="Button" parent="OuterMarginContainer/InnerMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "+ Life"
+icon = SubResource("AtlasTexture_4854m")
+
+[connection signal="button_up" from="OuterMarginContainer/InnerMarginContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]

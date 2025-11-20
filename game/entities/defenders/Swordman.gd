@@ -6,6 +6,7 @@ var dead = false
 
 func _ready() -> void:
     $Hurtbox.health = data.health
+    $Lifebar.max_value = data.health
 
     $Hitbox.damage = data.attackDamage
     
@@ -15,6 +16,9 @@ func _physics_process(_delta: float) -> void:
     if(dead):
         return
 
+    $Lifebar.value = $Hurtbox.health
+    $Lifebar.visible = $Hurtbox.health < data.health
+    
     if $RayCast2D.is_colliding():
         $StateMachine.changeState("Attack")    
     else:

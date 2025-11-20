@@ -10,11 +10,7 @@ class_name WalkingState
 func enter() -> void:
     if animationPlayer:
         animationPlayer.play(animation)
-
-func exit() -> void:
-    if animationPlayer:
-        animationPlayer.stop()
-        
+                
 func physics_update(delta: float) -> void:
     entity.position.x += speed * delta * EnemyManager.speedMultiplier
     

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=23 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dn52k5q2q6blr" path="res://game/ui/MoneyBag.tscn" id="13_3eq1r"]
 [ext_resource type="Script" uid="uid://dovq1ki4vv8el" path="res://game/systems/MoneySpawner.gd" id="14_lpue5"]
 [ext_resource type="PackedScene" uid="uid://d0c3fbcmoal1h" path="res://game/entities/Coin.tscn" id="15_phuu0"]
+[ext_resource type="PackedScene" uid="uid://c7dm20jng0sn" path="res://game/ui/LevelUpDialog.tscn" id="19_dl4tr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1edn8"]
 size = Vector2(15.086487, 273)
@@ -25,8 +26,10 @@ size = Vector2(15.086487, 273)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phuu0"]
 size = Vector2(900, 300)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twsxr"]
+bg_color = Color(0.3019608, 0.27450982, 0.9411765, 1)
+
 [node name="LevelTemplate" type="Node2D"]
-rotation = 0.009374617
 script = ExtResource("1_e0kcl")
 
 [node name="LevelScenes" type="Node" parent="."]
@@ -57,99 +60,99 @@ debug_color = Color(0.5882353, 0, 0.92941177, 0.41960785)
 position = Vector2(928, 204)
 
 [node name="DropPlatform4" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(859, 204)
+position = Vector2(858, 204)
 
 [node name="DropPlatform5" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(790, 204)
+position = Vector2(788, 204)
 
 [node name="DropPlatform6" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(721, 204)
+position = Vector2(718, 204)
 
 [node name="DropPlatform7" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(652, 204)
+position = Vector2(648, 204)
 
 [node name="DropPlatform8" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(583, 204)
+position = Vector2(578, 204)
 
 [node name="DropPlatform9" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(514, 204)
+position = Vector2(507.99997, 204)
 
 [node name="DropPlatform10" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(445.00015, 204)
+position = Vector2(438.00015, 204)
 
 [node name="DropPlatform11" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(375.0001, 204)
+position = Vector2(368.0001, 204)
 
 [node name="DropPlatform2" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(928, 276)
+position = Vector2(928, 275)
 
 [node name="DropPlatform12" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(859, 276.00003)
+position = Vector2(858, 275)
 
 [node name="DropPlatform13" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(790, 276.00003)
+position = Vector2(788, 275)
 
 [node name="DropPlatform14" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(721, 276.00003)
+position = Vector2(718, 275)
 
 [node name="DropPlatform15" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(652, 276.00003)
+position = Vector2(648, 275)
 
 [node name="DropPlatform16" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(583, 276.00003)
+position = Vector2(578, 275)
 
 [node name="DropPlatform17" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(514, 276.00003)
+position = Vector2(507.99997, 275)
 
 [node name="DropPlatform18" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(445.00003, 276.00003)
+position = Vector2(438.00003, 275)
 
 [node name="DropPlatform19" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(375.00003, 276.00003)
+position = Vector2(368.00003, 275)
 
 [node name="DropPlatform3" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
 position = Vector2(928, 346)
 
 [node name="DropPlatform20" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(859, 346)
+position = Vector2(858, 346)
 
 [node name="DropPlatform21" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(790, 346)
+position = Vector2(788, 346)
 
 [node name="DropPlatform22" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(721, 346)
+position = Vector2(718, 346)
 
 [node name="DropPlatform23" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(652, 346)
+position = Vector2(648, 346)
 
 [node name="DropPlatform24" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(583, 346)
+position = Vector2(578, 346)
 
 [node name="DropPlatform25" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(514, 346)
+position = Vector2(507.99997, 346)
 
 [node name="DropPlatform26" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(445.0001, 346)
+position = Vector2(438.0001, 346)
 
 [node name="DropPlatform27" parent="DropPlatfroms" instance=ExtResource("6_usb28")]
-position = Vector2(375.0001, 346)
+position = Vector2(368.0001, 346)
 
 [node name="Defenders" type="Node" parent="."]
 
 [node name="Swordman" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(438, 494)
+position = Vector2(419, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("7_lpue5")
 info = ExtResource("8_kecix")
 
 [node name="Frostwizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(567, 494)
+position = Vector2(548, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("11_twsxr")
 info = ExtResource("11_cw63n")
 
 [node name="Wizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-position = Vector2(502, 494)
+position = Vector2(483, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("7_phuu0")
 info = ExtResource("9_phuu0")
@@ -176,7 +179,7 @@ scale = Vector2(2, 2)
 [node name="SoundAndMusic" type="Node" parent="."]
 
 [node name="MoneyBag" parent="." instance=ExtResource("13_3eq1r")]
-position = Vector2(379.38513, 490)
+position = Vector2(43, 489)
 scale = Vector2(2, 2)
 
 [node name="MoneySpawner" type="Node" parent="." node_paths=PackedStringArray("area")]
@@ -194,5 +197,17 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoneySpawner/Area2D"]
 shape = SubResource("RectangleShape2D_phuu0")
 debug_color = Color(1, 0.91764706, 0, 0.42745098)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 260.0
+offset_top = 4.0
+offset_right = 710.0
+offset_bottom = 31.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_twsxr")
+step = 1.0
+
+[node name="LevelUpDialog" parent="." instance=ExtResource("19_dl4tr")]
+visible = false
+z_index = 20
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]

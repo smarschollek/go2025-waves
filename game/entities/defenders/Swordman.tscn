@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cd0p4kv4vwsp2"]
+[gd_scene load_steps=44 format=3 uid="uid://cd0p4kv4vwsp2"]
 
 [ext_resource type="Texture2D" uid="uid://d3nb4g6gx226c" path="res://assets/entites/Defenders/Swordsman/Swordsman-Attack.png" id="1_4s3ff"]
 [ext_resource type="Script" uid="uid://1nel2d78ly4t" path="res://game/entities/defenders/Swordman.gd" id="1_u65dv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="8_gq5j0"]
 [ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="9_gq5j0"]
 [ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="11_q6c74"]
+[ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="14_fia50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abr0r"]
 atlas = ExtResource("1_4s3ff")
@@ -106,7 +107,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d7vfx")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 7.0
 }, {
@@ -159,7 +160,6 @@ shader_parameter/blinkIntensity = 0.0
 [sub_resource type="Animation" id="Animation_andr5"]
 resource_name = "Attack"
 length = 0.7
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -264,6 +264,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/HitboxCollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7h1mx"]
 length = 0.001
@@ -330,7 +342,19 @@ size = Vector2(12, 16.333334)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_andr5"]
 size = Vector2(12.666667, 18.666668)
 
-[node name="Fighter" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_034ri"]
+atlas = ExtResource("14_fia50")
+region = Rect2(1, 16, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwt2h"]
+atlas = ExtResource("14_fia50")
+region = Rect2(1, 2, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su5v4"]
+atlas = ExtResource("14_fia50")
+region = Rect2(1, 9, 22, 6)
+
+[node name="Fighter" type="Node2D" groups=["Defender"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_u65dv")
 data = ExtResource("2_op3qr")
@@ -403,6 +427,17 @@ target_position = Vector2(-17.666668, 0)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Lifebar" type="TextureProgressBar" parent="."]
+offset_left = -5.3333335
+offset_top = 6.0
+offset_right = 16.666666
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = SubResource("AtlasTexture_034ri")
+texture_over = SubResource("AtlasTexture_hwt2h")
+texture_progress = SubResource("AtlasTexture_su5v4")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

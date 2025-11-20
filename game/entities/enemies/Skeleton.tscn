@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dxtl6py3k22tk"]
+[gd_scene load_steps=46 format=3 uid="uid://dxtl6py3k22tk"]
 
 [ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_2wowk"]
 [ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton.tres" id="2_2wowk"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="11_0ssrc"]
 [ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="12_qsthb"]
 [ext_resource type="Script" uid="uid://102woa1e7t2n" path="res://game/systems/StateMachine/States/WalkingState.gd" id="13_grxoi"]
+[ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="14_hig7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byctc"]
 size = Vector2(2.666666, 13.666666)
@@ -164,7 +165,6 @@ animations = [{
 [sub_resource type="Animation" id="Animation_x5rj4"]
 resource_name = "Attack"
 length = 0.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -321,6 +321,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/HitboxCollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ym6r"]
 _data = {
@@ -340,6 +352,18 @@ size = Vector2(13, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44hk3"]
 size = Vector2(11.666666, 14.666667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf3ws"]
+atlas = ExtResource("14_hig7x")
+region = Rect2(1, 16, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc0wi"]
+atlas = ExtResource("14_hig7x")
+region = Rect2(1, 2, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0r7p"]
+atlas = ExtResource("14_hig7x")
+region = Rect2(1, 9, 22, 6)
 
 [node name="Skeleton" type="AnimatableBody2D" groups=["Enemy"]]
 scale = Vector2(3, 3)
@@ -423,6 +447,17 @@ metadata/_custom_type_script = "uid://102woa1e7t2n"
 target_position = Vector2(16.666668, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Lifebar" type="TextureProgressBar" parent="."]
+offset_left = -3.0
+offset_top = 5.666667
+offset_right = 19.0
+offset_bottom = 11.666667
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = SubResource("AtlasTexture_nf3ws")
+texture_over = SubResource("AtlasTexture_lc0wi")
+texture_progress = SubResource("AtlasTexture_m0r7p")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

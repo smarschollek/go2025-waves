@@ -24,6 +24,7 @@ TimeManager="*res://core/autoloads/TimeManager.gd"
 MoneyManager="*res://core/autoloads/MoneyManager.gd"
 ReportManager="*res://core/autoloads/ReportManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+LevelUpManager="*res://core/autoloads/LevelUpManager.gd"
 
 [dialogic]
 
@@ -96,6 +97,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 Enemy=""
 Dropzone=""
+Defender=""
 
 [input]
 

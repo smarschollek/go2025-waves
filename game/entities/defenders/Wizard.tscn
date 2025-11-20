@@ -101,7 +101,7 @@ shader_parameter/blinkIntensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
 size = Vector2(13.800001, 19.2)
 
-[node name="Wizard" type="Node2D"]
+[node name="Wizard" type="Node2D" groups=["Defender"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_m6mp1")
 data = ExtResource("2_v7yra")

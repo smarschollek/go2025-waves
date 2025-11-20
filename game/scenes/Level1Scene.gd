@@ -12,7 +12,23 @@ func _ready() -> void:
     Engine.time_scale = 1.0
     $SpawnManager.startSpawningWave()
 
+    LevelUpManager.xpChanged.connect(_on_xpChanged)
+    LevelUpManager.leveledUp.connect(_on_leveledUp)
     
+    setProgressBar()
+
+func setProgressBar() -> void:
+    $ProgressBar.value = LevelUpManager.currentXP
+    $ProgressBar.max_value = LevelUpManager.xpForNextLevel
+
+func _on_xpChanged(currentXP: int) -> void:
+    $ProgressBar.value = currentXP
+
+func _on_leveledUp(_xpToNextLevel: int) -> void:
+    setProgressBar()
+    get_tree().paused = true
+    $LevelUpDialog.visible = true
+
 func _on_game_over(_lost: bool) -> void:
     TimeManager.stopGameTimer() 
     

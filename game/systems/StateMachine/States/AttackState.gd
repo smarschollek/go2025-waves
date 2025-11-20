@@ -9,8 +9,7 @@ var attackCooldown: float = 0.0
 
 func enter() -> void:
     attack()
-    attackCooldown = attackInterval
-    
+
 func update(delta: float) -> void:
     if attackCooldown <= 0:
         attack()
@@ -18,6 +17,10 @@ func update(delta: float) -> void:
     attackCooldown -= delta
     
 func attack() -> void:
+    attackCooldown = attackInterval
+    
     if animationPlayer:
         animationPlayer.play(animation)
+        await animationPlayer.animation_finished
+        animationPlayer.play("RESET")
 
