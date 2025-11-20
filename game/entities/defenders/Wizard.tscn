@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://1rue0s6pjc76"]
+[gd_scene load_steps=27 format=3 uid="uid://1rue0s6pjc76"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_m6mp1"]
 [ext_resource type="Resource" uid="uid://dh3dwd5gh8614" path="res://data/units/Defender/Wizard.tres" id="2_v7yra"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_8vnt2"]
 [ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="5_m6mp1"]
 [ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="5_vlamk"]
+[ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="10_v7yra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7yra"]
 atlas = ExtResource("4_vlamk")
@@ -101,6 +102,18 @@ shader_parameter/blinkIntensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
 size = Vector2(13.800001, 19.2)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_otgl7"]
+atlas = ExtResource("10_v7yra")
+region = Rect2(1, 16, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8nnw"]
+atlas = ExtResource("10_v7yra")
+region = Rect2(1, 2, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq30x"]
+atlas = ExtResource("10_v7yra")
+region = Rect2(1, 9, 22, 6)
+
 [node name="Wizard" type="Node2D" groups=["Defender"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_m6mp1")
@@ -168,6 +181,17 @@ target_position = Vector2(-50, 0)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Lifebar" type="TextureProgressBar" parent="."]
+offset_left = -5.3333335
+offset_top = 6.0
+offset_right = 16.666666
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = SubResource("AtlasTexture_otgl7")
+texture_over = SubResource("AtlasTexture_q8nnw")
+texture_progress = SubResource("AtlasTexture_mq30x")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

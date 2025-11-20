@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wxevnu42dgm6"]
+[gd_scene load_steps=27 format=3 uid="uid://wxevnu42dgm6"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_oxl2v"]
 [ext_resource type="Resource" uid="uid://ddob5hb5vexiy" path="res://data/units/Defender/Frostmage.tres" id="2_oxl2v"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="7_4cf4f"]
 [ext_resource type="Script" uid="uid://cf6b24bxhn06k" path="res://game/systems/ShootingBehavior.gd" id="8_0odtf"]
 [ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="9_30dn0"]
+[ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="10_4mvyy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0odtf"]
 atlas = ExtResource("3_oxl2v")
@@ -101,6 +102,18 @@ shader_parameter/blinkIntensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
 size = Vector2(13.800001, 19.2)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajybc"]
+atlas = ExtResource("10_4mvyy")
+region = Rect2(1, 16, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6fet"]
+atlas = ExtResource("10_4mvyy")
+region = Rect2(1, 2, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peskp"]
+atlas = ExtResource("10_4mvyy")
+region = Rect2(1, 9, 22, 6)
+
 [node name="Wizard" type="Node2D" groups=["Defender"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_oxl2v")
@@ -167,6 +180,17 @@ target_position = Vector2(-50, 0)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Lifebar" type="TextureProgressBar" parent="."]
+offset_left = -5.3333335
+offset_top = 6.0
+offset_right = 16.666666
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = SubResource("AtlasTexture_ajybc")
+texture_over = SubResource("AtlasTexture_y6fet")
+texture_progress = SubResource("AtlasTexture_peskp")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]
