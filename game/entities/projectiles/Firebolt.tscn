@@ -73,6 +73,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_lk1nm")
 damage = 10
+persistOnHit = false
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]

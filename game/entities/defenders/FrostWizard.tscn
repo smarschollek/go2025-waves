@@ -193,4 +193,4 @@ texture_over = SubResource("AtlasTexture_y6fet")
 texture_progress = SubResource("AtlasTexture_peskp")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]
+[connection signal="receivedDamage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

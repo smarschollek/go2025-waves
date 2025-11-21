@@ -4,7 +4,10 @@ extends Node2D
 
 func _ready() -> void:
     $Hurtbox.health = data.health
+    
     $Lifebar.max_value = data.health
+    $Lifebar.visible = $Hurtbox.health < data.health
+    $Lifebar.value = $Hurtbox.health
 
     $ShootBehavior.shootInterval = data.attackInterval
     $ShootBehavior.projectileScene = data.projectileScene
@@ -17,11 +20,12 @@ func _ready() -> void:
     
 func _on_hurtbox_died() -> void:
     $Hurtbox/CollisionShape2D.disabled = true
-
-    $Lifebar.visible = $Hurtbox.health < data.health
-    $Lifebar.value = $Hurtbox.health
     
-
     $AnimatedSprite2D.play("dead")
     await $AnimatedSprite2D.animation_finished
     queue_free()
+
+
+func _on_hurtbox_received_damage(_damage_amount: int) -> void:
+    $Lifebar.visible = $Hurtbox.health < data.health
+    $Lifebar.value = $Hurtbox.health

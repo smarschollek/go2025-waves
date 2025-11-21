@@ -1,13 +1,6 @@
 extends CanvasLayer
 
-@onready var continueButton = $CenterContainer/VBoxContainer/HBoxContainer/ContinueButton
-
 func _ready() -> void:
-    if GameManager.saveFileExists():
-        continueButton.visible = true
-    else:
-        continueButton.visible = false
-
     if OS.get_name() == "Web":
         $ExitButton.hide()
 

@@ -50,6 +50,8 @@ radius = 4.0
 
 [node name="Frostbolt" type="AnimatableBody2D"]
 script = ExtResource("1_1745k")
+effect = "Slow"
+effectDuration = "4.0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -73,6 +75,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_q5u33")
 damage = 10
+persistOnHit = false
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

@@ -3,9 +3,11 @@ extends Node2D
 func _ready() -> void:
     MoneyManager.reset()
     EnemyManager.reset()
-    GameManager.reset()
     
+    GameManager.setSceneRoot(self)
+    GameManager.reset()
     GameManager.gameOver.connect(_on_game_over)
+    
 
     ReportManager.initializeDay()
     TimeManager.startGameTimer()

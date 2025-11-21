@@ -184,5 +184,5 @@ shape = SubResource("RectangleShape2D_xodcx")
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]
+[connection signal="receivedDamage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]
 [connection signal="collisionDetected" from="DetectionBox" to="." method="_on_detection_box_collision_detected"]

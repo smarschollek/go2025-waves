@@ -411,7 +411,6 @@ position = Vector2(-3.333, -7)
 collision_layer = 8
 script = ExtResource("7_lahqu")
 damage = 20
-persist_on_hit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
@@ -458,7 +457,3 @@ value = 50.0
 texture_under = SubResource("AtlasTexture_0qde8")
 texture_over = SubResource("AtlasTexture_uccvh")
 texture_progress = SubResource("AtlasTexture_dryyi")
-
-[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]
-[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

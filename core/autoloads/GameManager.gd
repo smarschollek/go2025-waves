@@ -9,6 +9,15 @@ func reset() -> void:
     lastWaveSpawned = false
 
 
+var rootNode: Node = null
+
+func getSceneRoot() -> Node:
+    return rootNode
+
+func setSceneRoot(root: Node) -> void:
+    rootNode = root
+
+
 func _ready() -> void:
     reset()    
 

@@ -22,5 +22,7 @@ func SetShaderBlinkIntensity(intensity: float) -> void:
     sprite.material = shader.duplicate() as ShaderMaterial
     sprite.material.set_shader_parameter("blinkIntensity", intensity)
     sprite.material.set_shader_parameter("blinkColor", Color(1, 1, 1, 1))
+    
+    
 
     

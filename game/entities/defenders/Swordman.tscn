@@ -381,7 +381,7 @@ libraries = {
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("4_hl1hf")
-persist_on_hit = true
+persistOnHit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
@@ -440,4 +440,3 @@ texture_over = SubResource("AtlasTexture_hwt2h")
 texture_progress = SubResource("AtlasTexture_su5v4")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="received_damage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

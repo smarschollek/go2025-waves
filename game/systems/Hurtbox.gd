@@ -3,7 +3,7 @@ extends Area2D
 
 var dead : bool = false
 
-signal received_damage(damage_amount: int)
+signal receivedDamage(damageAmount: int, effectName: String, duration: float)
 signal died()
 
 @export var health : int
@@ -15,8 +15,8 @@ func _ready() -> void:
 func _on_body_entered(hitbox: Area2D) -> void:
     if hitbox is Hitbox:
         health -= hitbox.damage
-        emit_signal("received_damage", hitbox.damage)
-        
+        receivedDamage.emit(hitbox.damage, hitbox.effect, hitbox.effectDuration)
+
         if health <= 0:
             dead = true
             emit_signal("died")
