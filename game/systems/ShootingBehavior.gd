@@ -40,7 +40,7 @@ func shoot() -> void:
     
     projectile.attackDamage = damage
     projectile.projectileSpeed = projectileSpeed    
-    
+    projectile.z_index = GameManager.ZINDEX.PROJECTILES
     projectile.scale = get_parent().scale
     
     add_child(projectile)

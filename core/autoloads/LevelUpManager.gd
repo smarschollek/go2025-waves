@@ -1,8 +1,11 @@
 extends Node
 
+const BASE = 5
+
 var currentXP: int = 0
 var level: int = 1
-var xpForNextLevel: int = 5
+
+var xpForNextLevel: int = BASE
 
 signal leveledUp(newLevel: int, xpForNextLevel: int)
 signal xpChanged(currentXP: int)
@@ -17,8 +20,11 @@ func addXP(amount: int) -> void:
 
 func levelUp() -> void:
     level += 1
-    currentXP = 0
-    xpForNextLevel = int(xpForNextLevel + 5)
-    leveledUp.emit(xpForNextLevel)
-        
+    currentXP = currentXP - xpForNextLevel
+    xpForNextLevel = xpRequired(level)
     
+    leveledUp.emit(xpForNextLevel)
+
+func xpRequired(nextLevel: int) -> int:
+    var xp = BASE + (nextLevel - 1) * 10
+    return int(xp)

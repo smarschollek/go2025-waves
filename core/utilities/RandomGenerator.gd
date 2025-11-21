@@ -7,3 +7,6 @@ func setup(seed_value: int) -> void:
 
 func getRandomInt(min_value: int, max_value: int) -> int:
     return rng.randi_range(min_value, max_value)
+
+func getRandI() -> int: 
+    return rng.randi()

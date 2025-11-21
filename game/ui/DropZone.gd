@@ -1,20 +1,18 @@
 extends StaticBody2D
 
-
-
 func _process(_delta: float) -> void:
-    var disableCollision = checkIfOccupied()
-    var showSprite = not disableCollision and DragAndDropManager.isDragging()
+    var child  = getDefenderChild()
+    var dropZoneOccupied  = child != null
+    var showSprite = not dropZoneOccupied and DragAndDropManager.isDragging()
     
     $Sprite2D.visible = showSprite
-    $CollisionShape2D.disabled = disableCollision
-
-func checkIfOccupied() -> bool:
+    $CollisionShape2D.disabled = dropZoneOccupied
+    
+func getDefenderChild() -> Node:
     for child in get_children():
-        if child.is_in_group("Defender"):
-            return true
-
-    return false
+        if child.is_in_group("Defender"):    
+            return child
+    return null
     
 
 

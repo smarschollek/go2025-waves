@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bfig8e13fwnng"]
+[gd_scene load_steps=41 format=3 uid="uid://bfig8e13fwnng"]
 
 [ext_resource type="Texture2D" uid="uid://d0sxp5cl5dy5l" path="res://assets/entites/Attackers/Slime/Slime-Attack.png" id="1_fqdc5"]
 [ext_resource type="Texture2D" uid="uid://d4kuqg6115etv" path="res://assets/entites/Attackers/Slime/Slime-Walk.png" id="1_hnj2e"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="8_lysc5"]
 [ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="9_62sge"]
 [ext_resource type="Script" uid="uid://102woa1e7t2n" path="res://game/systems/StateMachine/States/WalkingState.gd" id="10_bk30f"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="12_lysc5"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="13_62sge"]
 [ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="14_bk30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cibm4"]
@@ -334,12 +332,6 @@ size = Vector2(25, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdc5"]
 size = Vector2(23.333336, 7.3333335)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bk30f"]
-resource_local_to_scene = true
-shader = ExtResource("13_62sge")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gnk6"]
 atlas = ExtResource("14_bk30f")
 region = Rect2(1, 16, 22, 6)
@@ -384,7 +376,6 @@ debug_color = Color(1, 0, 1, 0.41960785)
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 script = ExtResource("2_3ih4y")
-persist_on_hit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionBox" type="CollisionShape2D" parent="Hitbox"]
@@ -420,12 +411,6 @@ entity = NodePath("../..")
 animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://102woa1e7t2n"
 
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("12_lysc5")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_bk30f")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
-
 [node name="Lifebar" type="TextureProgressBar" parent="."]
 offset_left = -5.3333335
 offset_top = 5.3333335
@@ -436,6 +421,3 @@ value = 50.0
 texture_under = SubResource("AtlasTexture_7gnk6")
 texture_over = SubResource("AtlasTexture_ul0nu")
 texture_progress = SubResource("AtlasTexture_r8sxj")
-
-[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="receivedDamage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

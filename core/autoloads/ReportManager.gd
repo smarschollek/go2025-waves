@@ -9,7 +9,7 @@ func initializeDay() -> void:
     killedUnits = 0
 
 func _init() -> void:
-    TimeManager.onGameTick.connect(onGameTick)
+    TimeManager.gameTick.connect(onGameTick)
     
     
 func onGameTick(totalTicks: int) -> void:

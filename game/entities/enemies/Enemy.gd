@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hurtbox_died() -> void:
     ReportManager.killedUnits += 1
-    LevelUpManager.addXP(1)
+    LevelUpManager.addXP(4)
     $StateMachine.changeState("Dead")
 
 func _on_hurtbox_receivedDamage(_damageAmount: int, effectName: String, duration: float) -> void:

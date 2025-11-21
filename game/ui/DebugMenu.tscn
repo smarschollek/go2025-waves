@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcms8y7mr460x"]
+
+[ext_resource type="Script" uid="uid://hgfhaow5as24" path="res://game/ui/DebugMenu.gd" id="1_ydpqr"]
+
+[node name="DebugMenu" type="Node2D"]
+visible = false
+script = ExtResource("1_ydpqr")
+debug_mode = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 280.0
+offset_bottom = 540.0
+
+[node name="AddMoneyButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Money + 100 "
+
+[connection signal="button_up" from="HBoxContainer/AddMoneyButton" to="." method="_on_add_money_button_button_up"]

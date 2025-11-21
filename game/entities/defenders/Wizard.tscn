@@ -1,13 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://1rue0s6pjc76"]
+[gd_scene load_steps=24 format=3 uid="uid://1rue0s6pjc76"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_m6mp1"]
 [ext_resource type="Resource" uid="uid://dh3dwd5gh8614" path="res://data/units/Defender/Wizard.tres" id="2_v7yra"]
 [ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="3_8jyn5"]
 [ext_resource type="Script" uid="uid://cf6b24bxhn06k" path="res://game/systems/ShootingBehavior.gd" id="3_q0k26"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="4_pxs0p"]
 [ext_resource type="Texture2D" uid="uid://bmoeubrkcwxuy" path="res://assets/entites/Defenders/Wizard/Wizard-Death.png" id="4_vlamk"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_8vnt2"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="5_m6mp1"]
 [ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="5_vlamk"]
 [ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="10_v7yra"]
 
@@ -94,11 +92,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
-shader = ExtResource("5_m6mp1")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
 size = Vector2(13.800001, 19.2)
 
@@ -127,12 +120,6 @@ animation = &"shoot"
 autoplay = "shoot"
 frame_progress = 0.8673975
 flip_h = true
-
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("4_pxs0p")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_j004l")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
@@ -195,4 +182,3 @@ texture_progress = SubResource("AtlasTexture_mq30x")
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="receivedDamage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]
-[connection signal="receivedDamage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

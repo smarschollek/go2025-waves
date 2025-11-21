@@ -20,10 +20,12 @@ var isDragging = false
 
 func _ready() -> void:
     MoneyManager.moneyChanged.connect(toggleCardEnabled)
-
     DragAndDropManager.cardDropped.connect(_onCardDropped)
-    
-func _input(event: InputEvent):
+
+func _input(event: InputEvent) -> void:
+    if $CooldownOverlay.visible:
+        return
+
     if MoneyManager.hasEnoughMoney(info.cost) == false:
         return
 
@@ -34,12 +36,9 @@ func _input(event: InputEvent):
                 DragAndDropManager.clear()                
             else:
                 DragAndDropManager.startDrag(self, scene, $PreviewSprite.texture)
-                
-
 
     if event is InputEventMouseMotion and DragAndDropManager.isDragging():
         DragAndDropManager.onDrag(event.position)
-
 
 func _onCardDropped(_dropZone: Node, card: Node):
     clearPreviewSprite()

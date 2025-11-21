@@ -1,12 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://dxtl6py3k22tk"]
+[gd_scene load_steps=43 format=3 uid="uid://dxtl6py3k22tk"]
 
 [ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_2wowk"]
 [ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton.tres" id="2_2wowk"]
 [ext_resource type="Texture2D" uid="uid://ckado7mpt7g1i" path="res://assets/entites/Attackers/Skeleton/Skeleton-Attack01.png" id="2_nedxi"]
 [ext_resource type="Texture2D" uid="uid://blke7yt8lirpy" path="res://assets/entites/Attackers/Skeleton/Skeleton-Death.png" id="3_2wowk"]
 [ext_resource type="Texture2D" uid="uid://l7657gebwtcd" path="res://assets/entites/Attackers/Skeleton/Skeleton-Walk.png" id="4_hig7x"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="6_njfqa"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="7_m5wia"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="8_4esc0"]
 [ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="9_d8dl1"]
 [ext_resource type="Script" uid="uid://c84ve05ynuqi2" path="res://game/systems/StateMachine/StateMachine.gd" id="10_uf4w1"]
@@ -342,11 +340,6 @@ _data = {
 &"Walk": SubResource("Animation_st4sa")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnskq"]
-shader = ExtResource("7_m5wia")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpyex"]
 size = Vector2(13, 15)
 
@@ -387,12 +380,6 @@ animation = &"Walk"
 libraries = {
 &"": SubResource("AnimationLibrary_6ym6r")
 }
-
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("6_njfqa")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_dnskq")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4

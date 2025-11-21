@@ -12,5 +12,5 @@ func enter() -> void:
         animationPlayer.play(animation)
                 
 func physics_update(delta: float) -> void:
-    entity.position.x += speed * delta * EnemyManager.speedMultiplier
+    entity.position.x += speed * delta
     

@@ -82,3 +82,13 @@ func loadGame() -> void:
             var content := file.get_as_text()
             saveData = JSON.parse_string(content)
             file.close()
+
+
+
+const ZINDEX = {
+    "BACKGROUND": 0,
+    "GROUND": 1,
+    "ENTITIES": 3,
+    "PROJECTILES": 4,
+    "UI": 5
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=24 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
@@ -10,15 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://1rue0s6pjc76" path="res://game/entities/defenders/Wizard.tscn" id="7_phuu0"]
 [ext_resource type="Resource" uid="uid://cn7ya1tmu4o6m" path="res://data/units/Defender/Swordman.tres" id="8_kecix"]
 [ext_resource type="Resource" uid="uid://dh3dwd5gh8614" path="res://data/units/Defender/Wizard.tres" id="9_phuu0"]
-[ext_resource type="Script" uid="uid://d0124uw2brey0" path="res://game/systems/SpawnManager.gd" id="10_smboc"]
+[ext_resource type="Script" uid="uid://d0124uw2brey0" path="res://game/systems/SpawnManager/SpawnManager.gd" id="10_smboc"]
 [ext_resource type="Resource" uid="uid://ddob5hb5vexiy" path="res://data/units/Defender/Frostmage.tres" id="11_cw63n"]
-[ext_resource type="Resource" uid="uid://dm2ag6on2nnyp" path="res://data/resources/Level1_WaveData.tres" id="11_sy7q6"]
 [ext_resource type="PackedScene" uid="uid://wxevnu42dgm6" path="res://game/entities/defenders/FrostWizard.tscn" id="11_twsxr"]
 [ext_resource type="PackedScene" uid="uid://ygjkxbx1utwf" path="res://game/ui/FastForwardButton.tscn" id="12_pyqq3"]
 [ext_resource type="PackedScene" uid="uid://dn52k5q2q6blr" path="res://game/ui/MoneyBag.tscn" id="13_3eq1r"]
 [ext_resource type="Script" uid="uid://dovq1ki4vv8el" path="res://game/systems/MoneySpawner.gd" id="14_lpue5"]
 [ext_resource type="PackedScene" uid="uid://d0c3fbcmoal1h" path="res://game/entities/Coin.tscn" id="15_phuu0"]
+[ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="19_7ca05"]
 [ext_resource type="PackedScene" uid="uid://c7dm20jng0sn" path="res://game/ui/LevelUpDialog.tscn" id="19_dl4tr"]
+[ext_resource type="PackedScene" uid="uid://bcms8y7mr460x" path="res://game/ui/DebugMenu.tscn" id="20_7ca05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1edn8"]
 size = Vector2(15.086487, 273)
@@ -213,7 +214,6 @@ info = ExtResource("9_phuu0")
 
 [node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource("10_smboc")
-waveData = ExtResource("11_sy7q6")
 metadata/_custom_type_script = "uid://d0124uw2brey0"
 
 [node name="MarkerRow1" type="Marker2D" parent="SpawnManager"]
@@ -224,6 +224,12 @@ position = Vector2(-32, 276)
 
 [node name="MarkerRow3" type="Marker2D" parent="SpawnManager"]
 position = Vector2(-32, 348)
+
+[node name="SpawnTimer" type="Timer" parent="SpawnManager"]
+
+[node name="WaveBreakTimer" type="Timer" parent="SpawnManager"]
+wait_time = 5.0
+one_shot = true
 
 [node name="FastForwardButton" parent="." instance=ExtResource("12_pyqq3")]
 visible = false
@@ -254,15 +260,42 @@ debug_color = Color(1, 0.91764706, 0, 0.42745098)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = 260.0
-offset_top = 4.0
+offset_top = 3.0
 offset_right = 710.0
-offset_bottom = 31.0
+offset_bottom = 30.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_twsxr")
 step = 1.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelUpDialog" parent="." instance=ExtResource("19_dl4tr")]
 visible = false
 z_index = 20
+
+[node name="Clock" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 41.5
+offset_bottom = 13.75
+scale = Vector2(2, 2)
+text = "00:00"
+label_settings = ExtResource("19_7ca05")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Label" parent="."]
+offset_left = 715.0
+offset_top = 4.0
+offset_right = 779.0
+offset_bottom = 14.75
+scale = Vector2(2, 2)
+text = "LEVEL: 1"
+label_settings = ExtResource("19_7ca05")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugMenu" parent="." instance=ExtResource("20_7ca05")]
+debugMode = true
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]

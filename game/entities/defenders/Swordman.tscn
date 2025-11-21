@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cd0p4kv4vwsp2"]
+[gd_scene load_steps=41 format=3 uid="uid://cd0p4kv4vwsp2"]
 
 [ext_resource type="Texture2D" uid="uid://d3nb4g6gx226c" path="res://assets/entites/Defenders/Swordsman/Swordsman-Attack.png" id="1_4s3ff"]
 [ext_resource type="Script" uid="uid://1nel2d78ly4t" path="res://game/entities/defenders/Swordman.gd" id="1_u65dv"]
@@ -9,10 +9,8 @@
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_andr5"]
 [ext_resource type="Script" uid="uid://c84ve05ynuqi2" path="res://game/systems/StateMachine/StateMachine.gd" id="6_7h1mx"]
 [ext_resource type="Script" uid="uid://ws4wj8ligiog" path="res://game/systems/StateMachine/States/IdleState.gd" id="7_d7vfx"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="7_fia50"]
 [ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="8_gq5j0"]
 [ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="9_gq5j0"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="11_q6c74"]
 [ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="14_fia50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abr0r"]
@@ -151,11 +149,6 @@ animations = [{
 "name": &"Idle",
 "speed": 6.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_034ri"]
-shader = ExtResource("7_fia50")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
 
 [sub_resource type="Animation" id="Animation_andr5"]
 resource_name = "Attack"
@@ -366,12 +359,6 @@ autoplay = "Idle"
 flip_h = true
 metadata/_edit_lock_ = true
 
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("11_q6c74")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_034ri")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_0pqcu")
@@ -381,7 +368,6 @@ libraries = {
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("4_hl1hf")
-persistOnHit = true
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
