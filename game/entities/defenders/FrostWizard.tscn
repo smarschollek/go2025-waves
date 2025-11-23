@@ -1,31 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://wxevnu42dgm6"]
+[gd_scene load_steps=24 format=3 uid="uid://wxevnu42dgm6"]
 
 [ext_resource type="Script" uid="uid://bcc4imfwjuen1" path="res://game/entities/defenders/Wizard.gd" id="1_oxl2v"]
 [ext_resource type="Resource" uid="uid://ddob5hb5vexiy" path="res://data/units/Defender/Frostmage.tres" id="2_oxl2v"]
 [ext_resource type="Texture2D" uid="uid://ckkdga8qaywah" path="res://assets/entites/Defenders/Frostmage/Frostmage-Death.png" id="3_oxl2v"]
 [ext_resource type="Texture2D" uid="uid://d0fyx2w5p8kq7" path="res://assets/entites/Defenders/Frostmage/Frostmage-Idle.png" id="4_oxl2v"]
-[ext_resource type="Script" uid="uid://hr6x6pyal7iv" path="res://game/systems/BlinkBehavior.gd" id="5_a8k4u"]
-[ext_resource type="Shader" uid="uid://clgp0kmlvqphd" path="res://assets/shader/Blink.gdshader" id="6_sg63q"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="7_4cf4f"]
 [ext_resource type="Script" uid="uid://cf6b24bxhn06k" path="res://game/systems/ShootingBehavior.gd" id="8_0odtf"]
 [ext_resource type="PackedScene" uid="uid://demhnvaw1a56i" path="res://game/entities/projectiles/Firebolt.tscn" id="9_30dn0"]
 [ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="10_4mvyy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0odtf"]
-atlas = ExtResource("3_oxl2v")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30dn0"]
-atlas = ExtResource("3_oxl2v")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjlmt"]
-atlas = ExtResource("3_oxl2v")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qj8c8"]
-atlas = ExtResource("3_oxl2v")
-region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mvyy"]
 atlas = ExtResource("4_oxl2v")
@@ -51,25 +33,24 @@ region = Rect2(400, 0, 100, 100)
 atlas = ExtResource("4_oxl2v")
 region = Rect2(500, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0odtf"]
+atlas = ExtResource("3_oxl2v")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30dn0"]
+atlas = ExtResource("3_oxl2v")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjlmt"]
+atlas = ExtResource("3_oxl2v")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj8c8"]
+atlas = ExtResource("3_oxl2v")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpc2t"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0odtf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30dn0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jjlmt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qj8c8")
-}],
-"loop": false,
-"name": &"dead",
-"speed": 4.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4mvyy")
@@ -90,14 +71,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_4cf4f")
 }],
 "loop": true,
-"name": &"shoot",
+"name": &"Attack",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0odtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30dn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjlmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj8c8")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j004l"]
-shader = ExtResource("6_sg63q")
-shader_parameter/blinkColor = Color(0, 0, 0, 1)
-shader_parameter/blinkIntensity = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
 size = Vector2(13.800001, 19.2)
@@ -123,15 +116,9 @@ data = ExtResource("2_oxl2v")
 rotation = -0.00034524183
 scale = Vector2(0.9999999, 0.9999999)
 sprite_frames = SubResource("SpriteFrames_kpc2t")
-animation = &"dead"
-autoplay = "shoot"
+animation = &"Dead"
+autoplay = "Attack"
 flip_h = true
-
-[node name="BlinkBehavior" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("5_a8k4u")
-sprite = NodePath("../AnimatedSprite2D")
-shader = SubResource("ShaderMaterial_j004l")
-metadata/_custom_type_script = "uid://hr6x6pyal7iv"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
@@ -191,6 +178,3 @@ value = 50.0
 texture_under = SubResource("AtlasTexture_ajybc")
 texture_over = SubResource("AtlasTexture_y6fet")
 texture_progress = SubResource("AtlasTexture_peskp")
-
-[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="receivedDamage" from="Hurtbox" to="BlinkBehavior" method="TriggerBlink"]

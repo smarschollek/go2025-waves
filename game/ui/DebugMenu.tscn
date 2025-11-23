@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://hgfhaow5as24" path="res://game/ui/DebugMenu.gd" id="1_ydpqr"]
 
 [node name="DebugMenu" type="Node2D"]
-visible = false
 script = ExtResource("1_ydpqr")
-debug_mode = true
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 280.0
@@ -15,4 +13,19 @@ offset_bottom = 540.0
 layout_mode = 2
 text = "Money + 100 "
 
+[node name="AddCellToRowButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add Cell"
+
+[node name="Add10sButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add 10 sec"
+
+[node name="FastForwadButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Toggle Fastforward"
+
 [connection signal="button_up" from="HBoxContainer/AddMoneyButton" to="." method="_on_add_money_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/AddCellToRowButton" to="." method="_on_add_cell_to_row_button_up"]
+[connection signal="button_up" from="HBoxContainer/Add10sButton" to="." method="_on_add_10s_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/FastForwadButton" to="." method="_on_fast_forwad_button_button_up"]

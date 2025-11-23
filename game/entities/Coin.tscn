@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0c3fbcmoal1h"]
+[gd_scene load_steps=12 format=3 uid="uid://d0c3fbcmoal1h"]
 
 [ext_resource type="Script" uid="uid://cnam30qglb6vx" path="res://game/entities/Coin.gd" id="1_iw5bb"]
 [ext_resource type="Texture2D" uid="uid://7kvkaqqxn6tt" path="res://assets/sprites/Coin.png" id="1_ldg23"]
+[ext_resource type="AudioStream" uid="uid://ckcy6nmmbxys8" path="res://assets/audio/pickupCoin.wav" id="2_812b1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ldg23"]
 radius = 7.363574
@@ -57,10 +58,11 @@ animations = [{
 }]
 
 [node name="Coin" type="Area2D"]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 collision_layer = 8388608
 collision_mask = 0
 script = ExtResource("1_iw5bb")
+soundEffect = ExtResource("2_812b1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ldg23")

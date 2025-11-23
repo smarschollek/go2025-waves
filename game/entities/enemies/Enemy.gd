@@ -12,6 +12,8 @@ func _ready() -> void:
     $Hitbox.damage = data.attackDamage
     $StateMachine/Attack.attackInterval = data.attackInterval
     $StateMachine/Walk.speed = data.moveSpeed
+
+    $AnimatedSprite2D.modulate = data.tint
         
 func _physics_process(_delta: float) -> void:
     if($Hurtbox.dead):
@@ -26,23 +28,11 @@ func _physics_process(_delta: float) -> void:
         $StateMachine.changeState("Walk")
 
 func _on_hurtbox_died() -> void:
-    ReportManager.killedUnits += 1
-    LevelUpManager.addXP(4)
     $StateMachine.changeState("Dead")
+    ReportManager.killedUnits += 1
 
 func _on_hurtbox_receivedDamage(_damageAmount: int, effectName: String, duration: float) -> void:
     if effectName.to_lower() == "slow":
-        $StateMachine/Walk.speed = data.moveSpeed * 0.5
-        $StateMachine/Attack.attackInterval = data.attackInterval * 0.5
-        $AnimatedSprite2D.modulate = Color(0, 0, 1)
-
-        await get_tree().create_timer(duration).timeout
-        
-        $StateMachine/Walk.speed = data.moveSpeed
-        $StateMachine/Attack.attackInterval = data.attackInterval
-        $AnimatedSprite2D.modulate = Color(1, 1, 1)
+        EffectManager.applySlow($AnimatedSprite2D, $StateMachine/Walk, $StateMachine/Attack, duration)
     else:
-        var currentModulate = $AnimatedSprite2D.modulate
-        $AnimatedSprite2D.modulate = Color(1, 0, 0)
-        await get_tree().create_timer(0.1).timeout
-        $AnimatedSprite2D.modulate = currentModulate
+        EffectManager.applyDamage($AnimatedSprite2D)

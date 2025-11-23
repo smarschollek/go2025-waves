@@ -1,10 +1,14 @@
-extends StaticBody2D
+extends Area2D
+
+func _ready() -> void:
+    self.input_event.connect(_on_input_event)
 
 func _process(_delta: float) -> void:
     var child  = getDefenderChild()
     var dropZoneOccupied  = child != null
+
     var showSprite = not dropZoneOccupied and DragAndDropManager.isDragging()
-    
+
     $Sprite2D.visible = showSprite
     $CollisionShape2D.disabled = dropZoneOccupied
     
@@ -13,8 +17,6 @@ func getDefenderChild() -> Node:
         if child.is_in_group("Defender"):    
             return child
     return null
-    
-
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

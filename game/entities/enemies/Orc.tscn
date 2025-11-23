@@ -359,7 +359,7 @@ atlas = ExtResource("14_gpyex")
 region = Rect2(1, 9, 22, 6)
 
 [node name="Orc" type="AnimatableBody2D" groups=["Enemy"]]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_lpfuy")

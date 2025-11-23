@@ -9,6 +9,8 @@ extends Node2D
         $PreviewSprite.texture = info.sprite
         $Label.text = str(info.cost)
 
+@export var moneyManager: MoneyManager
+
 var draggable: bool = false
 var insideDropzone: bool = false
 var current_dropzone = null

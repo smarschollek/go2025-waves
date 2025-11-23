@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7t4osrimo6y6"]
+
+[ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="1_ehpgu"]
+[ext_resource type="Script" uid="uid://7ylf4nw2jpkt" path="res://game/ui/LevelUI.gd" id="1_jt5pe"]
+[ext_resource type="Texture2D" uid="uid://ckl5oas2wr5t8" path="res://assets/sprites/report.png" id="3_oudv8"]
+[ext_resource type="Texture2D" uid="uid://crvfuvgb83sn" path="res://assets/sprites/Button_Base.png" id="4_grh24"]
+[ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="5_grh24"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehpgu"]
+bg_color = Color(0.9647059, 0.7411765, 0.31764707, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tts5e"]
+atlas = ExtResource("4_grh24")
+region = Rect2(1, 1, 126, 30)
+
+[node name="LevelUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 41.0
+script = ExtResource("1_jt5pe")
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 4.0
+offset_right = 864.0
+offset_bottom = 14.75
+scale = Vector2(2, 2)
+text = "LEVEL: 1"
+label_settings = ExtResource("1_ehpgu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveTimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 12.75
+scale = Vector2(2, 2)
+text = "Wave Ends: 00:00"
+label_settings = ExtResource("1_ehpgu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 21.0
+offset_right = 191.0
+offset_bottom = 29.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ehpgu")
+value = 100.0
+show_percentage = false
+
+[node name="NextLevel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="CenterContainer" type="CenterContainer" parent="NextLevel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NextLevel/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NextLevel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="NextLevel/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_oudv8")
+
+[node name="TextureButton2" type="TextureButton" parent="NextLevel/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_oudv8")
+
+[node name="SkipButton" type="TextureButton" parent="NextLevel/CenterContainer/VBoxContainer"]
+modulate = Color(0.88235295, 0.78431374, 0.62352943, 1)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_tts5e")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="NextLevel/CenterContainer/VBoxContainer/SkipButton"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 7.0
+offset_right = 248.0
+offset_bottom = 23.333334
+theme_override_colors/font_color = Color(0.11267877, 0.112678744, 0.11267876, 1)
+theme_override_fonts/font = ExtResource("5_grh24")
+text = "SKIP"
+
+[connection signal="button_up" from="NextLevel/CenterContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_button_up"]

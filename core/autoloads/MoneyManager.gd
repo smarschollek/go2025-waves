@@ -1,6 +1,7 @@
 extends Node
 
 var startMoney := 0
+
 var totalMoney := 0:
     set(value):
         totalMoney = value

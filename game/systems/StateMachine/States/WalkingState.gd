@@ -1,7 +1,7 @@
 extends State
 class_name WalkingState
 
-@export var speed = 100
+@export var speed: float = 100.0
 @export var entity: AnimatableBody2D
 
 @export var animationPlayer: AnimationPlayer

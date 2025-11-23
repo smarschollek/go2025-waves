@@ -15,6 +15,5 @@ attackInterval = 1.6
 projectileScene = ExtResource("1_mla1o")
 sprite = SubResource("AtlasTexture_mla1o")
 buildCooldown = 5.0
-name = "Wizard"
 health = 60
 metadata/_custom_type_script = "uid://do8uaf47snj1r"

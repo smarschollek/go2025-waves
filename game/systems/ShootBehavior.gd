@@ -1,32 +1,37 @@
 extends Node
 class_name ShootBehavior
 
-@export var shoot_position: Marker2D
-@export var projectile_scene: PackedScene
-@export var shoot_interval: float = 1.0 
+signal shooting
 
-var time_since_last_shot: float = 0.0
-var animated_sprite: AnimatedSprite2D
+@export var shootPosition: Marker2D
+@export var shootPositionMinOffsetX: float = 0.0
+@export var shootPositionMaxOffsetX: float = 0.0
+@export var shootPositionMinOffsetY: float = 0.0
+@export var shootPositionMaxOffsetY: float = 0.0
+@export var projectileScene: PackedScene
+@export var shootInterval: float = 1.0 
+
+var timeSinceLastShot: float = 0.0
+var animatedSprite: AnimatedSprite2D
 
 func _ready() -> void:
-    animated_sprite = get_parent().get_node("AnimatedSprite2D")
+    animatedSprite = get_parent().get_node("AnimatedSprite2D")
     pass
 
 func _process(delta: float) -> void:
-    time_since_last_shot += delta
-    if time_since_last_shot >= shoot_interval:
+    timeSinceLastShot += delta
+    if timeSinceLastShot >= shootInterval:
         shoot()
-        time_since_last_shot = 0.0
+        timeSinceLastShot = 0.0
 
 func shoot() -> void:
-    animated_sprite.play("shoot")
     
-    var projectile = projectile_scene.instantiate()
-    projectile.position = shoot_position.global_position
-    projectile.scale = get_parent().scale
-    
-    add_child(projectile)
 
-    await animated_sprite.animation_finished
-    animated_sprite.play("idle")
-    
+    shooting.emit()
+    var projectile = projectileScene.instantiate()
+    projectile.position = shootPosition.global_position + Vector2(
+        SeededRNG.getRandomFloat(shootPositionMinOffsetX, shootPositionMaxOffsetX),
+        SeededRNG.getRandomFloat(shootPositionMinOffsetY, shootPositionMaxOffsetY)
+    )
+    projectile.scale = get_parent().scale
+    add_child(projectile)

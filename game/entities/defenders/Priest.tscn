@@ -1,0 +1,196 @@
+[gd_scene load_steps=30 format=3 uid="uid://dtfph18ory26p"]
+
+[ext_resource type="Script" uid="uid://p7l5oeofuf4h" path="res://game/entities/defenders/Priest.gd" id="1_chcxc"]
+[ext_resource type="Texture2D" uid="uid://dmbryh6r77g6j" path="res://assets/entites/Defenders/Priest/Priest-Death.png" id="1_pgfgb"]
+[ext_resource type="Resource" uid="uid://bsonibc82yt0m" path="res://data/units/Defender/Priest.tres" id="2_6tj2q"]
+[ext_resource type="Texture2D" uid="uid://dcimqqo0j08yo" path="res://assets/entites/Defenders/Priest/Priest-Heal.png" id="2_iqj3p"]
+[ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="3_16csw"]
+[ext_resource type="Texture2D" uid="uid://dvys8aae1qv74" path="res://assets/entites/Defenders/Priest/Priest-Idle.png" id="3_chcxc"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_6tj2q"]
+[ext_resource type="Script" uid="uid://clryr75lojg57" path="res://game/systems/ShootBehavior.gd" id="8_xwiy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8t54"]
+atlas = ExtResource("3_16csw")
+region = Rect2(1, 16, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwghr"]
+atlas = ExtResource("3_16csw")
+region = Rect2(1, 2, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1v57"]
+atlas = ExtResource("3_16csw")
+region = Rect2(1, 9, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tj2q"]
+atlas = ExtResource("1_pgfgb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16csw"]
+atlas = ExtResource("1_pgfgb")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwiy8"]
+atlas = ExtResource("1_pgfgb")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yukb"]
+atlas = ExtResource("1_pgfgb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2xot"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whqww"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iysox"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcwsd"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08yi"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koggr"]
+atlas = ExtResource("2_iqj3p")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqrh7"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd2yx"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gov7f"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37uao"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3nyf"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp2yt"]
+atlas = ExtResource("3_chcxc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jrop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tj2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16csw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwiy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yukb")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2xot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whqww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iysox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcwsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s08yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koggr")
+}],
+"loop": false,
+"name": &"Heal",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqrh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd2yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gov7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37uao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3nyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp2yt")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16csw"]
+size = Vector2(16.4, 20)
+
+[node name="Priest" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_chcxc")
+data = ExtResource("2_6tj2q")
+
+[node name="Lifebar" type="TextureProgressBar" parent="."]
+offset_left = -5.3333335
+offset_top = 5.9999995
+offset_right = 16.666666
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = SubResource("AtlasTexture_k8t54")
+texture_over = SubResource("AtlasTexture_kwghr")
+texture_progress = SubResource("AtlasTexture_j1v57")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8jrop")
+animation = &"Heal"
+autoplay = "Idle"
+flip_h = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("5_6tj2q")
+metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.9999998, -2.7999992)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_16csw")
+debug_color = Color(1, 0, 1, 0.41960785)
+
+[node name="ShootBehavior" type="Node" parent="." node_paths=PackedStringArray("shootPosition")]
+script = ExtResource("8_xwiy8")
+shootPosition = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://clryr75lojg57"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+scale = Vector2(0.39999995, 0.39999995)

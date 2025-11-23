@@ -23,8 +23,10 @@ TimeManager="*res://core/autoloads/TimeManager.gd"
 MoneyManager="*res://core/autoloads/MoneyManager.gd"
 ReportManager="*res://core/autoloads/ReportManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-LevelUpManager="*res://core/autoloads/LevelUpManager.gd"
 DragAndDropManager="*res://core/autoloads/DragAndDropManager.gd"
+UpgradeManager="*res://core/autoloads/UpgradeManager.gd"
+EffectManager="*res://core/autoloads/EffectManager.gd"
+AudioManager="*res://core/autoloads/AudioManager.gd"
 
 [dialogic]
 

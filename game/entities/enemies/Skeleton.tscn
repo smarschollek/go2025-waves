@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://dxtl6py3k22tk"]
 
 [ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_2wowk"]
-[ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton.tres" id="2_2wowk"]
+[ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton_L1.tres" id="2_2wowk"]
 [ext_resource type="Texture2D" uid="uid://ckado7mpt7g1i" path="res://assets/entites/Attackers/Skeleton/Skeleton-Attack01.png" id="2_nedxi"]
 [ext_resource type="Texture2D" uid="uid://blke7yt8lirpy" path="res://assets/entites/Attackers/Skeleton/Skeleton-Death.png" id="3_2wowk"]
 [ext_resource type="Texture2D" uid="uid://l7657gebwtcd" path="res://assets/entites/Attackers/Skeleton/Skeleton-Walk.png" id="4_hig7x"]
@@ -359,7 +359,7 @@ atlas = ExtResource("14_hig7x")
 region = Rect2(1, 9, 22, 6)
 
 [node name="Skeleton" type="AnimatableBody2D" groups=["Enemy"]]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2wowk")
@@ -371,7 +371,6 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_byctc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
 position = Vector2(1, -0.33333334)
 sprite_frames = SubResource("SpriteFrames_c5pwx")
 animation = &"Walk"
@@ -381,7 +380,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_6ym6r")
 }
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
+position = Vector2(2, 0)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("8_4esc0")
@@ -395,14 +395,13 @@ shape = SubResource("RectangleShape2D_gpyex")
 debug_color = Color(1, 0, 1, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(-3.333, -7)
+position = Vector2(16, 0)
 collision_layer = 8
 script = ExtResource("9_d8dl1")
 damage = 20
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(20.500006, 6.6666684)
 shape = SubResource("RectangleShape2D_44hk3")
 disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)

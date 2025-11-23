@@ -12,6 +12,5 @@ func _init() -> void:
     TimeManager.gameTick.connect(onGameTick)
     
     
-func onGameTick(totalTicks: int) -> void:
-    if totalTicks % 4 == 0:
-        opationTime += 1
+func onGameTick(_totalTicks: int) -> void:
+    opationTime += 1

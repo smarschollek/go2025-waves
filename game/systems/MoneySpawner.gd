@@ -2,7 +2,7 @@ extends Node
 class_name MoneySpawner
 
 @export var spawnInterval: float = 7.5
-@export var maxSpawns: int = 5
+@export var maxSpawns: int = 1
 @export var coin: PackedScene
 @export var area: Area2D
 

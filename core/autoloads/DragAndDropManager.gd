@@ -18,6 +18,7 @@ func startDrag(card: Node, scene: PackedScene, previewTexture: Texture2D) -> voi
     dragPreview.flip_h = true
     dragPreview.z_index = GameManager.ZINDEX.UI
     dragPreview.scale = Vector2(3,3)
+    
     GameManager.getSceneRoot().add_child(dragPreview)
 
 func tryDrop(dropZone: Node) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cd0p4kv4vwsp2"]
+[gd_scene load_steps=42 format=3 uid="uid://cd0p4kv4vwsp2"]
 
 [ext_resource type="Texture2D" uid="uid://d3nb4g6gx226c" path="res://assets/entites/Defenders/Swordsman/Swordsman-Attack.png" id="1_4s3ff"]
 [ext_resource type="Script" uid="uid://1nel2d78ly4t" path="res://game/entities/defenders/Swordman.gd" id="1_u65dv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d08uhv4oy0jtb" path="res://game/systems/Hitbox.gd" id="4_hl1hf"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_andr5"]
 [ext_resource type="Script" uid="uid://c84ve05ynuqi2" path="res://game/systems/StateMachine/StateMachine.gd" id="6_7h1mx"]
+[ext_resource type="AudioStream" uid="uid://8vav72ect6cf" path="res://assets/audio/slash.wav" id="7_bw50g"]
 [ext_resource type="Script" uid="uid://ws4wj8ligiog" path="res://game/systems/StateMachine/States/IdleState.gd" id="7_d7vfx"]
 [ext_resource type="Script" uid="uid://c7ligbs5gp4da" path="res://game/systems/StateMachine/States/AttackState.gd" id="8_gq5j0"]
 [ext_resource type="Script" uid="uid://b08xuh0cn8fce" path="res://game/systems/StateMachine/States/DeadState.gd" id="9_gq5j0"]
@@ -348,7 +349,7 @@ atlas = ExtResource("14_fia50")
 region = Rect2(1, 9, 22, 6)
 
 [node name="Fighter" type="Node2D" groups=["Defender"]]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_u65dv")
 data = ExtResource("2_op3qr")
 
@@ -368,6 +369,7 @@ libraries = {
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("4_hl1hf")
+soundEffect = ExtResource("7_bw50g")
 metadata/_custom_type_script = "uid://d08uhv4oy0jtb"
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox"]
@@ -424,5 +426,3 @@ value = 50.0
 texture_under = SubResource("AtlasTexture_034ri")
 texture_over = SubResource("AtlasTexture_hwt2h")
 texture_progress = SubResource("AtlasTexture_su5v4")
-
-[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]

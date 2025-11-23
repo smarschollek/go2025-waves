@@ -9,22 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="5_vlamk"]
 [ext_resource type="Texture2D" uid="uid://c6h3wv8yjugyn" path="res://assets/sprites/Lifebar.png" id="10_v7yra"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7yra"]
-atlas = ExtResource("4_vlamk")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhnm7"]
-atlas = ExtResource("4_vlamk")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihu5j"]
-atlas = ExtResource("4_vlamk")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5ysw"]
-atlas = ExtResource("4_vlamk")
-region = Rect2(300, 0, 100, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgfdx"]
 atlas = ExtResource("5_vlamk")
 region = Rect2(0, 0, 100, 100)
@@ -49,25 +33,24 @@ region = Rect2(400, 0, 100, 100)
 atlas = ExtResource("5_vlamk")
 region = Rect2(500, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7yra"]
+atlas = ExtResource("4_vlamk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhnm7"]
+atlas = ExtResource("4_vlamk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihu5j"]
+atlas = ExtResource("4_vlamk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5ysw"]
+atlas = ExtResource("4_vlamk")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpc2t"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v7yra")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mhnm7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ihu5j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y5ysw")
-}],
-"loop": false,
-"name": &"dead",
-"speed": 4.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lgfdx")
@@ -88,8 +71,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_pau6k")
 }],
 "loop": true,
-"name": &"shoot",
+"name": &"Attack",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7yra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhnm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihu5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5ysw")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7yra"]
@@ -113,12 +113,13 @@ script = ExtResource("1_m6mp1")
 data = ExtResource("2_v7yra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.2, -0.40000004)
 rotation = -0.00034524183
 scale = Vector2(0.9999999, 0.9999999)
 sprite_frames = SubResource("SpriteFrames_kpc2t")
-animation = &"shoot"
-autoplay = "shoot"
-frame_progress = 0.8673975
+animation = &"Attack"
+autoplay = "Attack"
+frame_progress = 0.19834179
 flip_h = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -179,6 +180,3 @@ value = 50.0
 texture_under = SubResource("AtlasTexture_otgl7")
 texture_over = SubResource("AtlasTexture_q8nnw")
 texture_progress = SubResource("AtlasTexture_mq30x")
-
-[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
-[connection signal="receivedDamage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

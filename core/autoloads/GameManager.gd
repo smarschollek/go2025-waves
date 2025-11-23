@@ -83,7 +83,17 @@ func loadGame() -> void:
             saveData = JSON.parse_string(content)
             file.close()
 
+# Level management
 
+var scene = preload("res://game/scenes/Level1Scene.tscn")
+
+var level: int = 0
+
+func loadNextLevel() -> void:
+    level += 1
+    get_tree().change_scene_to_packed(scene)
+
+# zIndex constants
 
 const ZINDEX = {
     "BACKGROUND": 0,

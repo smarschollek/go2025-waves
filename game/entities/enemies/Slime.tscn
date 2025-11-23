@@ -345,7 +345,7 @@ atlas = ExtResource("14_bk30f")
 region = Rect2(1, 9, 22, 6)
 
 [node name="Slime" type="AnimatableBody2D" groups=["Enemy"]]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_lysc5")
 data = ExtResource("2_wxhao")
 
