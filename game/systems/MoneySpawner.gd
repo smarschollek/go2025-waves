@@ -1,27 +1,23 @@
 extends Node
 class_name MoneySpawner
 
-@export var spawnInterval: float = 7.5
-@export var maxSpawns: int = 1
 @export var coin: PackedScene
 @export var area: Area2D
 
 var activeSpawns: int = 0
 
 func _ready() -> void:
-    addTimer()
+    TimeManager.gameTick.connect(onGameTick)
 
-func addTimer() -> void:
-    var timer: Timer = Timer.new()
-    timer.wait_time = spawnInterval
-    timer.one_shot = false
-    timer.autostart = true
-    add_child(timer)
-    timer.timeout.connect(spawnCoin)
+
+func onGameTick(tickCount: int) -> void:
+    if tickCount % int(GameManager.coinSpawnInterval) == 0:
+        spawnCoin()
+
 
 func spawnCoin() -> void:
     
-    if activeSpawns >= maxSpawns:
+    if activeSpawns >= GameManager.maximumCoinsOnScene:
         return
 
     var coinInstance: Area2D = coin.duplicate().instantiate()

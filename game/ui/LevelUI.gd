@@ -1,25 +1,26 @@
 extends Control
 
+@onready var waveProgress = $ColorRect/WaveProgress
+
 func _ready() -> void:
-    $NextLevel.visible = false
+    GameManager.levelFinished.connect(_onLevelFinished)
+    
+
+    $NextLevelDialog.visible = false
+    $GameOver.visible = false
     $Level.text = "Level %d" % GameManager.level
 
-func updateRemainingWaveTime(remainingTime: int) -> void:
-    if remainingTime == 0:
-        showNextLevel()
-    else:
-        updateWaveTimeLabel(remainingTime)
-
-func showNextLevel() -> void:
-    get_tree().paused = true
-    $NextLevel.visible = true    
+func _physics_process(_delta: float) -> void:
+    waveProgress.max_value = GameManager.waveTimeInSeconds
+    waveProgress.value = GameManager.currentWaveTimeInSeconds
     
-func updateWaveTimeLabel(remainingTime: int) -> void:
-    var minutes = int(remainingTime / 60)
-    var seconds = remainingTime % 60
-    $WaveTimeLabel.text = "Wave ends in: %02d:%02d" % [minutes, seconds]
+    $PrepareYourselfLabel.visible = GameManager.showLastWaveApproaching
 
+func _onLevelFinished(lost: bool) -> void:
+    get_tree().paused = true
 
-func _on_skip_button_button_up() -> void:
-    get_tree().paused = false
-    GameManager.loadNextLevel()
+    if lost:    
+        $GameOver.visible = true
+    else:
+        $NextLevelDialog.visible = true
+

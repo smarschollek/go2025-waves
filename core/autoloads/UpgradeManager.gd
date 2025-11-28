@@ -1,5 +1,10 @@
 extends Node
 
-var cellsPerRow := 3
+var rows := 14
+
+
+var showSwordman := false
+var showPriest := false
+var showFrostwizard := false
 
 

@@ -25,7 +25,12 @@ text = "Add 10 sec"
 layout_mode = 2
 text = "Toggle Fastforward"
 
+[node name="ShowAllDefenderButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Show all Defender"
+
 [connection signal="button_up" from="HBoxContainer/AddMoneyButton" to="." method="_on_add_money_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/AddCellToRowButton" to="." method="_on_add_cell_to_row_button_up"]
 [connection signal="button_up" from="HBoxContainer/Add10sButton" to="." method="_on_add_10s_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/FastForwadButton" to="." method="_on_fast_forwad_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/ShowAllDefenderButton" to="." method="_on_show_all_defender_button_button_up"]

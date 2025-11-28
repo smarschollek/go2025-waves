@@ -1,13 +1,10 @@
 extends Node
 
-var lastWaveSpawned = false
+const START_LEVEL = 10
 
 func reset() -> void:
     isDragging = false
     occupiedDropzones = []
-    
-    lastWaveSpawned = false
-
 
 var rootNode: Node = null
 
@@ -22,8 +19,10 @@ func _ready() -> void:
     reset()    
 
 func _physics_process(_delta: float) -> void:
-    if lastWaveSpawned and get_tree().get_nodes_in_group("Enemy").is_empty() and gameOverTriggered == false:
-        triggerGameOver(false)
+    if currentWaveTimeInSeconds >= waveTimeInSeconds:
+        if get_tree().get_nodes_in_group("Enemy").is_empty():
+            await get_tree().create_timer(1.0).timeout
+            levelFinished.emit(false)
 
 #Drag and Drop 
 
@@ -37,61 +36,32 @@ func isDropzoneFree(zone) -> bool:
     return not zone in occupiedDropzones
     
 # Gameover handling
+var showLastWaveApproaching := false
 
-signal gameOver(lost)
+signal levelFinished(lost: bool)
 
-var gameOverTriggered = false
+var waveTimeInSeconds := 9999
+var currentWaveTimeInSeconds := 0
 
-func triggerGameOver(lost: bool) -> void:
-    gameOverTriggered = true
-    emit_signal("gameOver", lost)
-
-# game state
-
-var operatorName := ""
-var day := 0
-
-# save/load handling
-
-var saveData := {
-    "operatorName": operatorName,
-    "day": day
-}
-
-var saveFilePath := "user://savegame.json"
+func enemyReachedGoal() -> void:
+    levelFinished.emit(true)
 
 func newGame() -> void:
+    get_tree().paused = false
     SeededRNG.setup(int(Time.get_unix_time_from_system()))
-
-    operatorName = "Doug #" + str(SeededRNG.getRandomInt(1, 1000))
-    day = 1
-
-func saveFileExists() -> bool:
-    return FileAccess.file_exists(saveFilePath)
-
-func saveGame() -> void:
-    var file := FileAccess.open(saveFilePath, FileAccess.WRITE)
-    if file:
-        file.store_string(JSON.stringify(saveData))
-        file.close()
-
-func loadGame() -> void:
-    if saveFileExists():
-        var file := FileAccess.open(saveFilePath, FileAccess.READ)
-        if file:
-            var content := file.get_as_text()
-            saveData = JSON.parse_string(content)
-            file.close()
+    level = START_LEVEL
+    loadNextLevel()
 
 # Level management
 
-var scene = preload("res://game/scenes/Level1Scene.tscn")
-
-var level: int = 0
+var level: int = START_LEVEL
 
 func loadNextLevel() -> void:
     level += 1
-    get_tree().change_scene_to_packed(scene)
+    waveTimeInSeconds = 9999
+    currentWaveTimeInSeconds = 0  
+
+    get_tree().change_scene_to_packed(load(LevelData.level1.scenePath))
 
 # zIndex constants
 
@@ -102,3 +72,11 @@ const ZINDEX = {
     "PROJECTILES": 4,
     "UI": 5
 }
+
+
+
+# Money management
+
+var coinValue: int = 40
+var maximumCoinsOnScene: int = 3
+var coinSpawnInterval: float = 7.5

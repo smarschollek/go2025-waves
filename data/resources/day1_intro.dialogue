@@ -1,5 +1,0 @@
-~ start
-Okay, here we are. Please focus your attention on the bottom of your screen, \nthere you will see a bag containing {{MoneyManager.totalMoney}} coins.\nThis is your starting budget. Next to it, you will find two units, a defender and our trusty wizard.\n
-Your mission is to survive for one minute.[wait=1] \nGood luck! 
-
-=> END

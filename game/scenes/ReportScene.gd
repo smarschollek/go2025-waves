@@ -4,10 +4,6 @@ func _ready() -> void:
     $DailyReport.day = GameManager.day
     $DailyReport.operatorName = GameManager.operatorName
     
-    $DailyReport.opationTime = ReportManager.opationTime
-    $DailyReport.killedUnits = ReportManager.killedUnits
-
-    Dialogic.VAR.set("operationTime", ReportManager.opationTime)
     Dialogic.signal_event.connect(_on_dialogue_signal_events)
     Dialogic.start("level1_report")
     

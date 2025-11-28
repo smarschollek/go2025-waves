@@ -21,10 +21,7 @@ func _on_add_cell_to_row_button_up() -> void:
 
 
 func _on_add_10s_button_button_up() -> void:
-    var spawnManager : SpawnManager = get_tree().get_first_node_in_group("SpawnManager")
-    if spawnManager:
-        print("Adding 10 seconds to game time")
-        spawnManager.gameTime += 10
+    pass
 
 
 func _on_fast_forwad_button_button_up() -> void:
@@ -32,3 +29,16 @@ func _on_fast_forwad_button_button_up() -> void:
         Engine.time_scale = 4.0
     else:
         Engine.time_scale = 1.0
+
+
+
+func _on_bag_content_button_button_up() -> void:
+    var bagManager : BagManager = get_tree().get_first_node_in_group("BagManager")
+    bagManager.printBagContents()
+    
+
+
+func _on_show_all_defender_button_button_up() -> void:
+    UpgradeManager.showSwordman = true
+    UpgradeManager.showPriest = true    
+    UpgradeManager.showFrostwizard = true

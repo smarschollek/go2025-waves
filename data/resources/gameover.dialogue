@@ -1,7 +1,0 @@
-~ start
-if DialogState.lost:
-	Oh boy you lost. Well not all days can be great! 
-else:
-	Congratulations you did great! 
-	
-=> END

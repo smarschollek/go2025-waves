@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="LevelBag" load_steps=5 format=3 uid="uid://crfdnup6ygy5"]
+
+[ext_resource type="Script" uid="uid://c1a8ewb4rduc1" path="res://game/systems/SpawnManager/BagScheduleItem.gd" id="1_7y7oc"]
+[ext_resource type="Script" uid="uid://bhq3ay2wmrm0i" path="res://data/levels/LevelBag.gd" id="1_sqmjr"]
+
+[sub_resource type="Resource" id="Resource_idhcd"]
+script = ExtResource("1_7y7oc")
+time = 20.0
+action = "ADD"
+type = "Skeleton"
+level = 1
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_7y7oc"]
+script = ExtResource("1_7y7oc")
+time = 90.0
+action = "ADD"
+type = "Skeleton"
+level = 2
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[resource]
+script = ExtResource("1_sqmjr")
+schedule = Array[ExtResource("1_7y7oc")]([SubResource("Resource_idhcd"), SubResource("Resource_7y7oc")])
+metadata/_custom_type_script = "uid://bhq3ay2wmrm0i"

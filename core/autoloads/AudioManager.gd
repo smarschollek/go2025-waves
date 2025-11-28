@@ -7,6 +7,7 @@ const VOLUMEDB = {
 const EFFECT_COOLDOWN_MS: int = 300
 
 var playedEffects: Array = []
+var musicPlayer: AudioStreamPlayer2D = null
 
 func _process(_delta: float) -> void:
     var currentTime := Time.get_ticks_msec()
@@ -19,8 +20,10 @@ func playBackgroundMusic(stream: AudioStream, volume_db: float = -10.0) -> void:
     if stream == null:
         return
 
-    var musicPlayer := AudioStreamPlayer2D.new()
-    add_child(musicPlayer)
+    if musicPlayer == null:
+        musicPlayer = AudioStreamPlayer2D.new()
+        add_child(musicPlayer)
+
     musicPlayer.stream = stream
     musicPlayer.volume_db = volume_db
     musicPlayer.play()

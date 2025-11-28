@@ -39,15 +39,5 @@ layout_mode = 2
 buttonText = "Play"
 buttonColor = Color(0.20020004, 0.2120302, 0.91, 1)
 
-[node name="CreditsButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("6_sc8sk")]
-layout_mode = 2
-buttonText = "Credits"
-buttonColor = Color(0.058333278, 0.7, 0, 1)
-
-[node name="ExitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("6_sc8sk")]
-layout_mode = 2
-buttonText = "Exit"
-
 [connection signal="onClick" from="CenterContainer/VBoxContainer/TutorialButton" to="." method="_on_play_button_on_click"]
 [connection signal="onClick" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_on_click"]
-[connection signal="onClick" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_on_click"]

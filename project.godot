@@ -21,20 +21,19 @@ SeededRNG="*res://core/utilities/RandomGenerator.gd"
 GameManager="*res://core/autoloads/GameManager.gd"
 TimeManager="*res://core/autoloads/TimeManager.gd"
 MoneyManager="*res://core/autoloads/MoneyManager.gd"
-ReportManager="*res://core/autoloads/ReportManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 DragAndDropManager="*res://core/autoloads/DragAndDropManager.gd"
 UpgradeManager="*res://core/autoloads/UpgradeManager.gd"
 EffectManager="*res://core/autoloads/EffectManager.gd"
 AudioManager="*res://core/autoloads/AudioManager.gd"
+LevelData="*res://core/autoloads/LevelData.gd"
+CurveMerger="*res://core/utilities/CurveMerger.gd"
 
 [dialogic]
 
 directories/dch_directory={}
 directories/dtl_directory={
-"level1_intro": "res://data/dialogs/level1_intro.dtl",
-"level1_report": "res://data/dialogs/level1_report.dtl",
-"menu": "res://data/dialogs/menu.dtl"
+"tutorial": "res://data/dialogs/tutorial.dtl"
 }
 layout/style_directory={
 "": "res://data/dialogs/customDialogicStyle.tres",

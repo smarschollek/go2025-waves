@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=27 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
-[ext_resource type="AudioStream" uid="uid://bwubdaqkn5115" path="res://assets/audio/JDB_Wicked.mp3" id="2_21ayp"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
 [ext_resource type="PackedScene" uid="uid://ch3f6e3lumpo8" path="res://game/tileLayer/Level2.tscn" id="3_i3cs7"]
 [ext_resource type="Script" uid="uid://3wd66t4fv7mr" path="res://game/systems/Goal.gd" id="5_h15h6"]
@@ -14,15 +13,15 @@
 [ext_resource type="Script" uid="uid://d0124uw2brey0" path="res://game/systems/SpawnManager/SpawnManager.gd" id="10_smboc"]
 [ext_resource type="Resource" uid="uid://ddob5hb5vexiy" path="res://data/units/Defender/Frostmage.tres" id="11_cw63n"]
 [ext_resource type="PackedScene" uid="uid://wxevnu42dgm6" path="res://game/entities/defenders/FrostWizard.tscn" id="11_twsxr"]
-[ext_resource type="PackedScene" uid="uid://ygjkxbx1utwf" path="res://game/ui/FastForwardButton.tscn" id="12_pyqq3"]
 [ext_resource type="PackedScene" uid="uid://dtfph18ory26p" path="res://game/entities/defenders/Priest.tscn" id="13_0ggwl"]
 [ext_resource type="Resource" uid="uid://bsonibc82yt0m" path="res://data/units/Defender/Priest.tres" id="13_2lupl"]
 [ext_resource type="PackedScene" uid="uid://dn52k5q2q6blr" path="res://game/ui/MoneyBag.tscn" id="13_3eq1r"]
+[ext_resource type="PackedScene" uid="uid://veglv7ir7jeb" path="res://game/entities/defenders/Knight.tscn" id="14_2lupl"]
+[ext_resource type="Resource" uid="uid://bh7ldd31sxk7s" path="res://data/units/Defender/Knight.tres" id="14_76uy3"]
 [ext_resource type="Script" uid="uid://dovq1ki4vv8el" path="res://game/systems/MoneySpawner.gd" id="14_lpue5"]
+[ext_resource type="Script" uid="uid://deosbg38t15hc" path="res://game/systems/SpawnManager/BagManager.gd" id="15_0ggwl"]
 [ext_resource type="PackedScene" uid="uid://d0c3fbcmoal1h" path="res://game/entities/Coin.tscn" id="15_phuu0"]
-[ext_resource type="Resource" uid="uid://cqpnfk8ebecgv" path="res://data/resources/EnemyPools/LevelInfo_Level1.tres" id="16_0ggwl"]
 [ext_resource type="PackedScene" uid="uid://c7t4osrimo6y6" path="res://game/ui/LevelUI.tscn" id="19_0ggwl"]
-[ext_resource type="PackedScene" uid="uid://c7dm20jng0sn" path="res://game/ui/LevelUpDialog.tscn" id="19_dl4tr"]
 [ext_resource type="PackedScene" uid="uid://bcms8y7mr460x" path="res://game/ui/DebugMenu.tscn" id="20_7ca05"]
 [ext_resource type="Script" uid="uid://cbudimnwbvmc6" path="res://game/systems/CellRow.gd" id="20_22m1w"]
 
@@ -34,7 +33,6 @@ size = Vector2(900, 214)
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_e0kcl")
-playBackgroundMusic = ExtResource("2_21ayp")
 
 [node name="LevelScenes" type="Node" parent="."]
 
@@ -61,14 +59,12 @@ debug_color = Color(0.5882353, 0, 0.92941177, 0.41960785)
 [node name="Defenders" type="Node" parent="."]
 
 [node name="Swordman" parent="Defenders" instance=ExtResource("7_e5fpj")]
-visible = false
 position = Vector2(482, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("7_lpue5")
 info = ExtResource("8_kecix")
 
 [node name="Frostwizard" parent="Defenders" instance=ExtResource("7_e5fpj")]
-visible = false
 position = Vector2(608, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("11_twsxr")
@@ -81,15 +77,23 @@ scene = ExtResource("7_phuu0")
 info = ExtResource("9_phuu0")
 
 [node name="Priest" parent="Defenders" instance=ExtResource("7_e5fpj")]
-visible = false
 position = Vector2(545, 494)
 scale = Vector2(2, 2)
 scene = ExtResource("13_0ggwl")
 info = ExtResource("13_2lupl")
 
+[node name="Knight" parent="Defenders" instance=ExtResource("7_e5fpj")]
+position = Vector2(670, 494)
+scale = Vector2(2, 2)
+scene = ExtResource("14_2lupl")
+info = ExtResource("14_76uy3")
+
+[node name="BagManager" type="Node2D" parent="." groups=["BagManager"]]
+script = ExtResource("15_0ggwl")
+metadata/_custom_type_script = "uid://deosbg38t15hc"
+
 [node name="SpawnManager" type="Node2D" parent="." groups=["SpawnManager"]]
 script = ExtResource("10_smboc")
-levelInfo = ExtResource("16_0ggwl")
 metadata/_custom_type_script = "uid://d0124uw2brey0"
 
 [node name="MarkerRow1" type="Marker2D" parent="SpawnManager"]
@@ -106,11 +110,6 @@ position = Vector2(-32, 348)
 [node name="WaveBreakTimer" type="Timer" parent="SpawnManager"]
 wait_time = 5.0
 one_shot = true
-
-[node name="FastForwardButton" parent="." instance=ExtResource("12_pyqq3")]
-visible = false
-position = Vector2(16, 450)
-scale = Vector2(2, 2)
 
 [node name="SoundAndMusic" type="Node" parent="."]
 
@@ -140,34 +139,32 @@ shape = SubResource("RectangleShape2D_phuu0")
 debug_color = Color(1, 0.91764706, 0, 0.42745098)
 metadata/_edit_lock_ = true
 
-[node name="LevelUpDialog" parent="." instance=ExtResource("19_dl4tr")]
-visible = false
-z_index = 20
-
 [node name="DebugMenu" parent="." instance=ExtResource("20_7ca05")]
 visible = false
 debugMode = true
 metadata/_edit_lock_ = true
 
-[node name="CellRows" type="Node" parent="."]
+[node name="BackRows" type="Node" parent="."]
 
-[node name="CellRow1" type="Node2D" parent="CellRows"]
+[node name="CellRow1" type="Node2D" parent="BackRows"]
 position = Vector2(917, 203)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
+amount = 12
 metadata/_custom_type_script = "uid://cbudimnwbvmc6"
 
-[node name="CellRow2" type="Node2D" parent="CellRows"]
+[node name="CellRow2" type="Node2D" parent="BackRows"]
 position = Vector2(917, 275)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
+amount = 12
 metadata/_custom_type_script = "uid://cbudimnwbvmc6"
 
-[node name="CellRow3" type="Node2D" parent="CellRows"]
+[node name="CellRow3" type="Node2D" parent="BackRows"]
 position = Vector2(917, 347)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
+amount = 12
 metadata/_custom_type_script = "uid://cbudimnwbvmc6"
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]
-[connection signal="remainingWaveTimeChanged" from="SpawnManager" to="LevelUI" method="updateRemainingWaveTime"]

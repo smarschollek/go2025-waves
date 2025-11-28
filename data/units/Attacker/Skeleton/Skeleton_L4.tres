@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attacker" load_steps=2 format=3 uid="uid://cvxq1jofd8pc"]
+
+[ext_resource type="Script" uid="uid://cyl03nig87bn5" path="res://data/units/Attacker/Attacker.gd" id="1_c4q2t"]
+
+[resource]
+script = ExtResource("1_c4q2t")
+moveSpeed = 45.0
+attackDamage = 18.0
+attackInterval = 0.85
+tint = Color(0.7999313, 0.23456231, 0.2681558, 1)
+health = 170
+metadata/_custom_type_script = "uid://cyl03nig87bn5"

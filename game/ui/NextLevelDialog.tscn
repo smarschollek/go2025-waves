@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://c10pv5uh6sjhk"]
+
+[ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="1_0d7je"]
+[ext_resource type="Script" uid="uid://b8k5va3j58qgc" path="res://game/ui/NextLevelDialog.gd" id="1_k3ebv"]
+[ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="2_k3ebv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d7je"]
+bg_color = Color(0.31466872, 0.17280549, 0.14256328, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq34k"]
+atlas = ExtResource("1_0d7je")
+region = Rect2(43, 39, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye5y1"]
+atlas = ExtResource("1_0d7je")
+region = Rect2(43, 39, 17, 19)
+
+[node name="NextLevelDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_k3ebv")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0d7je")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="NewDefenderContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_k3ebv")
+bbcode_enabled = true
+text = "[wave freq=10.0 connected=1][rainbow] A new defender has joined"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewDefenderImage" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jq34k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_k3ebv")
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k3ebv")
+text = "+ % Damange"
+icon = SubResource("AtlasTexture_ye5y1")
+
+[node name="Button2" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k3ebv")
+text = "+ % Crit"
+icon = SubResource("AtlasTexture_ye5y1")
+
+[node name="Button3" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k3ebv")
+text = "+ Attackspeed"
+icon = SubResource("AtlasTexture_ye5y1")
+
+[node name="SkipButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k3ebv")
+text = "Skip"
+
+[connection signal="button_up" from="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2/SkipButton" to="." method="_on_skip_button_button_up"]

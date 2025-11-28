@@ -1,11 +1,12 @@
 extends Area2D
 
-@export var coinValue: int = 40
+@export var coinValue: int
 @export var soundEffect: AudioStream
 
 signal collected
 
 func _ready() -> void:
+    coinValue = GameManager.coinValue
     self.z_index = GameManager.ZINDEX.UI
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

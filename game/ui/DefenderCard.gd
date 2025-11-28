@@ -9,16 +9,7 @@ extends Node2D
         $PreviewSprite.texture = info.sprite
         $Label.text = str(info.cost)
 
-@export var moneyManager: MoneyManager
-
-var draggable: bool = false
-var insideDropzone: bool = false
-var current_dropzone = null
 var drag_preview: Area2D
-
-@onready var drag_scene = preload("res://game/ui/DragPreview.tscn")
-
-var isDragging = false
 
 func _ready() -> void:
     MoneyManager.moneyChanged.connect(toggleCardEnabled)
@@ -31,7 +22,7 @@ func _input(event: InputEvent) -> void:
     if MoneyManager.hasEnoughMoney(info.cost) == false:
         return
 
-    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and self.visible:
         if event.pressed and $PreviewSprite.get_rect().has_point(to_local(event.position)) :
             if DragAndDropManager.isDragging():
                 clearPreviewSprite()

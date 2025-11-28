@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://dxtl6py3k22tk"]
 
 [ext_resource type="Script" uid="uid://crvagfbfvnk0n" path="res://game/entities/enemies/Enemy.gd" id="1_2wowk"]
-[ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton_L1.tres" id="2_2wowk"]
+[ext_resource type="Resource" uid="uid://d3q0iq6vs0pix" path="res://data/units/Attacker/Skeleton/Skeleton_L1.tres" id="2_2wowk"]
 [ext_resource type="Texture2D" uid="uid://ckado7mpt7g1i" path="res://assets/entites/Attackers/Skeleton/Skeleton-Attack01.png" id="2_nedxi"]
 [ext_resource type="Texture2D" uid="uid://blke7yt8lirpy" path="res://assets/entites/Attackers/Skeleton/Skeleton-Death.png" id="3_2wowk"]
 [ext_resource type="Texture2D" uid="uid://l7657gebwtcd" path="res://assets/entites/Attackers/Skeleton/Skeleton-Walk.png" id="4_hig7x"]
@@ -194,7 +194,7 @@ tracks/2/path = NodePath("Hitbox/HitboxCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.28813398, 0.4),
+"times": PackedFloat32Array(0, 0.28813398, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]

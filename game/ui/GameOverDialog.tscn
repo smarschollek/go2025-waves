@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://tgd12r5nx3mq"]
+
+[ext_resource type="Script" uid="uid://5l1t4m7iae1f" path="res://game/ui/GameOverDialog.gd" id="1_ih8ow"]
+[ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="1_p81hm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih8ow"]
+bg_color = Color(0.31466872, 0.17280549, 0.14256328, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="GameOver" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ih8ow")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ih8ow")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="NewDefenderContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_p81hm")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[wave freq=10.0 connected=1][color=red] You lost..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewDefenderImage" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p81hm")
+text = "Restart
+"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p81hm")
+text = "Exit"
+
+[connection signal="button_up" from="CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2/ExitButton" to="." method="_on_exit_button_button_up"]

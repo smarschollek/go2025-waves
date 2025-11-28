@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ckcy6nmmbxys8" path="res://assets/audio/pickupCoin.wav" id="2_812b1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ldg23"]
-radius = 7.363574
+radius = 11.207139
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iw5bb"]
 atlas = ExtResource("1_ldg23")

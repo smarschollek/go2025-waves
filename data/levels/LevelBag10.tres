@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="LevelBag" load_steps=9 format=3 uid="uid://s36x0odg86s6"]
+
+[ext_resource type="Script" uid="uid://c1a8ewb4rduc1" path="res://game/systems/SpawnManager/BagScheduleItem.gd" id="1_25umo"]
+[ext_resource type="Script" uid="uid://bhq3ay2wmrm0i" path="res://data/levels/LevelBag.gd" id="2_irpx2"]
+
+[sub_resource type="Resource" id="Resource_25umo"]
+script = ExtResource("1_25umo")
+time = 20.0
+action = "ADD"
+type = "SKELETON"
+level = 1
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_3vu8k"]
+script = ExtResource("1_25umo")
+time = 30.0
+action = "REMOVE"
+type = "SKELETON"
+level = 1
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_irpx2"]
+script = ExtResource("1_25umo")
+time = 30.0
+action = "ADD"
+type = "SKELETON"
+level = 2
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_wvkwy"]
+script = ExtResource("1_25umo")
+time = 60.0
+action = "REMOVE"
+type = "SKELETON"
+level = 2
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_14bsb"]
+script = ExtResource("1_25umo")
+time = 60.0
+action = "ADD"
+type = "SKELETON"
+level = 3
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[sub_resource type="Resource" id="Resource_u0koo"]
+script = ExtResource("1_25umo")
+time = 90.0
+action = "ADD"
+type = "SKELETON"
+level = 4
+metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
+
+[resource]
+script = ExtResource("2_irpx2")
+schedule = Array[ExtResource("1_25umo")]([SubResource("Resource_25umo"), SubResource("Resource_3vu8k"), SubResource("Resource_irpx2"), SubResource("Resource_wvkwy"), SubResource("Resource_14bsb"), SubResource("Resource_u0koo")])
+metadata/_custom_type_script = "uid://bhq3ay2wmrm0i"

@@ -11,7 +11,7 @@ region = Rect2(43, 39, 17, 19)
 [resource]
 script = ExtResource("1_hgkfe")
 cost = 75
-attackInterval = 1.6
+attackInterval = 1.75
 projectileScene = ExtResource("1_mla1o")
 sprite = SubResource("AtlasTexture_mla1o")
 buildCooldown = 5.0

@@ -29,8 +29,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hurtbox_died() -> void:
     $StateMachine.changeState("Dead")
-    ReportManager.killedUnits += 1
-
+    
 func _on_hurtbox_receivedDamage(_damageAmount: int, effectName: String, duration: float) -> void:
     if effectName.to_lower() == "slow":
         EffectManager.applySlow($AnimatedSprite2D, $StateMachine/Walk, $StateMachine/Attack, duration)

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn52k5q2q6blr"]
+[gd_scene load_steps=6 format=3 uid="uid://dn52k5q2q6blr"]
 
 [ext_resource type="Texture2D" uid="uid://d0q4ibv6moikd" path="res://assets/sprites/MoneyBag.png" id="1_cs0o8"]
 [ext_resource type="Script" uid="uid://dvxx3eljmqisn" path="res://game/ui/MoneyBag.gd" id="1_wodgw"]
 [ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="2_nu8bg"]
+[ext_resource type="Texture2D" uid="uid://7kvkaqqxn6tt" path="res://assets/sprites/Coin.png" id="4_17a1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqj70"]
+atlas = ExtResource("4_17a1p")
+region = Rect2(2, 2, 12, 12)
 
 [node name="MoneyBag" type="Node2D"]
 script = ExtResource("1_wodgw")
@@ -17,3 +22,7 @@ offset_right = 10.746948
 offset_bottom = 16.826828
 text = "999"
 label_settings = ExtResource("2_nu8bg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_fqj70")

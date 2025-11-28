@@ -11,7 +11,7 @@ region = Rect2(43, 39, 17, 19)
 [resource]
 script = ExtResource("1_m0c7y")
 attackDamage = 5.0
-attackInterval = 1.5
+attackInterval = 2.0
 projectileScene = ExtResource("1_wprr6")
 sprite = SubResource("AtlasTexture_cg4ij")
 health = 50

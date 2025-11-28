@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Defender" load_steps=4 format=3 uid="uid://bh7ldd31sxk7s"]
+
+[ext_resource type="Script" uid="uid://do8uaf47snj1r" path="res://data/units/Defender/Defender.gd" id="1_u8lap"]
+[ext_resource type="Texture2D" uid="uid://cwlwsen3rdsp6" path="res://assets/entites/Defenders/Knight Templar/Knight Templar-Idle.png" id="2_scgn7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqxna"]
+atlas = ExtResource("2_scgn7")
+region = Rect2(43, 40, 14, 17)
+
+[resource]
+script = ExtResource("1_u8lap")
+cost = 25
+attackDamage = 0.0
+attackInterval = 0.0
+sprite = SubResource("AtlasTexture_mqxna")
+health = 500
+metadata/_custom_type_script = "uid://do8uaf47snj1r"
