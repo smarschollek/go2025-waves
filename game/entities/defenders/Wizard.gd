@@ -2,13 +2,15 @@ extends Node2D
 
 @export var data: Defender
 
+var health: int = 0
+
 func _ready() -> void:
-    $Hurtbox.health = data.health
+    health = data.health
+    
+    $Hurtbox.health = health
     $Hurtbox.receivedDamage.connect(_on_hurtbox_received_damage)
     
-    $Lifebar.max_value = data.health
-    $Lifebar.visible = $Hurtbox.health < data.health
-    $Lifebar.value = $Hurtbox.health
+    $Lifebar.max_value = health
 
     $ShootBehavior.shootInterval = data.attackInterval
     $ShootBehavior.projectileScene = data.projectileScene
@@ -28,7 +30,7 @@ func _physics_process(_delta: float) -> void:
         queue_free()
 
     $Lifebar.value = $Hurtbox.health
-    $Lifebar.visible = $Hurtbox.health < data.health
+    $Lifebar.visible = $Hurtbox.health < health
 
 func _on_hurtbox_received_damage(_damage_amount: int, _effectName: String, _duration: float) -> void:
     EffectManager.applyDamage($AnimatedSprite2D)

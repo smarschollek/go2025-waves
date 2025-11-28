@@ -7,7 +7,7 @@
 script = ExtResource("1_25umo")
 time = 20.0
 action = "ADD"
-type = "SKELETON"
+type = "Skeleton"
 level = 1
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 script = ExtResource("1_25umo")
 time = 30.0
 action = "REMOVE"
-type = "SKELETON"
+type = "Skeleton"
 level = 1
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 
@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 script = ExtResource("1_25umo")
 time = 30.0
 action = "ADD"
-type = "SKELETON"
+type = "Skeleton"
 level = 2
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 
@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 script = ExtResource("1_25umo")
 time = 60.0
 action = "REMOVE"
-type = "SKELETON"
+type = "Skeleton"
 level = 2
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 
@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 script = ExtResource("1_25umo")
 time = 60.0
 action = "ADD"
-type = "SKELETON"
+type = "Skeleton"
 level = 3
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 
@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 script = ExtResource("1_25umo")
 time = 90.0
 action = "ADD"
-type = "SKELETON"
+type = "Skeleton"
 level = 4
 metadata/_custom_type_script = "uid://c1a8ewb4rduc1"
 

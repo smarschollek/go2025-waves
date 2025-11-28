@@ -99,6 +99,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 Enemy=""
 Dropzone=""
 Defender=""
+Coin=""
 
 [input]
 

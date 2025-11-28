@@ -30,10 +30,9 @@ func _on_gameTick(totalTick: int) -> void:
 
 
     var timeLeft = GameManager.waveTimeInSeconds - GameManager.currentWaveTimeInSeconds
-    if timeLeft == 50:
-        GameManager.showLastWaveApproaching = true
-    if timeLeft == 40:
-        GameManager.showLastWaveApproaching = false
+    
+    toggleEnemiesAreComing(timeLeft)
+    toggleLastWaveInfo(timeLeft)
 
     GameManager.currentWaveTimeInSeconds += 1
         
@@ -58,3 +57,16 @@ func spawnEnemy(sceneName: String, level: int, position: Marker2D):
     enemy.position = position.global_position
     enemy.scale = enemy.scale
     add_child(enemy)
+
+
+func toggleEnemiesAreComing(timeLeft : int):
+    if timeLeft == 160:
+        GameManager.showEnemiesAreComing = true
+    if timeLeft == 155:
+        GameManager.showEnemiesAreComing = false
+
+func toggleLastWaveInfo(timeLeft : int):
+    if timeLeft == 50:
+        GameManager.showLastWaveApproaching = true
+    if timeLeft == 40:
+        GameManager.showLastWaveApproaching = false

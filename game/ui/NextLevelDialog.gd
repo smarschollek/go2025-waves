@@ -6,7 +6,8 @@ extends Control
 var paths = [
     "res://assets/entites/Defenders/Swordsman/Swordsman-Idle.png",
     "res://assets/entites/Defenders/Priest/Priest-Idle.png",
-    "res://assets/entites/Defenders/Frostmage/Frostmage-Idle.png"
+    "res://assets/entites/Defenders/Frostmage/Frostmage-Idle.png",
+    "res://assets/entites/Defenders/Knight Templar/Knight Templar-Idle.png"
 ]
 
 func _ready() -> void:

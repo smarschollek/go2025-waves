@@ -37,6 +37,7 @@ func isDropzoneFree(zone) -> bool:
     
 # Gameover handling
 var showLastWaveApproaching := false
+var showEnemiesAreComing := false
 
 signal levelFinished(lost: bool)
 

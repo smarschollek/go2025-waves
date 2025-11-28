@@ -14,8 +14,10 @@ process_mode = 3
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
-offset_right = 960.0
-offset_bottom = 41.0
+offset_left = -8.0
+offset_top = 10.0
+offset_right = 952.0
+offset_bottom = 51.0
 script = ExtResource("1_jt5pe")
 
 [node name="Level" type="Label" parent="."]
@@ -30,7 +32,7 @@ label_settings = ExtResource("1_ehpgu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrepareYourselfLabel" type="RichTextLabel" parent="."]
+[node name="InfoLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 128.0

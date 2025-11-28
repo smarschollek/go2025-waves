@@ -7,6 +7,8 @@ func _process(_delta: float) -> void:
         $Defenders/Priest.visible = UpgradeManager.showPriest
     if $Defenders/Frostwizard.visible != UpgradeManager.showFrostwizard:
         $Defenders/Frostwizard.visible = UpgradeManager.showFrostwizard
+    if $Defenders/Knight.visible != UpgradeManager.showKnight:
+        $Defenders/Knight.visible = UpgradeManager.showKnight
 
 func _ready() -> void:
     
@@ -19,13 +21,13 @@ func _ready() -> void:
     $Defenders/Swordman.visible = UpgradeManager.showSwordman
     $Defenders/Priest.visible = UpgradeManager.showPriest
     $Defenders/Frostwizard.visible = UpgradeManager.showFrostwizard
-    
+    $Defenders/Knight.visible = UpgradeManager.showKnight
     
     TimeManager.startGameTimer()
 
     Engine.time_scale = 1.0
 
-    AudioManager.playBackgroundMusic(load("res://assets/audio/tower-defense.mp3") as AudioStream, -20)
+    AudioManager.playBackgroundMusic(load("res://assets/audio/bgm.mp3") as AudioStream, -15)
 
     $BagManager.schedule = getLevelBag().schedule
     $SpawnManager.initialize($BagManager, CurveMerger.buildRandomWaveCurve(180))
