@@ -10,13 +10,21 @@ extends Node2D
         $Label.text = str(info.cost)
 
 var drag_preview: Area2D
+var isEnabled := true
 
 func _ready() -> void:
     if not Engine.is_editor_hint():
         MoneyManager.moneyChanged.connect(toggleCardEnabled)
         DragAndDropManager.cardDropped.connect(_onCardDropped)
+    
+        $Tooltip.title = GameManager.TOOLTIPS[info.defenderType].title
+        $Tooltip.description = GameManager.TOOLTIPS[info.defenderType].description
+    
 
 func _input(event: InputEvent) -> void:
+    if isEnabled == false:
+        return
+        
     if $CooldownOverlay.visible:
         return
 
@@ -29,6 +37,7 @@ func _input(event: InputEvent) -> void:
                 clearPreviewSprite()
                 DragAndDropManager.clear()                
             else:
+                $Tooltip.show = false
                 DragAndDropManager.startDrag(self, scene, $PreviewSprite.texture)
 
     if event is InputEventMouseMotion and DragAndDropManager.isDragging():
@@ -63,14 +72,22 @@ func _on_cooldown_finished():
         $CooldownTimer.start()
         
 func toggleCardEnabled(newTotalMoney: int) -> void:
-    if newTotalMoney >= info.cost:
+    isEnabled = newTotalMoney >= info.cost
+
+    if isEnabled:
         $PreviewSprite.modulate = Color(1, 1, 1, 1)
         $CardSprite.modulate = Color(1, 1, 1, 1)
         $Label.modulate = Color(1, 1, 1, 1)
-        $Area2D/CollisionShape2D.disabled = false
     else:
         $PreviewSprite.modulate = Color(1, 1, 1, 0.5)
         $CardSprite.modulate = Color(1, 1, 1, 0.5)
         $Label.modulate = Color(1, 0, 0, 0.5)
-        $Area2D/CollisionShape2D.disabled = true
     pass
+
+
+
+func _on_mouse_exited() -> void:
+    $Tooltip.show = false
+
+func _on_mouse_entered() -> void:
+    $Tooltip.show = true

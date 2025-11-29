@@ -430,7 +430,7 @@ animationPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://102woa1e7t2n"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(18, 0.333)
+target_position = Vector2(0, -20.4)
 collide_with_areas = true
 collide_with_bodies = false
 

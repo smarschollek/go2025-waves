@@ -138,6 +138,7 @@ shape = SubResource("RectangleShape2D_phuu0")
 debug_color = Color(1, 0.91764706, 0, 0.42745098)
 
 [node name="DebugMenu" parent="." instance=ExtResource("20_7ca05")]
+visible = false
 debugMode = true
 metadata/_edit_lock_ = true
 

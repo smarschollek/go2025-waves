@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd05jwn2e0pwo"]
+[gd_scene load_steps=11 format=3 uid="uid://dd05jwn2e0pwo"]
 
 [ext_resource type="Script" uid="uid://b4halcrp15r7i" path="res://game/ui/UpgradeBar.gd" id="1_cdfng"]
 [ext_resource type="Texture2D" uid="uid://balmlvjbsgpe4" path="res://assets/sprites/upgrades.png" id="1_yk0nw"]
+[ext_resource type="PackedScene" uid="uid://dowl16v8x2j23" path="res://game/ui/Tooltip.tscn" id="3_x0j2q"]
+[ext_resource type="Texture2D" uid="uid://daugw3nvwkass" path="res://assets/sprites/Tooltip_left.png" id="4_xmkke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tee3o"]
 atlas = ExtResource("1_yk0nw")
@@ -73,6 +75,18 @@ offset_top = -1.0
 offset_right = 16.0
 offset_bottom = 15.0
 texture = SubResource("AtlasTexture_6e64o")
+
+[node name="Tooltip" parent="." node_paths=PackedStringArray("mouseEventsNode") instance=ExtResource("3_x0j2q")]
+layout_mode = 1
+offset_left = -48.0
+offset_top = -15.0
+offset_right = -99.840004
+offset_bottom = -130.08
+grow_horizontal = 1
+grow_vertical = 1
+texture = ExtResource("4_xmkke")
+tooltipPosition = "left"
+mouseEventsNode = NodePath("..")
 
 [connection signal="button_up" from="MinusButton" to="." method="_on_minus_button_button_up"]
 [connection signal="button_up" from="PlusButton" to="." method="_on_plus_button_button_up"]

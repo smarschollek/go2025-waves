@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi1wpm8l442uo"]
+[gd_scene load_steps=8 format=3 uid="uid://bi1wpm8l442uo"]
 
 [ext_resource type="Script" uid="uid://c283d7w30c7e8" path="res://game/entities/defenders/ArcaneCore.gd" id="1_0ah2f"]
 [ext_resource type="Texture2D" uid="uid://bn5t5t4l08qls" path="res://assets/sprites/ArcaneStone.png" id="1_5y8jv"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="3_2bsky"]
+[ext_resource type="PackedScene" uid="uid://dowl16v8x2j23" path="res://game/ui/Tooltip.tscn" id="4_xfk4o"]
+[ext_resource type="Texture2D" uid="uid://daugw3nvwkass" path="res://assets/sprites/Tooltip_left.png" id="5_2gqm7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfk4o"]
+radius = 13.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2bsky"]
 radius = 14.0
 
-[node name="ArcaneCore" type="Node2D"]
+[node name="ArcaneCore" type="Area2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_0ah2f")
 
@@ -20,7 +25,11 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xfk4o")
+
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_mask = 8
 script = ExtResource("3_2bsky")
 health = 1
@@ -29,3 +38,13 @@ metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_2bsky")
 debug_color = Color(1, 0, 1, 0.41960785)
+
+[node name="Tooltip" parent="." node_paths=PackedStringArray("mouseEventsNode") instance=ExtResource("4_xfk4o")]
+visible = false
+offset_left = -62.0
+offset_top = -22.5
+offset_right = -14.0
+offset_bottom = 25.5
+texture = ExtResource("5_2gqm7")
+tooltipPosition = "left"
+mouseEventsNode = NodePath("..")

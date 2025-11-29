@@ -75,6 +75,35 @@ const ZINDEX = {
     "UI": 5
 }
 
+# Tooltips
+
+const TOOLTIPS = {
+    "arcaneCore": {
+        "title": "Arcane Core",
+        "description": "Explodes when hit. Destroys all opponents on the lane"
+    },
+    "wizard": {
+        "title": "Wizard",
+        "description": "Shoots magic projectiles at enemies."
+    },
+    "swordman": {
+        "title": "Swordman",
+        "description": "Melee unit that attacks enemies up close."
+    
+    },
+    "priest": {
+        "title": "Priest",
+        "description": "Pray for more coins",
+    },
+    "frostwizard": {
+        "title": "Frost Wizard",
+        "description": "Shoots frost projectiles that slow down enemies.",
+    },
+    "knight": {
+        "title": "Knight",
+        "description": "Tank unit with high health.",
+    },
+}
 
 
 # Money management
@@ -82,3 +111,4 @@ const ZINDEX = {
 var coinValue: int = 25
 var maximumCoinsOnScene: int = 3
 var coinSpawnInterval: float = 5
+

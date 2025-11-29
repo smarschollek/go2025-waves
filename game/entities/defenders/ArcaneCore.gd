@@ -1,10 +1,15 @@
-extends Node2D
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     $RayCast2D.target_position = Vector2(global_position.x / -2, 0)
 
+    $Tooltip.title = GameManager.TOOLTIPS.arcaneCore.title
+    $Tooltip.description = GameManager.TOOLTIPS.arcaneCore.description
+
+    self.mouse_entered.connect(_on_mouse_entered)
+    self.mouse_exited.connect(_on_mouse_exited)
 
 func _physics_process(_delta: float) -> void:
     if $Hurtbox.dead:
@@ -21,3 +26,8 @@ func killEverything() -> bool:
 
     return true
         
+func _on_mouse_entered() -> void:
+    $Tooltip.show = true
+
+func _on_mouse_exited() -> void:
+    $Tooltip.show = false

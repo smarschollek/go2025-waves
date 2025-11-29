@@ -174,5 +174,5 @@ layout_mode = 2
 
 [node name="PointsLabel" type="Label" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
-text = "Points left: 99"
+text = "Points Left: 1234567890"
 label_settings = ExtResource("10_q838u")

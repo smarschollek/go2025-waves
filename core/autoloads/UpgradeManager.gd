@@ -1,6 +1,6 @@
 extends Node
 
-var rows := 14
+var rows := 12
 
 var showSwordman := false
 var showPriest := false
@@ -8,6 +8,7 @@ var showFrostwizard := false
 var showKnight := false
 
 var pointsToSpend := 0
+var level = 0
 
 const UPGRADETYPES = {
     "attackSpeed": "attackSpeed",
@@ -15,7 +16,8 @@ const UPGRADETYPES = {
     "health": "health",
 }
 
-var level = 0
+var appliedUpgrade = []
+
 func _physics_process(_delta: float) -> void:
     if level != GameManager.level:
         level = GameManager.level
@@ -26,8 +28,8 @@ func _physics_process(_delta: float) -> void:
 
 var defenderUpgradesInitialValues = {
     "wizard" : {
-        "attackSpeed" : 0,
         "attackDamage": 0,
+        "attackSpeed" : 0,
     },
     "swordman": {
         "health" : 0,
@@ -70,16 +72,23 @@ var defenderUpgrades = {
 
 func reset() -> void:
     pointsToSpend = 0
+    appliedUpgrade.clear()
     defenderUpgrades = defenderUpgradesInitialValues.duplicate(true)
+
+func addPoints(points: int) -> void:
+    appliedUpgrade.clear()
+    pointsToSpend += points
+    
 
 func downgradeADefenders(defenderType: String, upgradeType: String) -> int:
     if defenderUpgrades.has(defenderType):
         if defenderUpgrades[defenderType].has(upgradeType):
             if defenderUpgrades[defenderType][upgradeType] > 0:
-                defenderUpgrades[defenderType][upgradeType] -= 1
-                pointsToSpend += 1
-                
-    print(defenderUpgrades)
+                if appliedUpgrade.has(defenderType + "_" + upgradeType):
+                    defenderUpgrades[defenderType][upgradeType] -= 1
+                    pointsToSpend += 1
+                    appliedUpgrade.erase(defenderType + "_" + upgradeType)                    
+
     return defenderUpgrades[defenderType][upgradeType]
     
 
@@ -89,11 +98,12 @@ func upgradeDefender(defenderType: String, upgradeType: String) -> int:
 
     if defenderUpgrades.has(defenderType):
         if defenderUpgrades[defenderType].has(upgradeType):
-            if defenderUpgrades[defenderType][upgradeType] < 10:
+            if defenderUpgrades[defenderType][upgradeType] < 9:
                 defenderUpgrades[defenderType][upgradeType] += 1
                 pointsToSpend -= 1
+                appliedUpgrade.append(defenderType + "_" + upgradeType)
+                
 
-    print(defenderUpgrades)
     return defenderUpgrades[defenderType][upgradeType]
     
 func getDefenderValue(defenderType: String, upgradeType: String) -> int:
@@ -111,9 +121,9 @@ func applyUpgrades(value: float, defenderType: String, upgradeType: String) -> f
 
     for i in upgradeLevel:
         if upgradeType == UPGRADETYPES.attackSpeed:
-            value = value - (value / 100 * 10)
+            value = value - (value / 100 * 2.5)
         else: 
-            value = value + (value / 100 * 10)
+            value = value + (value / 100 * 2.5)
 
     return value
 

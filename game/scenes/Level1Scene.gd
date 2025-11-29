@@ -11,10 +11,7 @@ func _process(_delta: float) -> void:
         $Defenders/Knight.visible = UpgradeManager.showKnight
 
 func _ready() -> void:
-    
-    print("Level 1 Scene ready")
     MoneyManager.reset()
-
     GameManager.setSceneRoot(self)
     GameManager.reset()
     

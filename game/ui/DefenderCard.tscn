@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyb4ljev8d4v3"]
+[gd_scene load_steps=8 format=3 uid="uid://cyb4ljev8d4v3"]
 
 [ext_resource type="Script" uid="uid://0b24p84xu6du" path="res://game/ui/DefenderCard.gd" id="1_tv4ni"]
 [ext_resource type="Texture2D" uid="uid://dcbcsucr885sq" path="res://assets/sprites/Card.png" id="2_t6pvl"]
 [ext_resource type="Texture2D" uid="uid://bsdc6uhqtv2pw" path="res://assets/sprites/defender-01.png" id="3_vll6s"]
 [ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="4_my02u"]
+[ext_resource type="PackedScene" uid="uid://dowl16v8x2j23" path="res://game/ui/Tooltip.tscn" id="5_cambo"]
+[ext_resource type="Texture2D" uid="uid://da2jg3rwe628e" path="res://assets/sprites/Tooltip_top.png" id="6_wsc62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vll6s"]
 size = Vector2(30.20847, 40.042606)
@@ -52,4 +54,16 @@ label_settings = ExtResource("4_my02u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Tooltip" parent="." instance=ExtResource("5_cambo")]
+visible = false
+offset_left = -24.0
+offset_top = -66.0
+offset_right = 24.0
+offset_bottom = -18.0
+texture = ExtResource("6_wsc62")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_finished"]
+[connection signal="mouse_entered" from="CooldownOverlay" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CooldownOverlay" to="." method="_on_mouse_exited"]

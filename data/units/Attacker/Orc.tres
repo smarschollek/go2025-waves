@@ -7,6 +7,5 @@ script = ExtResource("1_fkqcv")
 moveSpeed = 30.0
 attackDamage = 20.0
 attackInterval = 1.2
-name = "Orc"
 health = 150
 metadata/_custom_type_script = "uid://cyl03nig87bn5"

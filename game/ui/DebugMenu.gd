@@ -2,9 +2,6 @@ extends Node2D
 
 @export var debugMode: bool = false
 
-func _ready() -> void:
-    self.visible = debugMode
-
 func _process(_delta: float) -> void:
     if debugMode and Input.is_action_just_pressed("ToggleDebugMenu"):
         self.visible = !self.visible

@@ -13,7 +13,7 @@ var paths = [
 ]
 
 func _ready() -> void:
-    UpgradeManager.pointsToSpend += 1 
+    UpgradeManager.addPoints(1)
     defenderContainer.visible = GameManager.level <= 3    
     
     if defenderContainer.visible:
