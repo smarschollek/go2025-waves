@@ -21,13 +21,13 @@ func killEverything() -> bool:
         var collider = $RayCast2D.get_collider() 
         if collider is Hurtbox:
             collider.dead = true
-            collider.died.emit()
+            collider.died.emit(false)
             return false
 
     return true
         
 func _on_mouse_entered() -> void:
-    $Tooltip.show = true
+    $Tooltip.showTooltip = true
 
 func _on_mouse_exited() -> void:
-    $Tooltip.show = false
+    $Tooltip.showTooltip = false

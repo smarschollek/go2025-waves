@@ -48,6 +48,7 @@ func enemyReachedGoal() -> void:
     levelFinished.emit(true)
 
 func newGame() -> void:
+    killedEnemies = 0
     get_tree().paused = false
     UpgradeManager.reset()
     SeededRNG.setup(int(Time.get_unix_time_from_system()))
@@ -112,3 +113,8 @@ var coinValue: int = 25
 var maximumCoinsOnScene: int = 3
 var coinSpawnInterval: float = 5
 
+# Stats
+
+var killedEnemies := 0
+var moneyCollected := 0
+var moneySpent := 0

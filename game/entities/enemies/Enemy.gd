@@ -27,7 +27,10 @@ func _physics_process(_delta: float) -> void:
     else:
         $StateMachine.changeState("Walk")
 
-func _on_hurtbox_died() -> void:
+func _on_hurtbox_died(count: bool) -> void:
+    if count:
+        GameManager.killedEnemies += 1
+        
     $StateMachine.changeState("Dead")
     
 func _on_hurtbox_receivedDamage(_damageAmount: int, effectName: String, duration: float) -> void:

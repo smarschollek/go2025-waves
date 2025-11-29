@@ -14,6 +14,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
         collect()
 
 func collect() -> void:
+    GameManager.moneyCollected += coinValue
     AudioManager.playEffect(soundEffect, AudioManager.VOLUMEDB.EFFECT)
     MoneyManager.addMoney(coinValue)
     emit_signal("collected")

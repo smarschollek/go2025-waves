@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
                 clearPreviewSprite()
                 DragAndDropManager.clear()                
             else:
-                $Tooltip.show = false
+                $Tooltip.showTooltip = false
                 DragAndDropManager.startDrag(self, scene, $PreviewSprite.texture)
 
     if event is InputEventMouseMotion and DragAndDropManager.isDragging():
@@ -87,7 +87,7 @@ func toggleCardEnabled(newTotalMoney: int) -> void:
 
 
 func _on_mouse_exited() -> void:
-    $Tooltip.show = false
+    $Tooltip.showTooltip = false
 
 func _on_mouse_entered() -> void:
-    $Tooltip.show = true
+    $Tooltip.showTooltip = true

@@ -33,7 +33,7 @@ func _onLevelFinished(lost: bool) -> void:
     get_tree().paused = true
 
     if lost:    
-        $GameOver.visible = true
+        get_tree().change_scene_to_file("res://game/scenes/ReportScene.tscn")
     else:
         $NextLevelDialog.visible = true
 

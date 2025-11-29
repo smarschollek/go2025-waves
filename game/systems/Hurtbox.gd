@@ -4,7 +4,7 @@ extends Area2D
 var dead : bool = false
 
 signal receivedDamage(damageAmount: int, effectName: String, duration: float)
-signal died()
+signal died(count: bool)
 
 @export var health : int
 
@@ -19,4 +19,4 @@ func _on_body_entered(hitbox: Area2D) -> void:
 
         if health <= 0:
             dead = true
-            emit_signal("died")
+            died.emit(true)

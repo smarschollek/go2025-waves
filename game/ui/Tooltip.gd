@@ -22,10 +22,10 @@ extends TextureRect
         description = value
         $DescriptionLabel.text = description
 
-@export var show:= false:
+@export var showTooltip:= false:
     set(value):
-        show = value
-        visible = show
+        showTooltip = value
+        visible = showTooltip
 
 func _ready() -> void:
     self.z_index = GameManager.ZINDEX.UI

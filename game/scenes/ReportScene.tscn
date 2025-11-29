@@ -1,11 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbg3meq701q30"]
+[gd_scene load_steps=5 format=3 uid="uid://dbg3meq701q30"]
 
-[ext_resource type="PackedScene" uid="uid://dlruptxsqk4vy" path="res://game/ui/DailyReport.tscn" id="1_fw1f0"]
 [ext_resource type="Script" uid="uid://bfm4oouamesl7" path="res://game/scenes/ReportScene.gd" id="1_un6l5"]
+[ext_resource type="Texture2D" uid="uid://ckl5oas2wr5t8" path="res://assets/sprites/report.png" id="2_jb53b"]
+[ext_resource type="LabelSettings" uid="uid://vwyeawl2lcvp" path="res://assets/fonts/DailyReportLabel.tres" id="3_kntcy"]
+[ext_resource type="LabelSettings" uid="uid://comr6an6csw4b" path="res://assets/fonts/DailyReportText.tres" id="4_b744i"]
 
-[node name="ReportScene" type="Node2D"]
+[node name="ReportScene" type="CenterContainer"]
+offset_right = 960.0
+offset_bottom = 540.0
 script = ExtResource("1_un6l5")
 
-[node name="DailyReport" parent="." instance=ExtResource("1_fw1f0")]
-position = Vector2(466.6198, 170.85626)
-scale = Vector2(1.5, 1.5)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_jb53b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 1
+offset_left = 25.0
+offset_top = 50.0
+offset_right = 217.0
+offset_bottom = 194.0
+theme_override_constants/separation = 12
+
+[node name="NameContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Name:"
+label_settings = ExtResource("3_kntcy")
+
+[node name="Text" type="Label" parent="TextureRect/VBoxContainer/NameContainer"]
+layout_mode = 2
+text = "Doug #1234"
+label_settings = ExtResource("4_b744i")
+
+[node name="Levelcontainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Levelcontainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Level:"
+label_settings = ExtResource("3_kntcy")
+
+[node name="Text" type="Label" parent="TextureRect/VBoxContainer/Levelcontainer"]
+layout_mode = 2
+text = "123456789"
+label_settings = ExtResource("4_b744i")
+
+[node name="KilledUnitsContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/KilledUnitsContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Killed Units:"
+label_settings = ExtResource("3_kntcy")
+
+[node name="Text" type="Label" parent="TextureRect/VBoxContainer/KilledUnitsContainer"]
+layout_mode = 2
+text = "123456789"
+label_settings = ExtResource("4_b744i")
+
+[node name="CollectedMoneyContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/CollectedMoneyContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Money Collected:"
+label_settings = ExtResource("3_kntcy")
+autowrap_mode = 2
+
+[node name="Text" type="Label" parent="TextureRect/VBoxContainer/CollectedMoneyContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "123456789"
+label_settings = ExtResource("4_b744i")
+
+[node name="SpentMoneyContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/SpentMoneyContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Money Spent:"
+label_settings = ExtResource("3_kntcy")
+autowrap_mode = 2
+
+[node name="Text" type="Label" parent="TextureRect/VBoxContainer/SpentMoneyContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "123456789"
+label_settings = ExtResource("4_b744i")

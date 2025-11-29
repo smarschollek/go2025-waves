@@ -23,6 +23,7 @@ func hasEnoughMoney(amount: int) -> bool:
 
 func spendMoney(amount: int) -> bool:
     if totalMoney >= amount:
+        GameManager.moneySpent += amount
         totalMoney -= amount
         return true
-    return false
+    return false    
