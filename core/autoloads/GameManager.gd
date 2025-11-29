@@ -1,6 +1,6 @@
 extends Node
 
-const START_LEVEL = 10
+const START_LEVEL = 0
 
 func reset() -> void:
     isDragging = false
@@ -49,6 +49,7 @@ func enemyReachedGoal() -> void:
 
 func newGame() -> void:
     get_tree().paused = false
+    UpgradeManager.reset()
     SeededRNG.setup(int(Time.get_unix_time_from_system()))
     level = START_LEVEL
     loadNextLevel()
@@ -78,6 +79,6 @@ const ZINDEX = {
 
 # Money management
 
-var coinValue: int = 40
+var coinValue: int = 25
 var maximumCoinsOnScene: int = 3
-var coinSpawnInterval: float = 7.5
+var coinSpawnInterval: float = 5

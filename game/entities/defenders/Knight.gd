@@ -2,11 +2,14 @@ extends Node2D
 
 @export var data: Defender
 
+var health := 0
+
 func _ready() -> void:
-    $Hurtbox.health = data.health
+    health = round(UpgradeManager.applyUpgrades(data.health, data.defenderType, UpgradeManager.UPGRADETYPES.health))
+    $Hurtbox.health = health
     $Hurtbox.receivedDamage.connect(_on_hurtbox_received_damage)
 
-    $Lifebar.max_value = data.health
+    $Lifebar.max_value = health
     $Lifebar.value = $Hurtbox.health
 
 func _process(_delta: float) -> void:
@@ -18,7 +21,7 @@ func _process(_delta: float) -> void:
         queue_free()
 
     $Lifebar.value = $Hurtbox.health
-    $Lifebar.visible = $Hurtbox.health < data.health
+    $Lifebar.visible = $Hurtbox.health < health
 
     if $RayCast2D.is_colliding():
         $AnimatedSprite2D.play("Block")

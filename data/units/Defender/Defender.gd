@@ -1,6 +1,7 @@
 extends Unit
 class_name Defender
 
+@export var defenderType: String = "wizard"
 @export var cost: int = 100
 @export var attackDamage: float = 10.0
 @export var attackInterval: float = 1.0

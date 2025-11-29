@@ -12,10 +12,11 @@ func _ready() -> void:
     
     $Lifebar.max_value = health
 
-    $ShootBehavior.shootInterval = data.attackInterval
+    $ShootBehavior.shootInterval = UpgradeManager.applyUpgrades(data.attackInterval, data.defenderType, UpgradeManager.UPGRADETYPES.attackSpeed)
     $ShootBehavior.projectileScene = data.projectileScene
-    $ShootBehavior.damage = data.attackDamage
     $ShootBehavior.projectileSpeed = data.projectileSpeed
+    $ShootBehavior.damage = UpgradeManager.applyUpgrades(data.attackDamage, data.defenderType, UpgradeManager.UPGRADETYPES.attackDamage)
+    
 
     $RayCast1.target_position = Vector2(global_position.x / -2.5, 0)
     $RayCast2.target_position = Vector2(global_position.x / -2.5, 0)

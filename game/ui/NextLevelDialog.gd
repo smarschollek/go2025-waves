@@ -1,7 +1,9 @@
 extends Control
 
-@onready var defenderContainer = $PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer
-@onready var textureReact = $PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer/NewDefenderImage
+@onready var defenderContainer = $PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer/NewDefenderContainer
+@onready var textureReact = $PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer/NewDefenderContainer/NewDefenderImage
+
+
 
 var paths = [
     "res://assets/entites/Defenders/Swordsman/Swordsman-Idle.png",
@@ -11,6 +13,7 @@ var paths = [
 ]
 
 func _ready() -> void:
+    UpgradeManager.pointsToSpend += 1 
     defenderContainer.visible = GameManager.level <= 3    
     
     if defenderContainer.visible:
@@ -18,7 +21,7 @@ func _ready() -> void:
         atlasTexture.atlas = load(paths[GameManager.level - 1])
         atlasTexture.region = Rect2(43.0, 39.0, 17.0, 19.0)
         textureReact.texture = atlasTexture
-        
-func _on_skip_button_button_up() -> void:
+
+func _on_next_level_button_button_up() -> void:
     get_tree().paused = false
     GameManager.loadNextLevel()

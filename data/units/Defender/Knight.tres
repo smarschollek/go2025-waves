@@ -9,9 +9,11 @@ region = Rect2(43, 40, 14, 17)
 
 [resource]
 script = ExtResource("1_u8lap")
+defenderType = "knight"
 cost = 25
 attackDamage = 0.0
 attackInterval = 0.0
 sprite = SubResource("AtlasTexture_mqxna")
+buildCooldown = 9.0
 health = 500
 metadata/_custom_type_script = "uid://do8uaf47snj1r"

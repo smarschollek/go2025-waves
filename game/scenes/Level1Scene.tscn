@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://by2mswsgxein6"]
+[gd_scene load_steps=28 format=3 uid="uid://by2mswsgxein6"]
 
 [ext_resource type="Script" uid="uid://c3ad7pgugiejf" path="res://game/scenes/Level1Scene.gd" id="1_e0kcl"]
 [ext_resource type="PackedScene" uid="uid://dkci4armqih45" path="res://game/tileLayer/Level1.tscn" id="2_lvmn3"]
@@ -24,12 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://c7t4osrimo6y6" path="res://game/ui/LevelUI.tscn" id="19_0ggwl"]
 [ext_resource type="PackedScene" uid="uid://bcms8y7mr460x" path="res://game/ui/DebugMenu.tscn" id="20_7ca05"]
 [ext_resource type="Script" uid="uid://cbudimnwbvmc6" path="res://game/systems/CellRow.gd" id="20_22m1w"]
+[ext_resource type="PackedScene" uid="uid://bi1wpm8l442uo" path="res://game/entities/defenders/ArcaneCore.tscn" id="23_0ggwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1edn8"]
 size = Vector2(15.086487, 273)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phuu0"]
-size = Vector2(900, 214)
+size = Vector2(707, 214)
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_e0kcl")
@@ -127,41 +128,48 @@ area = NodePath("Area2D")
 metadata/_custom_type_script = "uid://dovq1ki4vv8el"
 
 [node name="Area2D" type="Area2D" parent="MoneySpawner"]
-visible = false
 position = Vector2(480, 274)
 collision_layer = 0
 collision_mask = 0
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoneySpawner/Area2D"]
-position = Vector2(20, 1)
+position = Vector2(-9.5, 1)
 shape = SubResource("RectangleShape2D_phuu0")
 debug_color = Color(1, 0.91764706, 0, 0.42745098)
-metadata/_edit_lock_ = true
 
 [node name="DebugMenu" parent="." instance=ExtResource("20_7ca05")]
-visible = false
 debugMode = true
 metadata/_edit_lock_ = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="ArcaneCore" parent="Node" instance=ExtResource("23_0ggwl")]
+position = Vector2(926, 347)
+
+[node name="ArcaneCore2" parent="Node" instance=ExtResource("23_0ggwl")]
+position = Vector2(926, 275)
+
+[node name="ArcaneCore3" parent="Node" instance=ExtResource("23_0ggwl")]
+position = Vector2(926, 203)
 
 [node name="BackRows" type="Node" parent="."]
 
 [node name="CellRow1" type="Node2D" parent="BackRows"]
-position = Vector2(917, 203)
+position = Vector2(855, 203)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
 amount = 12
 metadata/_custom_type_script = "uid://cbudimnwbvmc6"
 
 [node name="CellRow2" type="Node2D" parent="BackRows"]
-position = Vector2(917, 275)
+position = Vector2(855, 275)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
 amount = 12
 metadata/_custom_type_script = "uid://cbudimnwbvmc6"
 
 [node name="CellRow3" type="Node2D" parent="BackRows"]
-position = Vector2(917, 347)
+position = Vector2(855, 347)
 script = ExtResource("20_22m1w")
 cellScene = ExtResource("6_usb28")
 amount = 12

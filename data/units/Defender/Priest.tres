@@ -10,6 +10,7 @@ region = Rect2(44, 38, 16, 20)
 
 [resource]
 script = ExtResource("2_kpwx0")
+defenderType = "priest"
 cost = 50
 attackDamage = 0.0
 attackInterval = 10.0

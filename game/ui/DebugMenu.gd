@@ -42,3 +42,4 @@ func _on_show_all_defender_button_button_up() -> void:
     UpgradeManager.showSwordman = true
     UpgradeManager.showPriest = true    
     UpgradeManager.showFrostwizard = true
+    UpgradeManager.showKnight = true

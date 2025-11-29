@@ -1,4 +1,4 @@
-extends Area2D
+extends Projectile
 
 @export var coinValue: int
 @export var soundEffect: AudioStream

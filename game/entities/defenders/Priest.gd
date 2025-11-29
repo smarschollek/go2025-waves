@@ -10,7 +10,7 @@ func _ready() -> void:
     $Lifebar.visible = $Hurtbox.health < data.health
     $Lifebar.value = $Hurtbox.health
 
-    $ShootBehavior.shootInterval = data.attackInterval
+    $ShootBehavior.shootInterval = UpgradeManager.applyUpgrades(data.attackInterval, data.defenderType, UpgradeManager.UPGRADETYPES.attackSpeed)
     $ShootBehavior.projectileScene = data.projectileScene
     
     $ShootBehavior.shootPositionMinOffsetX = -75.0

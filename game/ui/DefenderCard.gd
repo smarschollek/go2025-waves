@@ -12,8 +12,9 @@ extends Node2D
 var drag_preview: Area2D
 
 func _ready() -> void:
-    MoneyManager.moneyChanged.connect(toggleCardEnabled)
-    DragAndDropManager.cardDropped.connect(_onCardDropped)
+    if not Engine.is_editor_hint():
+        MoneyManager.moneyChanged.connect(toggleCardEnabled)
+        DragAndDropManager.cardDropped.connect(_onCardDropped)
 
 func _input(event: InputEvent) -> void:
     if $CooldownOverlay.visible:

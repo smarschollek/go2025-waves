@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtfph18ory26p"]
+[gd_scene load_steps=31 format=3 uid="uid://dtfph18ory26p"]
 
 [ext_resource type="Script" uid="uid://p7l5oeofuf4h" path="res://game/entities/defenders/Priest.gd" id="1_chcxc"]
 [ext_resource type="Texture2D" uid="uid://dmbryh6r77g6j" path="res://assets/entites/Defenders/Priest/Priest-Death.png" id="1_pgfgb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dvys8aae1qv74" path="res://assets/entites/Defenders/Priest/Priest-Idle.png" id="3_chcxc"]
 [ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="5_6tj2q"]
 [ext_resource type="Script" uid="uid://clryr75lojg57" path="res://game/systems/ShootBehavior.gd" id="8_xwiy8"]
+[ext_resource type="PackedScene" uid="uid://d0c3fbcmoal1h" path="res://game/entities/Coin.tscn" id="9_3yukb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8t54"]
 atlas = ExtResource("3_16csw")
@@ -190,6 +191,7 @@ debug_color = Color(1, 0, 1, 0.41960785)
 [node name="ShootBehavior" type="Node" parent="." node_paths=PackedStringArray("shootPosition")]
 script = ExtResource("8_xwiy8")
 shootPosition = NodePath("../Marker2D")
+projectileScene = ExtResource("9_3yukb")
 metadata/_custom_type_script = "uid://clryr75lojg57"
 
 [node name="Marker2D" type="Marker2D" parent="."]

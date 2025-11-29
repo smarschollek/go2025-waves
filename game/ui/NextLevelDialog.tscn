@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="1_0d7je"]
 [ext_resource type="Script" uid="uid://b8k5va3j58qgc" path="res://game/ui/NextLevelDialog.gd" id="1_k3ebv"]
 [ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="2_k3ebv"]
+[ext_resource type="PackedScene" uid="uid://bbkyd0dpqispx" path="res://game/ui/UpgradeDialog.tscn" id="4_jq34k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d7je"]
 bg_color = Color(0.31466872, 0.17280549, 0.14256328, 1)
@@ -24,11 +25,8 @@ expand_margin_bottom = 4.0
 atlas = ExtResource("1_0d7je")
 region = Rect2(43, 39, 17, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ye5y1"]
-atlas = ExtResource("1_0d7je")
-region = Rect2(43, 39, 17, 19)
-
 [node name="NextLevelDialog" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.5, 1.5)
@@ -43,18 +41,25 @@ offset_bottom = 360.0
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0d7je")
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="NewDefenderContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
-custom_minimum_size = Vector2(300, 40)
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NewDefenderContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer/NewDefenderContainer"]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_k3ebv")
 bbcode_enabled = true
@@ -62,45 +67,32 @@ text = "[wave freq=10.0 connected=1][rainbow] A new defender has joined"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewDefenderImage" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NewDefenderContainer"]
+[node name="NewDefenderImage" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer/NewDefenderContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = SubResource("AtlasTexture_jq34k")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
+[node name="UpgradeContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 30)
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/UpgradeContainer"]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_k3ebv")
+bbcode_enabled = true
 text = "Upgrades"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
+[node name="UpgradeDialog" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/UpgradeContainer" instance=ExtResource("4_jq34k")]
+layout_mode = 2
+
+[node name="NextLevelButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_k3ebv")
-text = "+ % Damange"
-icon = SubResource("AtlasTexture_ye5y1")
+text = "Next Level"
 
-[node name="Button2" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_k3ebv")
-text = "+ % Crit"
-icon = SubResource("AtlasTexture_ye5y1")
-
-[node name="Button3" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_k3ebv")
-text = "+ Attackspeed"
-icon = SubResource("AtlasTexture_ye5y1")
-
-[node name="SkipButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_k3ebv")
-text = "Skip"
-
-[connection signal="button_up" from="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/VBoxContainer2/SkipButton" to="." method="_on_skip_button_button_up"]
+[connection signal="button_up" from="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NextLevelButton" to="." method="_on_next_level_button_button_up"]

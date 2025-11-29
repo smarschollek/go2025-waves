@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi1wpm8l442uo"]
+
+[ext_resource type="Script" uid="uid://c283d7w30c7e8" path="res://game/entities/defenders/ArcaneCore.gd" id="1_0ah2f"]
+[ext_resource type="Texture2D" uid="uid://bn5t5t4l08qls" path="res://assets/sprites/ArcaneStone.png" id="1_5y8jv"]
+[ext_resource type="Script" uid="uid://cwtbhxgvmw1yy" path="res://game/systems/Hurtbox.gd" id="3_2bsky"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bsky"]
+radius = 14.0
+
+[node name="ArcaneCore" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_0ah2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5y8jv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-35.5, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("3_2bsky")
+health = 1
+metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_2bsky")
+debug_color = Color(1, 0, 1, 0.41960785)

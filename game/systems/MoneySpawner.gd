@@ -20,7 +20,7 @@ func spawnCoin() -> void:
     if activeSpawns >= GameManager.maximumCoinsOnScene:
         return
 
-    var coinInstance: Area2D = coin.duplicate().instantiate()
+    var coinInstance = coin.duplicate().instantiate()
     coinInstance.collected.connect(onCoinCollected)
 
     var shape = area.find_child("CollisionShape2D").shape as RectangleShape2D

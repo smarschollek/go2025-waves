@@ -9,6 +9,7 @@ region = Rect2(42, 39, 24, 21)
 
 [resource]
 script = ExtResource("1_peaim")
+defenderType = "swordman"
 cost = 50
 attackDamage = 15.0
 isMelee = true

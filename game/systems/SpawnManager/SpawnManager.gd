@@ -59,11 +59,17 @@ func spawnEnemy(sceneName: String, level: int, position: Marker2D):
     add_child(enemy)
 
 
+var timeToHideEnemiesAreComing := 0
 func toggleEnemiesAreComing(timeLeft : int):
-    if timeLeft == 160:
+    
+    if timeToHideEnemiesAreComing == 0:
+        timeToHideEnemiesAreComing = timeLeft - 5
         GameManager.showEnemiesAreComing = true
-    if timeLeft == 155:
+    
+    if timeLeft == timeToHideEnemiesAreComing:
         GameManager.showEnemiesAreComing = false
+    
+
 
 func toggleLastWaveInfo(timeLeft : int):
     if timeLeft == 50:
