@@ -44,3 +44,11 @@ func setTooltip(type: String) -> void:
         "health":
             $Tooltip.title = "Health"
             $Tooltip.description = "Increases the health of the defender."
+
+
+func _on_icon_mouse_entered() -> void:
+    $Tooltip.showTooltip = true
+
+
+func _on_icon_mouse_exited() -> void:
+    $Tooltip.showTooltip = false

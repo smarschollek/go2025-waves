@@ -1,0 +1,18 @@
+Wait, Doug... are you really ready to give up?\
+If you leave now, we won't be able to evaluate your results.
+That means no points, no analysis, no cake.\
+Just a very disappointed intern who has to delete your report.
+Are you absolutely sure you want to quit the training now?
+- Yes
+	...Okay, Doug. If you're really sure.\
+	Then we hereby officially discontinue the tests.\
+	Your current progress will happily and directly find its way into the trash along with all the hopes of our statistics team.
+	Thanks for participating... and remember\:\
+	We would have had cake.
+	[signal arg="yes"]
+- No
+	Ha! I like that, Doug!\
+	I knew you wouldn't give up so easily.\
+	Our trainee program may be relentless, but you're clearly not done with it yet.
+	So back into the fray, we have opponents waiting to be disappointed!
+	[signal arg="no"]

@@ -15,6 +15,10 @@ run/main_scene="uid://cjq06vxkcccg3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 SeededRNG="*res://core/utilities/RandomGenerator.gd"
@@ -33,6 +37,8 @@ CurveMerger="*res://core/utilities/CurveMerger.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"quitGame": "res://data/dialogs/quitGame.dtl",
+"reportScene": "res://data/dialogs/reportScene.dtl",
 "tutorial": "res://data/dialogs/tutorial.dtl"
 }
 layout/style_directory={

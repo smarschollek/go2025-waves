@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cuxtyang435fq" path="res://game/ui/Tooltip.gd" id="1_n730k"]
 [ext_resource type="Texture2D" uid="uid://c2nb0t420gs57" path="res://assets/sprites/Tooltip.png" id="1_wy4f7"]
-[ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="2_q0ls4"]
+[ext_resource type="FontFile" uid="uid://dwnu3raxm35aj" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_wy4f7"]
 
 [node name="Tooltip" type="TextureRect"]
+z_index = 6
 custom_minimum_size = Vector2(48, 48)
 anchors_preset = -1
 anchor_right = 0.104
@@ -19,11 +20,11 @@ script = ExtResource("1_n730k")
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 7.0
+offset_top = 6.0
 offset_right = 41.0
-offset_bottom = 12.104167
-theme_override_fonts/font = ExtResource("2_q0ls4")
-theme_override_font_sizes/font_size = 5
+offset_bottom = 12.333334
+theme_override_fonts/font = ExtResource("3_wy4f7")
+theme_override_font_sizes/font_size = 7
 text = "Arcane Core"
 
 [node name="DescriptionLabel" type="Label" parent="."]
@@ -32,8 +33,9 @@ offset_left = 7.0
 offset_top = 16.0
 offset_right = 41.0
 offset_bottom = 39.0
-theme_override_fonts/font = ExtResource("2_q0ls4")
-theme_override_font_sizes/font_size = 3
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_wy4f7")
+theme_override_font_sizes/font_size = 4
 text = "Description
 "
 autowrap_mode = 2

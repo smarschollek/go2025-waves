@@ -1,15 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjq06vxkcccg3"]
+[gd_scene load_steps=9 format=3 uid="uid://cjq06vxkcccg3"]
 
 [ext_resource type="Script" uid="uid://c6m26b4cjdy73" path="res://game/scenes/MenuScene.gd" id="1_3prin"]
 [ext_resource type="Texture2D" uid="uid://ce05jm6hwuxpv" path="res://assets/sprites/menu-background.png" id="2_1mosf"]
 [ext_resource type="Shader" uid="uid://dgsi12jv02r3j" path="res://assets/shader/Blur.gdshader" id="2_e7cpv"]
-[ext_resource type="PackedScene" uid="uid://dc0roxex60i7i" path="res://game/ui/Button.tscn" id="6_sc8sk"]
+[ext_resource type="Texture2D" uid="uid://07tjqfisan6q" path="res://assets/sprites/Button_Base.png" id="4_i6g0g"]
+[ext_resource type="FontFile" uid="uid://r7lmqbnugoso" path="res://assets/fonts/editundo.ttf" id="5_i6g0g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g18ks"]
 shader = ExtResource("2_e7cpv")
 shader_parameter/blur_amount = 1.0000000475
 
-[node name="MenuTemplate" type="CanvasLayer"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j3hi"]
+atlas = ExtResource("4_i6g0g")
+region = Rect2(1, 1, 126, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6g0g"]
+atlas = ExtResource("4_i6g0g")
+region = Rect2(1, 65, 126, 30)
+
+[node name="MenuTemplate" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_3prin")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -19,25 +30,24 @@ texture = ExtResource("2_1mosf")
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-offset_top = 275.0
+layout_mode = 0
+offset_top = 164.0
 offset_right = 638.6667
-offset_bottom = 450.33334
+offset_bottom = 413.33334
 scale = Vector2(1.5, 1.5)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureButton" type="TextureButton" parent="CenterContainer"]
+modulate = Color(0, 0, 0.9137255, 1)
 layout_mode = 2
+texture_normal = SubResource("AtlasTexture_6j3hi")
+texture_pressed = SubResource("AtlasTexture_i6g0g")
 
-[node name="TutorialButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("6_sc8sk")]
-visible = false
+[node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
-buttonText = "Tutorial"
-buttonColor = Color(0.2, 0.21176471, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("5_i6g0g")
+theme_override_font_sizes/font_size = 22
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("6_sc8sk")]
-layout_mode = 2
-buttonText = "Play"
-buttonColor = Color(0.20020004, 0.2120302, 0.91, 1)
-
-[connection signal="onClick" from="CenterContainer/VBoxContainer/TutorialButton" to="." method="_on_play_button_on_click"]
-[connection signal="onClick" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_on_click"]
+[connection signal="button_down" from="CenterContainer/TextureButton" to="." method="_on_play_button_on_click"]

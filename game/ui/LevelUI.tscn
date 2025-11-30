@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7t4osrimo6y6"]
+[gd_scene load_steps=17 format=3 uid="uid://c7t4osrimo6y6"]
 
 [ext_resource type="LabelSettings" uid="uid://gh8y4uqq4gu6" path="res://data/resources/LabelSettingsCardText.tres" id="1_ehpgu"]
 [ext_resource type="Script" uid="uid://7ylf4nw2jpkt" path="res://game/ui/LevelUI.gd" id="1_jt5pe"]
 [ext_resource type="FontFile" uid="uid://r7lmqbnugoso" path="res://assets/fonts/editundo.ttf" id="3_5a7dr"]
 [ext_resource type="PackedScene" uid="uid://c10pv5uh6sjhk" path="res://game/ui/NextLevelDialog.tscn" id="4_oudv8"]
-[ext_resource type="PackedScene" uid="uid://tgd12r5nx3mq" path="res://game/ui/GameOverDialog.tscn" id="5_grh24"]
 [ext_resource type="Texture2D" uid="uid://c4navum0shkxw" path="res://assets/sprites/PauseButton.png" id="6_tts5e"]
 [ext_resource type="Texture2D" uid="uid://dbpkxy8ahnaw6" path="res://assets/sprites/FastForwardButton.png" id="7_jxfyy"]
+[ext_resource type="Texture2D" uid="uid://07tjqfisan6q" path="res://assets/sprites/Button_Base.png" id="8_wyvkn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehpgu"]
 bg_color = Color(0.9647059, 0.7411765, 0.31764707, 1)
@@ -35,13 +35,18 @@ region = Rect2(65, 1, 30, 30)
 atlas = ExtResource("7_jxfyy")
 region = Rect2(33, 1, 30, 30)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_06xy0"]
+atlas = ExtResource("8_wyvkn")
+region = Rect2(1, 1, 126, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n133o"]
+atlas = ExtResource("8_wyvkn")
+region = Rect2(1, 65, 126, 30)
+
 [node name="LevelUI" type="Control"]
 process_mode = 3
-z_index = 5
 layout_mode = 3
 anchors_preset = 0
-offset_right = 960.0
-offset_bottom = 41.0
 script = ExtResource("1_jt5pe")
 
 [node name="Level" type="Label" parent="."]
@@ -51,6 +56,7 @@ offset_top = 4.0
 offset_right = 864.0
 offset_bottom = 14.75
 scale = Vector2(2, 2)
+mouse_filter = 0
 text = "LEVEL: 1"
 label_settings = ExtResource("1_ehpgu")
 horizontal_alignment = 1
@@ -90,30 +96,25 @@ show_percentage = false
 
 [node name="NextLevelDialog" parent="." instance=ExtResource("4_oudv8")]
 visible = false
+z_index = 6
 layout_mode = 0
 
-[node name="GameOver" parent="." instance=ExtResource("5_grh24")]
-visible = false
-layout_mode = 1
-offset_bottom = 319.0
-
-[node name="PauseButton" type="TextureButton" parent="."]
+[node name="MenuButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 827.0
+offset_left = 890.0
 offset_top = 471.0
-offset_right = 857.0
+offset_right = 920.0
 offset_bottom = 501.0
 scale = Vector2(2, 2)
-toggle_mode = true
 texture_normal = SubResource("AtlasTexture_jxfyy")
 texture_pressed = SubResource("AtlasTexture_wyvkn")
 texture_hover = SubResource("AtlasTexture_augvt")
 
 [node name="FastForwardButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 891.0
+offset_left = 826.0
 offset_top = 471.0
-offset_right = 921.0
+offset_right = 856.0
 offset_bottom = 501.0
 scale = Vector2(2, 2)
 toggle_mode = true
@@ -121,5 +122,52 @@ texture_normal = SubResource("AtlasTexture_r7xvc")
 texture_pressed = SubResource("AtlasTexture_1t6sw")
 texture_hover = SubResource("AtlasTexture_73v02")
 
-[connection signal="button_up" from="PauseButton" to="." method="_on_pause_button_button_up"]
-[connection signal="button_up" from="FastForwardButton" to="." method="_on_fast_forward_button_button_up"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 956.0
+offset_bottom = 537.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ContinueButtonContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="TextureButton" parent="PanelContainer/VBoxContainer/ContinueButtonContainer"]
+modulate = Color(0, 0, 0.9137255, 1)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_06xy0")
+texture_pressed = SubResource("AtlasTexture_n133o")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ContinueButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5a7dr")
+theme_override_font_sizes/font_size = 22
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButtonContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="TextureButton" parent="PanelContainer/VBoxContainer/QuitButtonContainer"]
+modulate = Color(0, 0, 0.9137255, 1)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_06xy0")
+texture_pressed = SubResource("AtlasTexture_n133o")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/QuitButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5a7dr")
+theme_override_font_sizes/font_size = 22
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="MenuButton" to="." method="_on_menu_button_button_down"]
+[connection signal="button_down" from="FastForwardButton" to="." method="_on_fast_forward_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/ContinueButtonContainer/ContinueButton" to="." method="_on_continue_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/QuitButtonContainer/QuitButton" to="." method="_on_quit_button_button_down"]

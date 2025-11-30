@@ -39,12 +39,15 @@ metadata/_custom_type_script = "uid://cwtbhxgvmw1yy"
 shape = SubResource("CircleShape2D_2bsky")
 debug_color = Color(1, 0, 1, 0.41960785)
 
-[node name="Tooltip" parent="." node_paths=PackedStringArray("mouseEventsNode") instance=ExtResource("4_xfk4o")]
+[node name="Tooltip" parent="." instance=ExtResource("4_xfk4o")]
 visible = false
+z_index = 6
 offset_left = -62.0
 offset_top = -22.5
 offset_right = -14.0
 offset_bottom = 25.5
 texture = ExtResource("5_2gqm7")
 tooltipPosition = "left"
-mouseEventsNode = NodePath("..")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

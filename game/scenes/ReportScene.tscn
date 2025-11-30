@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://comr6an6csw4b" path="res://assets/fonts/DailyReportText.tres" id="4_b744i"]
 
 [node name="ReportScene" type="CenterContainer"]
+process_mode = 3
 offset_right = 960.0
 offset_bottom = 540.0
 script = ExtResource("1_un6l5")

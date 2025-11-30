@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://swbgb7qpg3mu" path="res://assets/entites/Defenders/Wizard/Wizard-Idle.png" id="1_0d7je"]
 [ext_resource type="Script" uid="uid://b8k5va3j58qgc" path="res://game/ui/NextLevelDialog.gd" id="1_k3ebv"]
-[ext_resource type="FontFile" uid="uid://efbvk8bkwqo2" path="res://assets/fonts/LowresPixel-Regular.otf" id="2_k3ebv"]
 [ext_resource type="PackedScene" uid="uid://bbkyd0dpqispx" path="res://game/ui/UpgradeDialog.tscn" id="4_jq34k"]
+[ext_resource type="FontFile" uid="uid://dwnu3raxm35aj" path="res://assets/fonts/EXEPixelPerfect.ttf" id="5_ye5y1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d7je"]
 bg_color = Color(0.31466872, 0.17280549, 0.14256328, 1)
@@ -61,7 +61,8 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/CenterContainer/NewDefenderContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_k3ebv")
+theme_override_fonts/normal_font = ExtResource("5_ye5y1")
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "[wave freq=10.0 connected=1][rainbow] A new defender has joined"
 horizontal_alignment = 1
@@ -81,7 +82,8 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/HBoxContainer/UpgradeContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_k3ebv")
+theme_override_fonts/normal_font = ExtResource("5_ye5y1")
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "Upgrades"
 horizontal_alignment = 1
@@ -92,7 +94,7 @@ layout_mode = 2
 
 [node name="NextLevelButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_k3ebv")
+theme_override_fonts/font = ExtResource("5_ye5y1")
 text = "Next Level"
 
 [connection signal="button_up" from="PanelContainer/CenterContainer/PanelContainer/VBoxContainer3/NextLevelButton" to="." method="_on_next_level_button_button_up"]

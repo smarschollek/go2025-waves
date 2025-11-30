@@ -14,7 +14,7 @@ var paths = [
 
 func _ready() -> void:
     UpgradeManager.addPoints(1)
-    defenderContainer.visible = GameManager.level <= 3    
+    defenderContainer.visible = GameManager.level <= 4
     
     if defenderContainer.visible:
         var atlasTexture = AtlasTexture.new()

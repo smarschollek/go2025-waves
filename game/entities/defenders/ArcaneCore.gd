@@ -7,10 +7,7 @@ func _ready() -> void:
 
     $Tooltip.title = GameManager.TOOLTIPS.arcaneCore.title
     $Tooltip.description = GameManager.TOOLTIPS.arcaneCore.description
-
-    self.mouse_entered.connect(_on_mouse_entered)
-    self.mouse_exited.connect(_on_mouse_exited)
-
+    
 func _physics_process(_delta: float) -> void:
     if $Hurtbox.dead:
         if killEverything():

@@ -73,7 +73,8 @@ const ZINDEX = {
     "GROUND": 1,
     "ENTITIES": 3,
     "PROJECTILES": 4,
-    "UI": 5
+    "COINS": 5,
+    "UI": 6
 }
 
 # Tooltips

@@ -76,7 +76,9 @@ offset_right = 16.0
 offset_bottom = 15.0
 texture = SubResource("AtlasTexture_6e64o")
 
-[node name="Tooltip" parent="." node_paths=PackedStringArray("mouseEventsNode") instance=ExtResource("3_x0j2q")]
+[node name="Tooltip" parent="." instance=ExtResource("3_x0j2q")]
+visible = false
+z_index = 6
 layout_mode = 1
 offset_left = -48.0
 offset_top = -15.0
@@ -86,7 +88,10 @@ grow_horizontal = 1
 grow_vertical = 1
 texture = ExtResource("4_xmkke")
 tooltipPosition = "left"
-mouseEventsNode = NodePath("..")
+title = "Attack Speed"
+description = "Increases the attack speed of the defender."
 
 [connection signal="button_up" from="MinusButton" to="." method="_on_minus_button_button_up"]
 [connection signal="button_up" from="PlusButton" to="." method="_on_plus_button_button_up"]
+[connection signal="mouse_entered" from="Icon" to="." method="_on_icon_mouse_entered"]
+[connection signal="mouse_exited" from="Icon" to="." method="_on_icon_mouse_exited"]

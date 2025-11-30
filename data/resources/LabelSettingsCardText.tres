@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://gh8y4uqq4gu6"]
 
-[ext_resource type="FontFile" uid="uid://r7lmqbnugoso" path="res://atoms/editundo.ttf" id="1_8y185"]
+[ext_resource type="FontFile" uid="uid://r7lmqbnugoso" path="res://assets/fonts/editundo.ttf" id="1_8y185"]
 
 [resource]
 font = ExtResource("1_8y185")
